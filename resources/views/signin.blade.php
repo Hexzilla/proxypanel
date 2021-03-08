@@ -66,10 +66,12 @@
 			if (!email) {
 				toastr.error("Please input email")
 				$("#email").focus()
+				return
 			}
 			if (!password) {
 				toastr.error("Please input password")
 				$("#password").focus()
+				return
 			}
 			$.ajax({
 				type: 'POST',
