@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-Route::post('/login', 'AuthController@login')->name('login');
+// Route::post('/login', 'AuthController@login')->name('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::post('/signup', 'AuthController@signup')->name('signup');
+// Route::post('/signup', 'AuthController@signup')->name('signup');
 
-Route::get('/signin', 'AuthController@signin');
-Route::get('/signup', 'AuthController@signupView');
+// Route::get('/signin', 'AuthController@signin');
+// Route::get('/signup', 'AuthController@signupView');
 
-Route::group(['middleware' => ['check.auth']], function () {
+// Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/{page}', 'AdminController@index');
-});
+// });
