@@ -82,7 +82,7 @@
 				},
 				success: function(result) {
 					if (result == 1) {
-						window.location = "{{ url('/signin')}}"
+						window.location = "{{ url('/dashboard')}}"
 					} else {
 						toastr.error("Please input correct information", "Not registered user")
 					}

@@ -14,7 +14,7 @@ class AuthController extends Controller
         $user->skype_id = $request->skype;
         $user->password = self::make_password($request->password);
         $user->save();
-        return redirect('/dashboard');
+        return redirect('/signin');
     }
 
     public function signin(Request $request) {
