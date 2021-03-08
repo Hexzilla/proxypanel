@@ -63,6 +63,14 @@
 		$("#signInBtn").click(function() {
 			let email = $("#email").val()
 			let password = $("#password").val()
+			if (!email) {
+				toastr.error("Please input email")
+				$("#email").focus()
+			}
+			if (!password) {
+				toastr.error("Please input password")
+				$("#password").focus()
+			}
 			$.ajax({
 				type: 'POST',
 				url: "{{ url('/login') }}",
