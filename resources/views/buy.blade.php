@@ -197,15 +197,30 @@ label {
 			<div class="card-body">
 				<h3>Payment Method</h3><br>
 				<div class="row">
-					<div class="col-lg-6 col-md-6 col-sm-6">
-						Paypal
+					<div class="col-md-6 col-lg-6 col-sm-6">
+						<label>
+							<input type="radio" name="product" class="card-input-element" />
+							<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">PayPal</div>
+								<div class="panel-body">
+
+								</div>
+							</div>
+						</label>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-6">
-						BitCoin
+					<div class="col-md-6 col-lg-6 col-sm-6">
+						<label>
+							<input type="radio" name="product" class="card-input-element" />
+							<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">BTC</div>
+								<div class="panel-body">
+								</div>
+							</div>
+						</label>
 					</div>
 				</div>
 				<div class="text-right">
-					<button class="btn ripple btn-main-primary">Primary</button>
+					<button class="btn ripple btn-main-primary">Buy This Proxy</button>
 				</div>
 			</div>
 		</div>
