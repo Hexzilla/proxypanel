@@ -209,7 +209,7 @@ label {
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6">
 						<p class="mg-b-5">Nickname: </p>
-						<input type="text" class="form-control" name="example-text-input">
+						<input type="text" class="form-control" name="example-text-input" value="Proxy">
 						<p class="text-muted card-sub-title">A unique alphanumeric name for this proxy</p>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6">
