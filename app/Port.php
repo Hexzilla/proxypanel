@@ -35,4 +35,5 @@ class Port extends Model
      */
     protected $hidden = [];
 
+    public $timestamps = false;
 }
