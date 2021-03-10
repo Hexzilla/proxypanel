@@ -106,7 +106,7 @@ label {
 								<div class="row">    
 									<div class="col-md-3 col-lg-3 col-sm-3">
 										<label>
-											<input type="radio" name="product" class="card-input-element" />
+											<input type="radio" name="product" class="card-input-element" value="monthly"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
 											<div class="panel-body">
@@ -118,7 +118,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-3">
 										<label>
-											<input type="radio" name="product" class="card-input-element" />
+											<input type="radio" name="product" class="card-input-element" value="weekly"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
 											<div class="panel-body">
@@ -130,7 +130,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-6">
 										<label>
-											<input type="radio" name="product" class="card-input-element" />
+											<input type="radio" name="product" class="card-input-element" value="daily"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
 											<div class="panel-body">
@@ -142,7 +142,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-6">
 										<label>
-											<input type="radio" name="product" class="card-input-element" />
+											<input type="radio" name="product" class="card-input-element" value="hour"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
 											<div class="panel-body">
@@ -257,7 +257,7 @@ label {
 								<div class="row">    
 									<div class="col-md-3 col-lg-3 col-sm-3">
 										<label>
-											<input type="radio" name="option" class="card-input-element" />
+											<input type="radio" name="option" class="card-input-element" value="monthly"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
 											<div class="panel-body">
@@ -268,7 +268,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-3">
 										<label>
-											<input type="radio" name="option" class="card-input-element" />
+											<input type="radio" name="option" class="card-input-element" value="weekly"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
 											<div class="panel-body">
@@ -279,7 +279,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-6">
 										<label>
-											<input type="radio" name="option" class="card-input-element" />
+											<input type="radio" name="option" class="card-input-element" value="daily"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
 											<div class="panel-body">
@@ -290,7 +290,7 @@ label {
 									</div>
 									<div class="col-md-3 col-lg-3 col-sm-6">
 										<label>
-											<input type="radio" name="option" class="card-input-element" />
+											<input type="radio" name="option" class="card-input-element" value="hour"/>
 											<div class="panel panel-default card-input">
 											<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
 											<div class="panel-body">
