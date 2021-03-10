@@ -3,17 +3,11 @@
 @endsection
 @section('page-header')
 <!-- Page Header -->
-<div class="page-header">
+<!-- <div class="page-header">
 	<div>
 		<h2 class="main-content-title tx-20 mg-b-5">Custom proxy solutions</h2>
-		<!-- <ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Pages</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Empty Page</li>
-							</ol> -->
 	</div>
 	<div class="btn btn-list">
-		<!-- <a class="btn ripple btn-primary" href="#"><i class="fe fe-external-link"></i> Export</a>
-		<a class="btn ripple btn-secondary" href="#"><i class="fe fe-download"></i> Download</a> -->
 		<a class="btn ripple btn-info" href="#"><i class="fe fe-help-circle"></i> Help</a>
 		<a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			<i class="fe fe-settings"></i> Settings <i class="fas fa-caret-down ml-1"></i>
@@ -27,7 +21,7 @@
 			<a class="dropdown-item" href="#"><i class="fe fe-settings mr-2"></i>More</a>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- End Page Header -->
 @endsection
 @section('content')
