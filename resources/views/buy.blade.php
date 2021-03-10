@@ -30,7 +30,7 @@ label {
 	border: 1px #eee solid;
 }
 .payment-div {
-	max-width: 500px;
+	max-width: 700px;
 	margin: 0 auto;
 }
 </style>
@@ -207,7 +207,7 @@ label {
 							<div class="panel panel-default card-input">
 								<div class="panel-heading text-center tx-16 mb-2">PayPal</div>
 								<div class="panel-body">
-									<img src="{{asset('assets/img/pngs/paypal.png')}}" width="100%" height="50px"></img>
+									<img src="{{asset('assets/img/pngs/paypal.png')}}" width="100%" height="70px"></img>
 								</div>
 							</div>
 						</label>
@@ -218,7 +218,7 @@ label {
 							<div class="panel panel-default card-input">
 								<div class="panel-heading text-center tx-16 mb-2">BTC</div>
 								<div class="panel-body">
-									<img src="{{asset('assets/img/pngs/bitcoin.png')}}" width="100%" height="50px"></img>
+									<img src="{{asset('assets/img/pngs/bitcoin.png')}}" width="100%" height="70px"></img>
 								</div>
 							</div>
 						</label>
