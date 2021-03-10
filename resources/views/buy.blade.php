@@ -2,7 +2,7 @@
 @section('css')
 <style type="text/css">
 .tab-title {
-	font-size: 20px;
+	font-size: 15px;
 }
 .tab-paragraph {
 	margin-bottom: 3px
