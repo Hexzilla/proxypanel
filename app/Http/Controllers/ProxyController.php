@@ -30,6 +30,7 @@ class ProxyController extends Controller
         var_dump('user '.$user);echo('<br>');
         var_dump('city '.$city);echo('<br>');
         var_dump('paidTill '.$paidTill);echo('<br>');
+        var_dump('cur '.date('Y-m-d H:i:s'));echo('<br>');
     }
     
     function generatePassword() { 
