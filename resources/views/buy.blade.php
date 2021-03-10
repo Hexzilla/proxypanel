@@ -205,7 +205,7 @@ label {
 						<label>
 							<input type="radio" name="payment" class="card-input-element" />
 							<div class="panel panel-default card-input">
-								<div class="panel-heading text-center tx-16 mb-2">PayPal</div>
+								<!-- <div class="panel-heading text-center tx-16 mb-2">PayPal</div> -->
 								<div class="panel-body">
 									<img src="{{asset('assets/img/pngs/paypal.png')}}" width="100%" height="100px"></img>
 								</div>
@@ -216,7 +216,7 @@ label {
 						<label>
 							<input type="radio" name="payment" class="card-input-element" />
 							<div class="panel panel-default card-input">
-								<div class="panel-heading text-center tx-16 mb-2">BTC</div>
+								<!-- <div class="panel-heading text-center tx-16 mb-2">BTC</div> -->
 								<div class="panel-body">
 									<img src="{{asset('assets/img/pngs/bitcoin.png')}}" width="100%" height="100px" style="padding: 10px"></img>
 								</div>
