@@ -29,6 +29,10 @@ label {
 .panel-default {
 	border: 1px #eee solid;
 }
+.payment-div {
+	max-width: 500px;
+	margin: 0 auto;
+}
 </style>
 @endsection
 @section('page-header')
@@ -196,14 +200,14 @@ label {
 		<div class="card custom-card">
 			<div class="card-body">
 				<h3>Payment Method</h3><br>
-				<div class="row">
+				<div class="row payment-div">
 					<div class="col-md-6 col-lg-6 col-sm-6">
 						<label>
 							<input type="radio" name="payment" class="card-input-element" />
 							<div class="panel panel-default card-input">
 								<div class="panel-heading text-center tx-16 mb-2">PayPal</div>
 								<div class="panel-body">
-									<img src="{{asset('assets/img/pngs/paypal.png')}}"></img>
+									<img src="{{asset('assets/img/pngs/paypal.png')}}" width="100%" height="50px"></img>
 								</div>
 							</div>
 						</label>
@@ -214,7 +218,7 @@ label {
 							<div class="panel panel-default card-input">
 								<div class="panel-heading text-center tx-16 mb-2">BTC</div>
 								<div class="panel-body">
-									<img src="{{asset('assets/img/pngs/bitcoin.png')}}"></img>
+									<img src="{{asset('assets/img/pngs/bitcoin.png')}}" width="100%" height="50px"></img>
 								</div>
 							</div>
 						</label>
