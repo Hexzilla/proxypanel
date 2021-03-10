@@ -63,9 +63,9 @@ label {
 @endsection
 @section('content')
 <div>
-	<div class="bg-pink-transparent nav-bg">
+	<div class="nav-bg">
 		<nav class="nav nav-tabs">
-			<a class="nav-link active col-md-4 col-lg-4" data-toggle="tab" href="#tabCont1">
+			<a class="bg-pink-transparent nav-link active col-md-4 col-lg-4" data-toggle="tab" href="#tabCont1">
 				<p class="text-center tab-title">DEDICATED 4G</p>
 				<p class="tab-paragraph"> </p>
 				<p class="tab-paragraph">- A large number of locations</p>
