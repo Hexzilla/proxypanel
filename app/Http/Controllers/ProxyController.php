@@ -21,9 +21,9 @@ class ProxyController extends Controller
         $paidTill = self::getPaidTill($option);
 
         $port = new Port;
-        $port->username = $request->user;
-        $port->pass = $request->password;
-        $port->paidtill = $request->paidTill;
+        $port->username = $user;
+        $port->pass = $password;
+        $port->paidtill = $paidTill;
         $port->groupname = $request->nickName;
         $port->city = $city;
         $port->rotation = $rotation;
