@@ -90,8 +90,8 @@ label {
 									<div class="panel panel-default card-input">
 									<div class="panel-heading text-center tx-16">MONTHLY</div>
 									<div class="panel-body">
-										<p class="text-center tx-14">Denver, US</p>
-										<p class="text-center tx-14">$175</p>
+										<p class="text-center tx-14 mb-1">Denver, US</p>
+										<p class="text-center tx-14 mb-1">$175</p>
 									</div>
 									</div>
 								</label>
@@ -102,8 +102,8 @@ label {
 									<div class="panel panel-default card-input">
 									<div class="panel-heading text-center tx-16">WEEKLY</div>
 									<div class="panel-body">
-										<p class="text-center tx-14">Denver, US</p>
-										<p class="text-center tx-14">$75</p>
+										<p class="text-center tx-14 mb-1">Denver, US</p>
+										<p class="text-center tx-14 mb-1">$75</p>
 									</div>
 									</div>
 								</label>
@@ -114,8 +114,8 @@ label {
 									<div class="panel panel-default card-input">
 									<div class="panel-heading text-center tx-16">DAILY</div>
 									<div class="panel-body">
-										<p class="text-center tx-14">Denver, US</p>
-										<p class="text-center tx-14">$20</p>
+										<p class="text-center tx-14 mb-1">Denver, US</p>
+										<p class="text-center tx-14 mb-1">$20</p>
 									</div>
 									</div>
 								</label>
@@ -126,8 +126,8 @@ label {
 									<div class="panel panel-default card-input">
 									<div class="panel-heading text-center tx-16">ONE HOUR TRIAL</div>
 									<div class="panel-body">
-										<p class="text-center tx-14">Denver, US</p>
-										<p class="text-center tx-14">$10</p>
+										<p class="text-center tx-14 mb-1">Denver, US</p>
+										<p class="text-center tx-14 mb-1">$10</p>
 									</div>
 									</div>
 								</label>
