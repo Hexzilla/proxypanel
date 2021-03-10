@@ -36,6 +36,10 @@ label {
 #tabCont1, #tabCont2, #tabCont3 {
 	margin-top: 20px;
 }
+.nav-item {
+	padding-left: 5px;
+	margin: 0;
+}
 </style>
 @endsection
 @section('page-header')
@@ -65,19 +69,19 @@ label {
 <div>
 	<div class="nav-bg">
 		<nav class="nav nav-tabs">
-			<a class="bg-pink-transparent nav-link active col-md-4 col-lg-4" data-toggle="tab" href="#tabCont1">
+			<a class="bg-pink-transparent nav-link active col-md-4 col-lg-4 nav-item" data-toggle="tab" href="#tabCont1">
 				<p class="text-center tab-title">DEDICATED 4G</p>
 				<p class="tab-paragraph"> </p>
 				<p class="tab-paragraph">- A large number of locations</p>
 				<p class="tab-paragraph">- Unlimited Bandwidth</p>
 			</a>
-			<a class="nav-link col-md-4 col-lg-4" data-toggle="tab" href="#tabCont2">
+			<a class="nav-link col-md-4 col-lg-4 nav-item" data-toggle="tab" href="#tabCont2">
 				<p class="text-center tab-title">ROTATING</p>
 				<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
 				<p class="tab-paragraph">- Modems change IP every 5 mins</p>
 				<p class="tab-paragraph">- Integrated with Multilogin</p>
 			</a>
-			<a class="nav-link col-md-4 col-lg-4" data-toggle="tab" href="#tabCont3">
+			<a class="nav-link col-md-4 col-lg-4 nav-item" data-toggle="tab" href="#tabCont3">
 				<p class="text-center tab-title">MULTILOCATION</p>
 				<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
 				<p class="tab-paragraph">- Set city at any moment</p>
