@@ -27,6 +27,7 @@ Route::get('/signin', 'AuthController@signin');
 Route::get('/signup', 'AuthController@signupView');
 
 Route::group(['middleware' => ['check.auth']], function () {
+    Route::get('/dashboard', 'DashController@dashboard');
     Route::get('/myproxies', 'DashController@myproxies');
     Route::get('/buy', 'DashController@buy');
     Route::get('/location', 'DashController@location');
