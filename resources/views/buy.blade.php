@@ -150,6 +150,46 @@ label {
 </div>
 <!-- End Row -->
 
+<!-- Row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card custom-card">
+			<div class="card-body">
+				<h2>Proxy Configurations</h2>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<p class="mg-b-10">Name</p>
+						<input type="text" class="form-control" name="example-text-input" placeholder="Name">
+						<p class="text-muted card-sub-title">Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.</p>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<p class="mg-b-10">Single Select</p>
+						<select class="form-control select2-no-search">
+							<option label="Choose one">
+							</option>
+							<option value="Firefox">
+								Firefox
+							</option>
+							<option value="Chrome">
+								Chrome
+							</option>
+							<option value="Safari">
+								Safari
+							</option>
+							<option value="Opera">
+								Opera
+							</option>
+							<option value="Internet Explorer">
+								Internet Explorer
+							</option>
+						</select>
+						<p class="text-muted card-sub-title">Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </div>
 </div>
