@@ -352,7 +352,7 @@ label {
 								<div class="row payment-div">
 									<div class="col-md-6 col-lg-6 col-sm-6">
 										<label>
-											<input type="radio" name="payment" class="card-input-element" />
+											<input type="radio" name="payment" class="card-input-element" value="paypal"/>
 											<div class="panel panel-default card-input">
 												<!-- <div class="panel-heading text-center tx-16 mb-2">PayPal</div> -->
 												<div class="panel-body">
@@ -363,7 +363,7 @@ label {
 									</div>
 									<div class="col-md-6 col-lg-6 col-sm-6">
 										<label>
-											<input type="radio" name="payment" class="card-input-element" />
+											<input type="radio" name="payment" class="card-input-element" value="btc"/>
 											<div class="panel panel-default card-input">
 												<!-- <div class="panel-heading text-center tx-16 mb-2">BTC</div> -->
 												<div class="panel-body">
