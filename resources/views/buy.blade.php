@@ -155,7 +155,7 @@ label {
 	<div class="col-lg-12">
 		<div class="card custom-card">
 			<div class="card-body">
-				<h2>Proxy Configurations</h2>
+				<h3>Proxy Configurations</h3><br>
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6">
 						<p class="mg-b-5">Nickname: </p>
@@ -182,8 +182,30 @@ label {
 								1 Hour
 							</option>
 						</select>
-						<p class="text-muted card-sub-title">Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.</p>
+						<p class="text-muted card-sub-title">How frequent you want proxy to change, you can change this later</p>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Row -->
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card custom-card">
+			<div class="card-body">
+				<h3>Payment Method</h3><br>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						Paypal
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						BitCoin
+					</div>
+				</div>
+				<div class="text-right">
+					<button class="btn ripple btn-main-primary">Primary</button>
 				</div>
 			</div>
 		</div>
