@@ -7,6 +7,10 @@ use App\Port;
 
 class DashController extends Controller
 {
+    function dashboard() {
+        return view('dashboard');
+    }
+
     function myproxies() {
         $ports = Port::all();
         return view('myproxies', compact('ports'));
