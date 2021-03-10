@@ -90,8 +90,8 @@
 										</a>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										<div class="hostBtn">http {{$p->server}}</div>
-										<div class="hostBtn">socks5 {{$p->server}}</div>
+										<div class="hostBtn">http: {{$p->server}}</div>
+										<div class="hostBtn">socks5: {{$p->server}}</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										{{$p->username}}

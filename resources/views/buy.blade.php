@@ -226,7 +226,7 @@ label {
 							</div>
 							<br>
 							<div class="text-right">
-								<button class="btn ripple btn-main-primary">Buy This Proxy</button>
+								<button class="btn ripple btn-main-primary disabled">Buy This Proxy</button>
 							</div>
 						</div>
 					</div>
