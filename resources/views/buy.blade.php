@@ -33,12 +33,11 @@ label {
 	max-width: 700px;
 	margin: 0 auto;
 }
+.nav-item {
+	margin: 0;
+}
 #tabCont1, #tabCont2, #tabCont3 {
 	margin-top: 20px;
-}
-.nav-item {
-	padding-left: 5px;
-	margin: 0;
 }
 </style>
 @endsection
@@ -69,7 +68,7 @@ label {
 <div>
 	<div class="nav-bg">
 		<nav class="nav nav-tabs">
-			<a class="bg-pink-transparent nav-link active col-md-4 col-lg-4 nav-item" data-toggle="tab" href="#tabCont1">
+			<a class="nav-link active col-md-4 col-lg-4 nav-item" data-toggle="tab" href="#tabCont1">
 				<p class="text-center tab-title">DEDICATED 4G</p>
 				<p class="tab-paragraph"> </p>
 				<p class="tab-paragraph">- A large number of locations</p>
