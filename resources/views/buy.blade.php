@@ -68,19 +68,19 @@ label {
 <div>
 	<div class="nav-bg">
 		<nav class="nav nav-tabs">
-			<a class="nav-link active col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont1">
+			<a class="nav-link active col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont1" style="background-color: rgb(135, 96, 251, 0.3);">
 				<p class="text-center tab-title">DEDICATED 4G</p>
 				<p class="tab-paragraph"> </p>
 				<p class="tab-paragraph">- A large number of locations</p>
 				<p class="tab-paragraph">- Unlimited Bandwidth</p>
 			</a>
-			<a class="nav-link col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont2">
+			<a class="nav-link col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont2" style="background-color: rgba(56, 210, 80, 0.3);">
 				<p class="text-center tab-title">ROTATING</p>
 				<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
 				<p class="tab-paragraph">- Modems change IP every 5 mins</p>
 				<p class="tab-paragraph">- Integrated with Multilogin</p>
 			</a>
-			<a class="nav-link col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont3">
+			<a class="nav-link col-md-4 col-lg-4 nav-btn" data-toggle="tab" href="#tabCont3" style="background-color: rgba(241, 0, 117, 0.3);">
 				<p class="text-center tab-title">MULTILOCATION</p>
 				<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
 				<p class="tab-paragraph">- Set city at any moment</p>
