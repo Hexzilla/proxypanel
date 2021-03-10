@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('css')
+.tab-title {
+	font-size: 20px;
+}
 @endsection
 @section('page-header')
 <!-- Page Header -->
@@ -33,18 +36,18 @@
 				<div class="bg-gray-300 nav-bg">
 					<nav class="nav nav-tabs">
 						<a class="nav-link active" data-toggle="tab" href="#tabCont1">
-							<p class="text-center">Home</p>
+							<p class="text-center tab-title">Home</p>
 							<p>- A large number of locations</p>
 							<p>- Unlimited Bandwidth</p>
 						</a>
 						<a class="nav-link" data-toggle="tab" href="#tabCont2">
-							<p class="text-center">About</p>
+							<p class="text-center tab-title">About</p>
 							<p>- Access to huge pool of 4g modems</p>
 							<p>- Modems change IP every 5 mins</p>
 							<p>- Integrated with Multilogin</p>
 						</a>
 						<a class="nav-link" data-toggle="tab" href="#tabCont3">
-							<p class="text-center">About</p>
+							<p class="text-center tab-title">About</p>
 							<p>- Access to huge pool of 4g modems</p>
 							<p>- Set city at any moment</p>
 							<p>- Integrated with Multilogin</p>
