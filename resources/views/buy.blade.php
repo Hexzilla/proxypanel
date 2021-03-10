@@ -27,6 +27,7 @@ label {
      box-shadow: 0 0 1px 1px #2ecc71;
 }
 .panel-default {
+	padding: 10px;
 	border: 1px #eee solid;
 }
 .payment-div {
