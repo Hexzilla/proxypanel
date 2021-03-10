@@ -23,11 +23,12 @@ label {
 .card-input:hover {
     cursor: pointer;
 }
-
 .card-input-element:checked + .card-input {
      box-shadow: 0 0 1px 1px #2ecc71;
- }
-
+}
+.panel-default {
+	border: 1px gray solid;
+}
 </style>
 @endsection
 @section('page-header')
