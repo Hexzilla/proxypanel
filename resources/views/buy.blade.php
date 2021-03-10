@@ -1,8 +1,13 @@
 @extends('layouts.master')
 @section('css')
+<style type="text/css">
 .tab-title {
 	font-size: 20px;
 }
+.tab-paragraph {
+	margin-bottom: 3px
+}
+</style>
 @endsection
 @section('page-header')
 <!-- Page Header -->
@@ -37,20 +42,20 @@
 					<nav class="nav nav-tabs">
 						<a class="nav-link active" data-toggle="tab" href="#tabCont1">
 							<p class="text-center tab-title">Home</p>
-							<p>- A large number of locations</p>
-							<p>- Unlimited Bandwidth</p>
+							<p class="tab-paragraph">- A large number of locations</p>
+							<p class="tab-paragraph">- Unlimited Bandwidth</p>
 						</a>
 						<a class="nav-link" data-toggle="tab" href="#tabCont2">
 							<p class="text-center tab-title">About</p>
-							<p>- Access to huge pool of 4g modems</p>
-							<p>- Modems change IP every 5 mins</p>
-							<p>- Integrated with Multilogin</p>
+							<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
+							<p class="tab-paragraph">- Modems change IP every 5 mins</p>
+							<p class="tab-paragraph">- Integrated with Multilogin</p>
 						</a>
 						<a class="nav-link" data-toggle="tab" href="#tabCont3">
 							<p class="text-center tab-title">About</p>
-							<p>- Access to huge pool of 4g modems</p>
-							<p>- Set city at any moment</p>
-							<p>- Integrated with Multilogin</p>
+							<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
+							<p class="tab-paragraph">- Set city at any moment</p>
+							<p class="tab-paragraph">- Integrated with Multilogin</p>
 						</a>
 					</nav>
 				</div>
