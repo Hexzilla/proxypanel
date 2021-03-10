@@ -20,17 +20,28 @@ class ProxyController extends Controller
         $city = 'atlanta';
         $paidTill = self::getPaidTill($option);
 
-        var_dump('option '.$option);echo('<br>');
-        var_dump('payment '.$payment);echo('<br>');
+        $port = new Port;
+        $port->username = $request->user;
+        $port->pass = $request->password;
+        $port->paidtill = $request->paidTill;
+        $port->groupname = $request->nickName;
+        $port->city = $city;
+        $port->rotation = $rotation;
+        $port->save();
 
-        var_dump('nickName '.$nickName);echo('<br>');
-        var_dump('rotation '.$rotation);echo('<br>');
-        var_dump('password '.$password);echo('<br>');
-        var_dump('rotation '.$rotation);echo('<br>');
-        var_dump('user '.$user);echo('<br>');
-        var_dump('city '.$city);echo('<br>');
-        var_dump('paidTill '.$paidTill);echo('<br>');
-        var_dump('cur '.date('Y-m-d H:i:s'));echo('<br>');
+        return redirect()->back();
+        // var_dump('option '.$option);echo('<br>');
+        // var_dump('payment '.$payment);echo('<br>');
+
+        // var_dump('nickName '.$nickName);echo('<br>');
+        // var_dump('rotation '.$rotation);echo('<br>');
+        // var_dump('password '.$password);echo('<br>');
+        // var_dump('rotation '.$rotation);echo('<br>');
+        // var_dump('user '.$user);echo('<br>');
+        // var_dump('city '.$city);echo('<br>');
+        // var_dump('paidTill '.$paidTill);echo('<br>');
+        // var_dump('cur '.date('Y-m-d H:i:s'));echo('<br>');
+
     }
     
     function generatePassword() { 
