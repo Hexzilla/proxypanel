@@ -59,30 +59,145 @@ label {
 <!-- End Page Header -->
 @endsection
 @section('content')
-				<div class="bg-pink-transparent nav-bg">
-					<nav class="nav nav-tabs">
-						<a class="nav-link active" data-toggle="tab" href="#tabCont1">
-							<p class="text-center tab-title">DEDICATED 4G</p>
-							<p class="tab-paragraph"> </p>
-							<p class="tab-paragraph">- A large number of locations</p>
-							<p class="tab-paragraph">- Unlimited Bandwidth</p>
-						</a>
-						<a class="nav-link" data-toggle="tab" href="#tabCont2">
-							<p class="text-center tab-title">ROTATING</p>
-							<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
-							<p class="tab-paragraph">- Modems change IP every 5 mins</p>
-							<p class="tab-paragraph">- Integrated with Multilogin</p>
-						</a>
-						<a class="nav-link" data-toggle="tab" href="#tabCont3">
-							<p class="text-center tab-title">MULTILOCATION</p>
-							<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
-							<p class="tab-paragraph">- Set city at any moment</p>
-							<p class="tab-paragraph">- Integrated with Multilogin</p>
-						</a>
-					</nav>
-				</div>
-<!-- Row -->
+<div class="bg-pink-transparent nav-bg">
+	<nav class="nav nav-tabs">
+		<a class="nav-link active" data-toggle="tab" href="#tabCont1">
+			<p class="text-center tab-title">DEDICATED 4G</p>
+			<p class="tab-paragraph"> </p>
+			<p class="tab-paragraph">- A large number of locations</p>
+			<p class="tab-paragraph">- Unlimited Bandwidth</p>
+		</a>
+		<a class="nav-link" data-toggle="tab" href="#tabCont2">
+			<p class="text-center tab-title">ROTATING</p>
+			<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
+			<p class="tab-paragraph">- Modems change IP every 5 mins</p>
+			<p class="tab-paragraph">- Integrated with Multilogin</p>
+		</a>
+		<a class="nav-link" data-toggle="tab" href="#tabCont3">
+			<p class="text-center tab-title">MULTILOCATION</p>
+			<p class="tab-paragraph">- Access to huge pool of 4g modems</p>
+			<p class="tab-paragraph">- Set city at any moment</p>
+			<p class="tab-paragraph">- Integrated with Multilogin</p>
+		</a>
+	</nav>
+</div>
+
+<div class="tab-pane active show" id="tabCont1">
+
 <div class="row">
+	<div class="col-lg-12">
+		<div class="card custom-card">
+			<div class="card-body">
+				@foreach($locations as $m)
+					<div class="row">    
+						<div class="col-md-3 col-lg-3 col-sm-3">
+							<label>
+								<input type="radio" name="product" class="card-input-element" />
+								<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
+								<div class="panel-body">
+									<p class="text-center tx-16 mb-1">{{$m}}</p>
+									<p class="text-center tx-14 mb-1">$175</p>
+								</div>
+								</div>
+							</label>
+						</div>
+						<div class="col-md-3 col-lg-3 col-sm-3">
+							<label>
+								<input type="radio" name="product" class="card-input-element" />
+								<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
+								<div class="panel-body">
+									<p class="text-center tx-16 mb-1">{{$m}}</p>
+									<p class="text-center tx-14 mb-1">$75</p>
+								</div>
+								</div>
+							</label>
+						</div>
+						<div class="col-md-3 col-lg-3 col-sm-6">
+							<label>
+								<input type="radio" name="product" class="card-input-element" />
+								<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
+								<div class="panel-body">
+									<p class="text-center tx-16 mb-1">{{$m}}</p>
+									<p class="text-center tx-14 mb-1">$20</p>
+								</div>
+								</div>
+							</label>
+						</div>
+						<div class="col-md-3 col-lg-3 col-sm-6">
+							<label>
+								<input type="radio" name="product" class="card-input-element" />
+								<div class="panel panel-default card-input">
+								<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
+								<div class="panel-body">
+									<p class="text-center tx-16 mb-1">{{$m}}</p>
+									<p class="text-center tx-14 mb-1">$10</p>
+								</div>
+								</div>
+							</label>
+						</div>
+					</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="tab-pane" id="tabCont2">
+	
+</div>
+<div class="tab-pane" id="tabCont3">
+	<div class="row">    
+		<div class="col-md-3 col-lg-3 col-sm-3">
+			<label>
+				<input type="radio" name="product" class="card-input-element" />
+				<div class="panel panel-default card-input">
+				<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
+				<div class="panel-body">
+					<p class="text-center tx-14 mb-1">$175</p>
+				</div>
+				</div>
+			</label>
+		</div>
+		<div class="col-md-3 col-lg-3 col-sm-3">
+			<label>
+				<input type="radio" name="product" class="card-input-element" />
+				<div class="panel panel-default card-input">
+				<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
+				<div class="panel-body">
+					<p class="text-center tx-14 mb-1">$75</p>
+				</div>
+				</div>
+			</label>
+		</div>
+		<div class="col-md-3 col-lg-3 col-sm-6">
+			<label>
+				<input type="radio" name="product" class="card-input-element" />
+				<div class="panel panel-default card-input">
+				<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
+				<div class="panel-body">
+					<p class="text-center tx-14 mb-1">$20</p>
+				</div>
+				</div>
+			</label>
+		</div>
+		<div class="col-md-3 col-lg-3 col-sm-6">
+			<label>
+				<input type="radio" name="product" class="card-input-element" />
+				<div class="panel panel-default card-input">
+				<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
+				<div class="panel-body">
+					<p class="text-center tx-14 mb-1">$10</p>
+				</div>
+				</div>
+			</label>
+		</div>
+	</div>
+</div>
+<!-- Row -->
+<!-- <div class="row">
 	<div class="col-lg-12">
 		<div class="card custom-card">
 			<div class="card-body">
@@ -109,117 +224,11 @@ label {
 					</nav>
 				</div>
 				<div class="card-body tab-content">
-					<div class="tab-pane active show" id="tabCont1">
-						@foreach($locations as $m)
-							<div class="row">    
-								<div class="col-md-3 col-lg-3 col-sm-3">
-									<label>
-										<input type="radio" name="product" class="card-input-element" />
-										<div class="panel panel-default card-input">
-										<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
-										<div class="panel-body">
-											<p class="text-center tx-16 mb-1">{{$m}}</p>
-											<p class="text-center tx-14 mb-1">$175</p>
-										</div>
-										</div>
-									</label>
-								</div>
-								<div class="col-md-3 col-lg-3 col-sm-3">
-									<label>
-										<input type="radio" name="product" class="card-input-element" />
-										<div class="panel panel-default card-input">
-										<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
-										<div class="panel-body">
-											<p class="text-center tx-16 mb-1">{{$m}}</p>
-											<p class="text-center tx-14 mb-1">$75</p>
-										</div>
-										</div>
-									</label>
-								</div>
-								<div class="col-md-3 col-lg-3 col-sm-6">
-									<label>
-										<input type="radio" name="product" class="card-input-element" />
-										<div class="panel panel-default card-input">
-										<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
-										<div class="panel-body">
-											<p class="text-center tx-16 mb-1">{{$m}}</p>
-											<p class="text-center tx-14 mb-1">$20</p>
-										</div>
-										</div>
-									</label>
-								</div>
-								<div class="col-md-3 col-lg-3 col-sm-6">
-									<label>
-										<input type="radio" name="product" class="card-input-element" />
-										<div class="panel panel-default card-input">
-										<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
-										<div class="panel-body">
-											<p class="text-center tx-16 mb-1">{{$m}}</p>
-											<p class="text-center tx-14 mb-1">$10</p>
-										</div>
-										</div>
-									</label>
-								</div>
-							</div>
-						@endforeach
-					</div>
-					<div class="tab-pane" id="tabCont2">
-						
-					</div>
-					<div class="tab-pane" id="tabCont3">
-						<br>
-						<div class="row">    
-							<div class="col-md-3 col-lg-3 col-sm-3">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">$175</p>
-									</div>
-									</div>
-								</label>
-							</div>
-							<div class="col-md-3 col-lg-3 col-sm-3">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">$75</p>
-									</div>
-									</div>
-								</label>
-							</div>
-							<div class="col-md-3 col-lg-3 col-sm-6">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">$20</p>
-									</div>
-									</div>
-								</label>
-							</div>
-							<div class="col-md-3 col-lg-3 col-sm-6">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">$10</p>
-									</div>
-									</div>
-								</label>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- End Row -->
 
 <!-- Row -->
