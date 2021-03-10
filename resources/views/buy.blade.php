@@ -84,7 +84,7 @@ label {
 				<div class="card-body tab-content">
 					<div class="tab-pane active show" id="tabCont1">
 						<div class="row">    
-							<div class="col-md-3 col-lg-4 col-sm-4">
+							<div class="col-md-3 col-lg-3 col-sm-3">
 								<label>
 									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
@@ -96,7 +96,7 @@ label {
 									</div>
 								</label>
 							</div>
-							<div class="col-md-3 col-lg-4 col-sm-4">
+							<div class="col-md-3 col-lg-3 col-sm-3">
 								<label>
 									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
@@ -108,7 +108,7 @@ label {
 									</div>
 								</label>
 							</div>
-							<div class="col-md-3 col-lg-4 col-sm-4">
+							<div class="col-md-3 col-lg-3 col-sm-6">
 								<label>
 									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
@@ -120,7 +120,7 @@ label {
 									</div>
 								</label>
 							</div>
-							<div class="col-md-3 col-lg-4 col-sm-4">
+							<div class="col-md-3 col-lg-3 col-sm-6">
 								<label>
 									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
