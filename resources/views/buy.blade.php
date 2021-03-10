@@ -38,7 +38,7 @@
 	<div class="col-lg-12">
 		<div class="card custom-card">
 			<div class="card-body">
-				<div class="bg-primary-300 nav-bg">
+				<div class="bg-primary nav-bg">
 					<nav class="nav nav-tabs">
 						<a class="nav-link active" data-toggle="tab" href="#tabCont1">
 							<p class="text-center tab-title">DEDICATED 4G</p>
