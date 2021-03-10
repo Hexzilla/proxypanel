@@ -8,8 +8,8 @@ use App\Port;
 class DashController extends Controller
 {
     function myproxies() {
-        $eloquentVersion = Port::on('mysqlSecondConnection')->get();
-        dd($eloquentVersion);
+        $port = Port::on('mysqlSecondConnection')->all();
+        var_dump($port);
         // return view('myproxies');
     }
 
