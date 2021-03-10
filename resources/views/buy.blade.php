@@ -84,56 +84,58 @@ label {
 				</div>
 				<div class="card-body tab-content">
 					<div class="tab-pane active show" id="tabCont1">
-						<div class="row">    
-							<div class="col-md-3 col-lg-3 col-sm-3">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16">MONTHLY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">Denver, US</p>
-										<p class="text-center tx-14 mb-1">$175</p>
-									</div>
-									</div>
-								</label>
+						@foreach($locations as $m)
+							<div class="row">    
+								<div class="col-md-3 col-lg-3 col-sm-3">
+									<label>
+										<input type="radio" name="product" class="card-input-element" />
+										<div class="panel panel-default card-input">
+										<div class="panel-heading text-center tx-16">MONTHLY</div>
+										<div class="panel-body">
+											<p class="text-center tx-14 mb-1">{{$m}}</p>
+											<p class="text-center tx-14 mb-1">$175</p>
+										</div>
+										</div>
+									</label>
+								</div>
+								<div class="col-md-3 col-lg-3 col-sm-3">
+									<label>
+										<input type="radio" name="product" class="card-input-element" />
+										<div class="panel panel-default card-input">
+										<div class="panel-heading text-center tx-16">WEEKLY</div>
+										<div class="panel-body">
+											<p class="text-center tx-14 mb-1">{{$m}}</p>
+											<p class="text-center tx-14 mb-1">$75</p>
+										</div>
+										</div>
+									</label>
+								</div>
+								<div class="col-md-3 col-lg-3 col-sm-6">
+									<label>
+										<input type="radio" name="product" class="card-input-element" />
+										<div class="panel panel-default card-input">
+										<div class="panel-heading text-center tx-16">DAILY</div>
+										<div class="panel-body">
+											<p class="text-center tx-14 mb-1">{{$m}}</p>
+											<p class="text-center tx-14 mb-1">$20</p>
+										</div>
+										</div>
+									</label>
+								</div>
+								<div class="col-md-3 col-lg-3 col-sm-6">
+									<label>
+										<input type="radio" name="product" class="card-input-element" />
+										<div class="panel panel-default card-input">
+										<div class="panel-heading text-center tx-16">ONE HOUR TRIAL</div>
+										<div class="panel-body">
+											<p class="text-center tx-14 mb-1">{{$m}}</p>
+											<p class="text-center tx-14 mb-1">$10</p>
+										</div>
+										</div>
+									</label>
+								</div>
 							</div>
-							<div class="col-md-3 col-lg-3 col-sm-3">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16">WEEKLY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">Denver, US</p>
-										<p class="text-center tx-14 mb-1">$75</p>
-									</div>
-									</div>
-								</label>
-							</div>
-							<div class="col-md-3 col-lg-3 col-sm-6">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16">DAILY</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">Denver, US</p>
-										<p class="text-center tx-14 mb-1">$20</p>
-									</div>
-									</div>
-								</label>
-							</div>
-							<div class="col-md-3 col-lg-3 col-sm-6">
-								<label>
-									<input type="radio" name="product" class="card-input-element" />
-									<div class="panel panel-default card-input">
-									<div class="panel-heading text-center tx-16">ONE HOUR TRIAL</div>
-									<div class="panel-body">
-										<p class="text-center tx-14 mb-1">Denver, US</p>
-										<p class="text-center tx-14 mb-1">$10</p>
-									</div>
-									</div>
-								</label>
-							</div>
-						</div>
+						@endforeach
 					</div>
 					<div class="tab-pane" id="tabCont2">
 						
