@@ -84,48 +84,53 @@ label {
 				<div class="card-body tab-content">
 					<div class="tab-pane active show" id="tabCont1">
 						<div class="row">    
-							<div class="col-md-4 col-lg-4 col-sm-4">
-								
+							<div class="col-md-3 col-lg-4 col-sm-4">
 								<label>
-								<input type="radio" name="product" class="card-input-element" />
-
+									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
-									<div class="panel-heading">Product A</div>
+									<div class="panel-heading text-center">MONTHLY</div>
 									<div class="panel-body">
-										Product specific content
+										<p>Denver, US</p>
+										<p>$175</p>
 									</div>
 									</div>
-
 								</label>
-								
 							</div>
-							<div class="col-md-4 col-lg-4 col-sm-4">
-								
+							<div class="col-md-3 col-lg-4 col-sm-4">
 								<label>
-								<input type="radio" name="product" class="card-input-element" />
-
+									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
-									<div class="panel-heading">Product B</div>
+									<div class="panel-heading text-center">WEEKLY</div>
 									<div class="panel-body">
-										Product specific content
+										<p>Denver, US</p>
+										<p>$75</p>
 									</div>
 									</div>
 								</label>
-								
 							</div>
-							<div class="col-md-4 col-lg-4 col-sm-4">
-								
+							<div class="col-md-3 col-lg-4 col-sm-4">
 								<label>
-								<input type="radio" name="product" class="card-input-element" />
-
+									<input type="radio" name="product" class="card-input-element" />
 									<div class="panel panel-default card-input">
-									<div class="panel-heading">Product C</div>
+									<div class="panel-heading text-center">DAILY</div>
 									<div class="panel-body">
-										Product specific content
+										<p>Denver, US</p>
+										<p>$20</p>
 									</div>
 									</div>
 								</label>
-								
+							</div>
+							<div class="col-md-3 col-lg-4 col-sm-4">
+								<label>
+									<input type="radio" name="product" class="card-input-element" />
+									<div class="panel panel-default card-input">
+									<div class="panel-heading text-center">ONE HOUR TRIAL</div>
+									<div class="panel-body">
+										<p>Denver, US</p>
+										<p>$10</p>
+									</div>
+									</div>
+								</label>
 							</div>
 						</div>
 					</div>
