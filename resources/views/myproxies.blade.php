@@ -64,66 +64,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							@for ($i = 0; $i < 5; $i++) <tr>
-								<td class="text-center" style="vertical-align: middle">
-									<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-										SantaMonica, CA
-									</button><br>
-									<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
-										Random Location
-									</button>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									No<br>Rotations
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<button class="btn ripple btn-success btn-sm disabled">
-										Change Ip
-									</button>
-									<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
-										IPV4 List
-									</a>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<div class="hostBtn">http 66.42.95.53:8080</div>
-									<div class="hostBtn">socks5 66.42.95.53:9090</div>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									Steven
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									a7aac18036
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									2020-11-30T18:04:36Z<br>
-									<button class="btn ripple btn-success btn-sm payBtn">
-										Pay Now
-									</button>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<i class="fa fa-check text-success"></i><br>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<div class="dropdown">
-										<button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-light dropdown-toggle btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-caret-down"></i></button>
-										<div class="dropdown-menu tx-13">
-											<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
-											<a class="dropdown-item deleteBtn" href="#">Delete</a> 
-										</div>
-									</div>
-								</td>
-								</tr>
+							@foreach ($ports as $p) 
 								<tr>
 									<td class="text-center" style="vertical-align: middle">
 										<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-											San Diego, CA
+											{{$p->city}}
 										</button><br>
 										<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
 											Random Location
 										</button>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										No<br>Rotations
+										@if (!$p->rotation)
+											No<br>Rotations
+										@else
+											$p->rotation
+										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<button class="btn ripple btn-success btn-sm disabled">
@@ -134,23 +90,23 @@
 										</a>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										<div class="hostBtn">http 66.42.95.53:8080</div>
-										<div class="hostBtn">socks5 66.42.95.53:9090</div>
+										<div class="hostBtn">http {{$p->server}}</div>
+										<div class="hostBtn">socks5 {{$p->server}}</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										James
+										{{$p->username}}
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										eraden532
+										{{$p->pass}}
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										2020-12-30T17:14:36Z<br>
-										<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo7">
-											Renew
-										</a>
+										{{$p->paidtill}}<br>
+										<button class="btn ripple btn-success btn-sm payBtn">
+											Pay Now
+										</button>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										<i class="fa fa-times text-danger"></i>
+										<i class="fa fa-check text-success"></i><br>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="dropdown">
@@ -158,13 +114,11 @@
 											<div class="dropdown-menu tx-13">
 												<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
 												<a class="dropdown-item deleteBtn" href="#">Delete</a> 
-												<!-- <a class="dropdown-item" href="#">Another action</a> -->
-												<!-- <a class="dropdown-item" href="#">Something else here</a> -->
 											</div>
 										</div>
 									</td>
 								</tr>
-								@endfor
+							@endfor
 						</tbody>
 					</table>
 				</div>
