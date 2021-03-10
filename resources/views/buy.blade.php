@@ -158,29 +158,28 @@ label {
 				<h2>Proxy Configurations</h2>
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6">
-						<p class="mg-b-10">Name</p>
-						<input type="text" class="form-control" name="example-text-input" placeholder="Name">
-						<p class="text-muted card-sub-title">Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.</p>
+						<p class="mg-b-5">Nickname: </p>
+						<input type="text" class="form-control" name="example-text-input">
+						<p class="text-muted card-sub-title">A unique alphanumeric name for this proxy</p>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6">
-						<p class="mg-b-10">Single Select</p>
+						<p class="mg-b-5">Rotation</p>
 						<select class="form-control select2-no-search">
-							<option label="Choose one">
+							<option label="No rotation"></option>
+							<option value="5">
+								5 Minutes
 							</option>
-							<option value="Firefox">
-								Firefox
+							<option value="10">
+								10 Minutes
 							</option>
-							<option value="Chrome">
-								Chrome
+							<option value="15">
+								15 Minutes
 							</option>
-							<option value="Safari">
-								Safari
+							<option value="30">
+								30 Minutes
 							</option>
-							<option value="Opera">
-								Opera
-							</option>
-							<option value="Internet Explorer">
-								Internet Explorer
+							<option value="60">
+								1 Hour
 							</option>
 						</select>
 						<p class="text-muted card-sub-title">Select2 gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.</p>
