@@ -12,4 +12,7 @@ class DashController extends Controller
         return view('myproxies', compact('ports'));
     }
 
+    function buy() {
+        return view('buy');
+    }
 }
