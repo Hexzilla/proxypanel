@@ -39,6 +39,12 @@ label {
 #tabCont1, #tabCont2, #tabCont3 {
 	margin-top: 20px;
 }
+.nav-tabs .nav-link.active {
+    background-color: #fff !important;
+    color: black;
+    font-weight: 500;
+    letter-spacing: -.1px;
+}
 </style>
 @endsection
 @section('page-header')
