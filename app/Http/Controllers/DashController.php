@@ -8,9 +8,8 @@ use App\Port;
 class DashController extends Controller
 {
     function myproxies() {
-        $port = Port::all();
-        var_dump($port);
-        // return view('myproxies');
+        $ports = Port::all();
+        return view('myproxies', compact('ports'));
     }
 
 }
