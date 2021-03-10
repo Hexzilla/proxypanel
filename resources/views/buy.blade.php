@@ -3,11 +3,11 @@
 @endsection
 @section('page-header')
 <!-- Page Header -->
-<!-- <div class="page-header">
+<div class="page-header">
 	<div>
-		<h2 class="main-content-title tx-20 mg-b-5">Custom proxy solutions</h2>
+		<h2 class="main-content-title tx-20 mg-b-5">Buy</h2>
 	</div>
-	<div class="btn btn-list">
+	<!-- <div class="btn btn-list">
 		<a class="btn ripple btn-info" href="#"><i class="fe fe-help-circle"></i> Help</a>
 		<a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			<i class="fe fe-settings"></i> Settings <i class="fas fa-caret-down ml-1"></i>
@@ -20,8 +20,8 @@
 			<a class="dropdown-item" href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a>
 			<a class="dropdown-item" href="#"><i class="fe fe-settings mr-2"></i>More</a>
 		</div>
-	</div>
-</div> -->
+	</div> -->
+</div>
 <!-- End Page Header -->
 @endsection
 @section('content')
