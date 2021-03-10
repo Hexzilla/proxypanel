@@ -145,7 +145,52 @@ label {
 						
 					</div>
 					<div class="tab-pane" id="tabCont3">
-						
+						<div class="row">    
+							<div class="col-md-3 col-lg-3 col-sm-3">
+								<label>
+									<input type="radio" name="product" class="card-input-element" />
+									<div class="panel panel-default card-input">
+									<div class="panel-heading text-center tx-16 mb-2">MONTHLY</div>
+									<div class="panel-body">
+										<p class="text-center tx-14 mb-1">$175</p>
+									</div>
+									</div>
+								</label>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3">
+								<label>
+									<input type="radio" name="product" class="card-input-element" />
+									<div class="panel panel-default card-input">
+									<div class="panel-heading text-center tx-16 mb-2">WEEKLY</div>
+									<div class="panel-body">
+										<p class="text-center tx-14 mb-1">$75</p>
+									</div>
+									</div>
+								</label>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-6">
+								<label>
+									<input type="radio" name="product" class="card-input-element" />
+									<div class="panel panel-default card-input">
+									<div class="panel-heading text-center tx-16 mb-2">DAILY</div>
+									<div class="panel-body">
+										<p class="text-center tx-14 mb-1">$20</p>
+									</div>
+									</div>
+								</label>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-6">
+								<label>
+									<input type="radio" name="product" class="card-input-element" />
+									<div class="panel panel-default card-input">
+									<div class="panel-heading text-center tx-16 mb-2">ONE HOUR TRIAL</div>
+									<div class="panel-body">
+										<p class="text-center tx-14 mb-1">$10</p>
+									</div>
+									</div>
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
