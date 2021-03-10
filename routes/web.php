@@ -29,7 +29,7 @@ Route::get('/signup', 'AuthController@signupView');
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/myproxies', 'DashController@myproxies');
     Route::get('/buy', 'DashController@buy');
-    Route::get('/location', 'DashController@buy');
+    Route::get('/location', 'DashController@location');
     Route::get('/profile', 'DashController@profile');
     Route::get('/api', 'DashController@api');
     // Route::get('/{page}', 'AdminController@index');
