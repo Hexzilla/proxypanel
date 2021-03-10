@@ -29,5 +29,5 @@ Route::get('/signup', 'AuthController@signupView');
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/myproxies', 'DashController@myproxies');
 
-    Route::get('/{page}', 'AdminController@index');
+    // Route::get('/{page}', 'AdminController@index');
 });
