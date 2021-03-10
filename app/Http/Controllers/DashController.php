@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Port;
 
 class DashController extends Controller
 {
     function myproxies() {
-        var_dump('ok');
-        return view('myproxies');
+        $eloquentVersion = Port::on('mysqlSecondConnection')->get();
+        dd($eloquentVersion);
+        // return view('myproxies');
     }
 
 }
