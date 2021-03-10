@@ -15,4 +15,16 @@ class DashController extends Controller
     function buy() {
         return view('buy');
     }
+    
+    function location() {
+        return view('location');
+    }
+
+    function profile() {
+        return view('profile');
+    }
+
+    function api() {
+        return view('api');
+    }
 }
