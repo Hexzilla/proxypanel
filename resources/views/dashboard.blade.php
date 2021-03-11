@@ -96,6 +96,7 @@
 							<tr>
 								<th class="text-center">City</th>
 								<th class="text-center">Rotation</th>
+								<th class="text-center">Change IP</th>
 								<th class="text-center">Ip WhiteList</th>
 								<th class="text-center">Host</th>
 								<th class="text-center">Name</th>
@@ -114,7 +115,7 @@
 												{{$p->city}}
 											</button><br>
 											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
-												Random Location
+												Random
 											</button>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
@@ -124,9 +125,14 @@
 												{{$p->rotation}}
 											@endif
 										</td>
-										<td class="text-center" style="vertical-align: middle;">
-											<a class="modal-effect btn btn-success btn-icon" style="margin: auto;border-radius: 20px" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9" title="Change IP">
+										<td class="text-center" style="vertical-align: middle">
+											<button class="btn btn-success btn-icon" style=" margin: auto; border-radius: 20px" title="Change IP">
 												<i class="fa fa-sync" tooltip="Change IP"></i>
+											</button>
+										</td>
+										<td class="text-center" style="vertical-align: middle;">
+											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
+												IPv4 List
 											</a>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
