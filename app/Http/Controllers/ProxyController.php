@@ -12,7 +12,7 @@ class ProxyController extends Controller
     function show() {
         $ports = Port::all();
         $now = new DateTime();
-        $current = $now['date'];
+        $current = $now->format('Y-m-d H:i:s');
         return view('myproxies', compact('ports', 'current'));
     }
 
