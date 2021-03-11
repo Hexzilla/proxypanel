@@ -10,7 +10,7 @@ use DateInterval;
 class ProxyController extends Controller
 {
     function show() {
-        $ports = Port::all();
+        $ports = Port::where('username', session('username'))->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
         return view('myproxies', compact('ports', 'current'));
