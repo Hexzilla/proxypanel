@@ -107,9 +107,9 @@
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										@if($p->paidtill > $current)
-											<i class="fa fa-check text-success"></i><br>
+											<i class="fa fa-check text-success"></i>
 										@else
-											<i class="fa fa-remove text-danger"></i><br>
+											<i class="fa fa-times text-danger"></i>
 										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
