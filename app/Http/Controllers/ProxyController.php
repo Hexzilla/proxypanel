@@ -37,7 +37,7 @@ class ProxyController extends Controller
         $port->paidtill = $paidTill;
         $port->groupname = $request->nickName;
         $port->city = $city;
-        $port->rotation = $rotation;
+        $port->rotation = $rotation ? $rotation : 0;
         $port->save();
 
         return redirect()->back();

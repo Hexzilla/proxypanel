@@ -248,7 +248,7 @@ label {
 		</div>
 
 		<div class="tab-pane" id="tabCont3">
-			<form method="get" action="{{route('addProxy')}}">
+			<form method="post" action="{{route('addProxy')}}">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card custom-card">
