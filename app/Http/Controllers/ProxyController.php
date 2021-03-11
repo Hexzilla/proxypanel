@@ -6,43 +6,35 @@ use Illuminate\Http\Request;
 use App\Port;
 use DateTime;
 use DateInterval;
+use Exception;
 
 class ProxyController extends Controller
 {
-    function show() {
-        $ports = Port::where('username', session('username'))->get();
-        $now = new DateTime();
-        $current = $now->format('Y-m-d H:i:s');
-        return view('myproxies', compact('ports', 'current'));
-    }
-
     function showBuy() {
-        $locations = ["Denver, US", "Los_Angeles, US", "Dallas, US", "New_York, US", "Atlanta, US", "Seattle, US", "Orlando, US", "Philadelphia, US",
-                        "Portland, US", "Helena, US", "Chicago, US", "Birmingham, US"];
-        return view('buy', compact('locations'));
+        return view('buy');
     }
 
     public function addProxy(Request $request) {
-        $option = $request->option;
-        $payment = $request->payment;
-
-        $nickName = $request->nickName;
-        $rotation = $request->rotation;
+        // $option = $request->option;
+        $name = $request->name;
+        // $rotation = $request->rotation;
         $password = self::generatePassword();
         $user = session('username');
-        $city = 'atlanta';
-        $paidTill = self::getPaidTill($option);
+        $paidTill = self::getPaidTill('option');
 
         $port = new Port;
         $port->username = $user;
         $port->pass = $password;
         $port->paidtill = $paidTill;
-        $port->groupname = $request->nickName;
-        $port->city = $city;
-        $port->rotation = $rotation ? $rotation : 0;
-        $port->save();
+        $port->groupname = $name;
+        $port->rotation = 0;
+        try {
+            $port->save();
+        } catch(Exception $e) {
+            echo '0';
+        }
 
-        return redirect()->back();
+        echo '1';
     }
     
     function generatePassword() { 

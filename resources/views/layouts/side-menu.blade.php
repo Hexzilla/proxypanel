@@ -13,9 +13,9 @@
 						<li class="nav-item show">
 							<a class="nav-link" href="{{ url('/' . $page='dashboard') }}"><i class="fa fa-home"></i><span class="sidemenu-label">Home</span></a>
 						</li>
-						<li class="nav-item show">
+						<!-- <li class="nav-item show">
 							<a class="nav-link" href="{{url('/' . $page='myproxies')}}"><i class="fa fa-list"></i><span class="sidemenu-label">My Proxies</span></a>
-						</li>
+						</li> -->
 						<li class="nav-item show">
 							<a class="nav-link" href="{{url('/' . $page='location')}}"><i class="fa fa-map-marker"></i><span class="sidemenu-label">Proxy Locations</span></a>
 						</li>

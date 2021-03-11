@@ -2,6 +2,11 @@
 @section('css')
 <!---Sweet-Alert css-->
 <link href="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
+<style>
+	.no-data {
+		text-align: center;
+	}
+</style>
 @endsection
 @section('page-header')
 <!-- Page Header -->
@@ -55,6 +60,7 @@
 </div>
 <!-- End Row -->
 
+
 <!-- Row -->
 <div class="row">
 	<div class="col-lg-12">
@@ -62,7 +68,6 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md-6">
-						<h4 class="ml-2">My Proxies</h4>
 					</div>
 					<div class="col-md-6 text-right">
 						<button class="btn ripple btn-primary btn-rounded newBtn">
@@ -88,107 +93,71 @@
 							</tr>
 						</thead>
 						<tbody>
-							@for ($i = 0; $i < 5; $i++) <tr>
-								<td class="text-center" style="vertical-align: middle">
-									<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-										SantaMonica, CA
-									</button><br>
-									<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
-										Random Location
-									</button>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									No<br>Rotations
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<button class="btn ripple btn-success btn-sm disabled">
-										Change Ip
-									</button>
-									<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
-										IPV4 List
-									</a>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<div class="hostBtn">http 66.42.95.53:8080</div>
-									<div class="hostBtn">socks5 66.42.95.53:9090</div>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									Steven
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									a7aac18036
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									2020-11-30T18:04:36Z<br>
-									<button class="btn ripple btn-success btn-sm payBtn">
-										Renew
-									</button>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<i class="fa fa-check text-success"></i><br>
-								</td>
-								<td class="text-center" style="vertical-align: middle">
-									<div class="dropdown">
-										<button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-light dropdown-toggle btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-caret-down"></i></button>
-										<div class="dropdown-menu tx-13">
-											<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
-											<a class="dropdown-item deleteBtn" href="#">Delete</a> 
-										</div>
-									</div>
-								</td>
-								</tr>
-								<tr>
-									<td class="text-center" style="vertical-align: middle">
-										<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-											San Diego, CA
-										</button><br>
-										<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
-											Random Location
-										</button>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										No<br>Rotations
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										<button class="btn ripple btn-success btn-sm disabled">
-											Change Ip
-										</button>
-										<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
-											IPV4 List
-										</a>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										<div class="hostBtn">http 66.42.95.53:8080</div>
-										<div class="hostBtn">socks5 66.42.95.53:9090</div>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										James
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										eraden532
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										2020-12-30T17:14:36Z<br>
-										<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo7">
-											Renew
-										</a>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										<i class="fa fa-times text-danger"></i>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										<div class="dropdown">
-											<button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-light dropdown-toggle btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-caret-down"></i></button>
-											<div class="dropdown-menu tx-13">
-												<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
-												<a class="dropdown-item deleteBtn" href="#">Delete</a> 
-												<!-- <a class="dropdown-item" href="#">Another action</a> -->
-												<!-- <a class="dropdown-item" href="#">Something else here</a> -->
+							@if (count($ports) > 0)
+								@foreach ($ports as $p) 
+									<tr>
+										<td class="text-center" style="vertical-align: middle">
+											<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
+												{{$p->city}}
+											</button><br>
+											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
+												Random Location
+											</button>
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											@if (!$p->rotation)
+												No<br>Rotations
+											@else
+												{{$p->rotation}}
+											@endif
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											<button class="btn ripple btn-success btn-sm disabled">
+												Change Ip
+											</button>
+											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
+												IPV4 List
+											</a>
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											<div class="hostBtn">http: {{$p->server}}</div>
+											<div class="hostBtn">socks5: {{$p->server}}</div>
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											{{$p->username}}
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											{{$p->pass}}
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											{{$p->paidtill}}<br>
+											<button class="btn ripple btn-success btn-sm payBtn">
+												Pay Now
+											</button>
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											@if($p->paidtill > $current)
+												<i class="fa fa-check text-success"></i>
+											@else
+												<i class="fa fa-times text-danger"></i>
+											@endif
+										</td>
+										<td class="text-center" style="vertical-align: middle">
+											<div class="dropdown">
+												<button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-light dropdown-toggle btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-caret-down"></i></button>
+												<div class="dropdown-menu tx-13">
+													<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
+													<a class="dropdown-item deleteBtn" href="#">Delete</a> 
+												</div>
 											</div>
-										</div>
-									</td>
+										</td>
+									</tr>
+								@endforeach
+							@else
+								<tr>
+									<td colspan="20" class="no-data">No data</td>
 								</tr>
-							@endfor
+							@endif
 						</tbody>
 					</table>
 				</div>
