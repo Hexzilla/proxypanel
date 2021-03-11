@@ -128,13 +128,13 @@
 											<button class="btn ripple btn-success btn-sm disabled">
 												Change Ip
 											</button>
-											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
+											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
 												IPV4 List
 											</a>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											<div class="hostBtn">http: {{$p->server}}</div>
-											<div class="hostBtn">socks5: {{$p->server}}</div>
+											<div class="hostBtn1">http: 66.42.95.53:8080</div>
+											<div class="hostBtn1">socks5: 66.42.95.53:9090</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->username}}.{{$p->groupname}}
