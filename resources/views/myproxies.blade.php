@@ -78,7 +78,7 @@
 										@if (!$p->rotation)
 											No<br>Rotations
 										@else
-											$p->rotation
+											{{$p->rotation}}
 										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
@@ -106,6 +106,7 @@
 										</button>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
+										{{new Date('Y-m-d H:i:s')}}
 										<i class="fa fa-check text-success"></i><br>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
