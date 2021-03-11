@@ -106,8 +106,11 @@
 										</button>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										{{$current}}
-										<i class="fa fa-check text-success"></i><br>
+										@if($p->paidtill > $current)
+											<i class="fa fa-check text-success"></i><br>
+										@else
+											<i class="fa fa-remove text-danger"></i><br>
+										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="dropdown">
