@@ -34,7 +34,7 @@ Route::group(['middleware' => ['check.auth']], function () {
 
     Route::get('/myproxies', 'ProxyController@show');
     Route::get('/buy', 'ProxyController@showBuy');
-    Route::proxy('/addProxy', 'ProxyController@addProxy')->name('addProxy');
+    Route::get('/addProxy', 'ProxyController@addProxy')->name('addProxy');
 
     // Route::get('/{page}', 'AdminController@index');
 });
