@@ -11,9 +11,9 @@ class ProxyController extends Controller
 {
     function show() {
         $ports = Port::all();
-        $current = new DateTime();
-        var_dump($current);
-        // return view('myproxies', compact('ports', 'current'));
+        $now = new DateTime();
+        $current = $now['date'];
+        return view('myproxies', compact('ports', 'current'));
     }
 
     function showBuy() {
