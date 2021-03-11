@@ -28,12 +28,12 @@ Route::get('/signup', 'AuthController@signupView');
 
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
-    Route::get('/myproxies', 'DashController@myproxies');
-    Route::get('/buy', 'DashController@buy');
     Route::get('/location', 'DashController@location');
     Route::get('/profile', 'DashController@profile');
     Route::get('/api', 'DashController@api');
 
+    Route::get('/myproxies', 'ProxyController@show');
+    Route::get('/buy', 'ProxyController@showBuy');
     Route::get('/addProxy', 'ProxyController@addProxy')->name('addProxy');
 
     // Route::get('/{page}', 'AdminController@index');

@@ -9,6 +9,17 @@ use DateInterval;
 
 class ProxyController extends Controller
 {
+    function show() {
+        $ports = Port::all();
+        return view('myproxies', compact('ports'));
+    }
+
+    function showBuy() {
+        $locations = ["Denver, US", "Los_Angeles, US", "Dallas, US", "New_York, US", "Atlanta, US", "Seattle, US", "Orlando, US", "Philadelphia, US",
+                        "Portland, US", "Helena, US", "Chicago, US", "Birmingham, US"];
+        return view('buy', compact('locations'));
+    }
+
     function addProxy(Request $request) {
         $option = $request->option;
         $payment = $request->payment;
@@ -30,18 +41,6 @@ class ProxyController extends Controller
         $port->save();
 
         return redirect()->back();
-        // var_dump('option '.$option);echo('<br>');
-        // var_dump('payment '.$payment);echo('<br>');
-
-        // var_dump('nickName '.$nickName);echo('<br>');
-        // var_dump('rotation '.$rotation);echo('<br>');
-        // var_dump('password '.$password);echo('<br>');
-        // var_dump('rotation '.$rotation);echo('<br>');
-        // var_dump('user '.$user);echo('<br>');
-        // var_dump('city '.$city);echo('<br>');
-        // var_dump('paidTill '.$paidTill);echo('<br>');
-        // var_dump('cur '.date('Y-m-d H:i:s'));echo('<br>');
-
     }
     
     function generatePassword() { 
