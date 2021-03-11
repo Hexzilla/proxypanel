@@ -96,7 +96,7 @@
 							<tr>
 								<th class="text-center">City</th>
 								<th class="text-center">Rotation</th>
-								<th class="text-center">Change Ip WhiteList</th>
+								<th class="text-center">Ip WhiteList</th>
 								<th class="text-center">Host</th>
 								<th class="text-center">Name</th>
 								<th class="text-center">Password</th>
@@ -124,12 +124,9 @@
 												{{$p->rotation}}
 											@endif
 										</td>
-										<td class="text-center" style="vertical-align: middle">
-											<button class="btn ripple btn-success btn-sm disabled">
-												Change Ip
-											</button>
-											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
-												IPV4 List
+										<td class="text-center" style="vertical-align: middle;">
+											<a class="modal-effect btn btn-success btn-icon" style="margin: auto;border-radius: 20px" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9" title="Change IP">
+												<i class="fa fa-sync" tooltip="Change IP"></i>
 											</a>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
@@ -160,7 +157,7 @@
 										<td class="text-center" style="vertical-align: middle">
 											@if($p->paidtill <= $current)
 												<input type="hidden" value="{{$p->id}}">
-												<button class="btn ripple btn-danger btn-icon deleteBtn">
+												<button class="btn ripple btn-danger btn-icon deleteBtn" title="delete">
 													<i class="fa fa-trash"></i>
 												</button>
 											@endif
