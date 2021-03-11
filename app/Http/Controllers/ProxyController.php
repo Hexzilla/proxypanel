@@ -20,7 +20,7 @@ class ProxyController extends Controller
         return view('buy', compact('locations'));
     }
 
-    function addProxy(Request $request) {
+    public function addProxy(Request $request) {
         $option = $request->option;
         $payment = $request->payment;
 
