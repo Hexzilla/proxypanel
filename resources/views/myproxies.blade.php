@@ -106,6 +106,7 @@
 										</button>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
+										{{$current}}
 										<i class="fa fa-check text-success"></i><br>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
