@@ -32,8 +32,8 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/profile', 'DashController@profile');
     Route::get('/api', 'DashController@api');
 
-    Route::get('/buy', 'ProxyController@showBuy');
     Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
+    Route::post('/deleteProxy', 'ProxyController@deleteProxy')->name('deleteProxy');
 
     // Route::get('/{page}', 'AdminController@index');
 });

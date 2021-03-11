@@ -2,9 +2,22 @@
 @section('css')
 <!---Sweet-Alert css-->
 <link href="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 <style>
 	.no-data {
 		text-align: center;
+	}
+	.deleteBtn {
+		border-radius: 20px;
+	}
+	.fa-trash {
+		font-size: 14px !important;
+	}
+	#deleteForm {
+		display: none;
+	}
+	#loadingBtn {
+		display: none;
 	}
 </style>
 @endsection
@@ -70,7 +83,7 @@
 					<div class="col-md-6">
 					</div>
 					<div class="col-md-6 text-right">
-						<button class="btn ripple btn-primary btn-rounded newBtn">
+						<button class="modal-effect btn ripple btn-primary btn-rounded" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
 							<i class="fa fa-plus"></i>
 						</button>
 					</div>
@@ -85,7 +98,7 @@
 								<th class="text-center">Rotation</th>
 								<th class="text-center">Change Ip WhiteList</th>
 								<th class="text-center">Host</th>
-								<th class="text-center">Username</th>
+								<th class="text-center">Name</th>
 								<th class="text-center">Password</th>
 								<th class="text-center">Next Billing</th>
 								<th class="text-center">Status</th>
@@ -124,16 +137,18 @@
 											<div class="hostBtn">socks5: {{$p->server}}</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											{{$p->username}}
+											{{$p->username}}.{{$p->groupname}}
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->pass}}
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->paidtill}}<br>
-											<button class="btn ripple btn-success btn-sm payBtn">
-												Pay Now
-											</button>
+											@if($p->paidtill <= $current)
+												<button class="btn ripple btn-success btn-sm payBtn">
+													Renew
+												</button>
+											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											@if($p->paidtill > $current)
@@ -143,13 +158,12 @@
 											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											<div class="dropdown">
-												<button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-light dropdown-toggle btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-caret-down"></i></button>
-												<div class="dropdown-menu tx-13">
-													<h6 class="dropdown-header tx-uppercase tx-11 tx-bold tx-inverse tx-spacing-1">Action</h6>
-													<a class="dropdown-item deleteBtn" href="#">Delete</a> 
-												</div>
-											</div>
+											@if($p->paidtill <= $current)
+												<input type="hidden" value="{{$p->id}}">
+												<button class="btn ripple btn-danger btn-icon deleteBtn">
+													<i class="fa fa-trash"></i>
+												</button>
+											@endif
 										</td>
 									</tr>
 								@endforeach
@@ -167,42 +181,8 @@
 </div>
 <!-- End Row -->
 
-<div class="row">
-	<div class="col-sm-12 col-md-6" style="margin:0 auto">
-		<div class="card custom-card">
-			<div class="card-body text-center">
-				<div class="user-lock text-center">
-					<img alt="avatar" class="rounded-circle" src="{{URL::asset('assets/img/users/7.jpg')}}">
-				</div>
-				<h5 class="mb-1 mt-3 ">Petey Cruiser</h5>
-				<p class="mb-2 mt-1 tx-inverse">Web Developer</p>
-				<p class="mb-1"><i class="fe fe-phone mr-2"></i>petey78@gmail.com</p>
-				<div class="d-lg-flex mt-2 align-items-center justify-content-center text-center">
-					<p class="mb-2 mr-3"><i class="fe fe-map-pin mr-2"></i>England, UK</p>
-					<p class="mb-2"><i class="fe fe-phone mr-2"></i>0-235-657-24587</p>
-				</div>
-				<p class="text-muted text-center mt-1">Lorem Ipsum is not simply random text to popular belief Contrary.</p>
-				<div class="justify-content-center text-center mt-3 d-flex">
-					<a href="#" class="btn ripple btn-primary btn-icon mr-3">
-						<i class="fe fe-message-square"></i>
-					</a>
-					<a href="#" class="btn ripple btn-secondary btn-icon mr-3">
-						<i class="fe fe-edit-2"></i>
-					</a>
-					<a href="#" class="btn ripple btn-info btn-icon mr-3">
-						<i class="fe fe-eye"></i>
-					</a>
-					<a href="#" class="btn ripple btn-danger btn-icon">
-						<i class="fe fe-trash-2"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- Modal effects -->
-<div class="modal" id="modaldemo8">
+<div class="modal" id="modaldemo9">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content modal-content-demo">
 			<div class="modal-body">
@@ -222,6 +202,34 @@
 </div>
 <!-- End Modal effects-->
 
+<!-- Modal effects -->
+<div class="modal" id="modaldemo8">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content modal-content-demo">
+			<form method="post" action="{{route('addProxy')}}" id="addProxyForm">
+				@csrf
+				<div class="modal-body">
+					<p class="mg-b-5">Name: </p>
+					<input type="text" class="form-control" name="name" id="proxyName" value="Proxy{{count($ports) + 1}}" required>
+					<p class="text-muted card-sub-title">A unique alphanumeric name for this proxy</p>
+					<button class="btn ripple btn-primary submitBtn" style="display: none"></button>
+				</div>
+				<div class="modal-footer">
+					<button class="btn ripple btn-primary" id="addProxyBtn" type="button">Save</button>
+					<button class="btn ripple btn-primary" id="loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+					<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- End Modal effects-->
+
+<form method="post" action="{{route('deleteProxy')}}" id="deleteForm">
+	@csrf
+	<input type="text" name="id" value="0" id="deleteId">
+</form>
+
 </div>
 </div>
 <!-- End Main Content-->
@@ -231,18 +239,27 @@
 <script src="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.min.js')}}"></script>
 <script src="{{ URL::asset('assets/plugins/sweet-alert/dark-jquery.sweet-alert.js')}}"></script>
 <script src="{{ URL::asset('assets/js/modal.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
+		<?php if (session('delete-success')){?>
+			toastr.success("{{session('delete-success')}}", "Success")
+		<?php } else if (session('delete-failed')){?>
+			toastr.error("{{session('delete-failed')}}", "Error")
+		<?php }?>
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		})
+
 		$(".locationBtn").click(function(){
 			window.location = "{{url('/location_')}}"
 		})
 
 		$(".randBtn").click(function(){
 			swal("Success!", "Location changed", "success");
-		})
-
-		$(".newBtn").click(function(){
-			window.location = "{{url('/buy')}}"
 		})
 
 		$(".hostBtn").click(function(){
@@ -254,6 +271,8 @@
 		})
 
 		$(".deleteBtn").click(function(){
+			const id = $(this).prev().val()
+
 			swal({
 				title: "Are you sure?",
 				text: "Delete",
@@ -263,8 +282,19 @@
 				closeOnConfirm: false,
 			},
 			function(){
-				swal("Deleted!", "", "success");
+				$("#deleteId").val(id)
+				$("#deleteForm").submit();
+				swal.close()
 			});
+		})
+
+		$("#addProxyBtn").click(function(){
+			const name = $("#proxyName").val()
+			if (name) {
+				$(this).hide()
+				$("#loadingBtn").show()
+			}
+			$(".submitBtn").click()
 		})
 	}) 
 </script>

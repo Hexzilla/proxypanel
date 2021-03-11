@@ -10,10 +10,6 @@ use Exception;
 
 class ProxyController extends Controller
 {
-    function showBuy() {
-        return view('buy');
-    }
-
     public function addProxy(Request $request) {
         // $option = $request->option;
         $name = $request->name;
@@ -31,12 +27,26 @@ class ProxyController extends Controller
         try {
             $port->save();
         } catch(Exception $e) {
-            echo '0';
+            return redirect()->back();
         }
 
-        echo '1';
+        return redirect()->back();
     }
     
+    public function deleteProxy(Request $request) {
+        $id = $request->id;
+
+        $port = Port::find($id);
+
+        $name = $port->username.'.'.$port->groupname;
+        try {
+            $port->delete();
+        } catch(Exception $e) {
+            return redirect()->back()->with('delete-failed', "Delete failed!");;
+        }
+        return redirect()->back()->with('delete-success', "{$name} is deleted!");
+    }
+
     function generatePassword() { 
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
         $randomString = ''; 

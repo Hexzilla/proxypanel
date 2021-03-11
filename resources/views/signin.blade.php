@@ -1,6 +1,12 @@
 @extends('layouts.master2')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<style type="text/css">
+	#loadingButton {
+		display: none;
+		margin: 0;
+	}
+</style>
 @endsection
 @section('content')
 		<!-- Page -->
@@ -26,6 +32,7 @@
 									<input class="form-control" id="password" placeholder="Enter your password" type="password">
 								</div>
 								<button type="button" class="btn ripple btn-main-primary btn-block" id="signInBtn">Sign In</button>
+								<button class="btn ripple btn-main-primary btn-block" id="loadingButton" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Loading...</button>
 							</form>
 							<div class="mt-3 text-center">
 								<p class="mb-1"><a href="">Forgot password?</a></p>
@@ -60,6 +67,17 @@
 				$("#signInBtn").click()
 		})
 
+		
+		function showLoading() {
+			$("#loadingButton").show()
+			$("#signInBtn").hide()
+		}
+
+		function hideLoading() {
+			$("#loadingButton").hide()
+			$("#signInBtn").show()
+		}
+
 		$("#signInBtn").click(function() {
 			let email = $("#email").val()
 			let password = $("#password").val()
@@ -73,10 +91,10 @@
 				$("#password").focus()
 				return
 			}
+			showLoading()
 			$.ajax({
 				type: 'POST',
 				url: "{{ url('/login') }}",
-				async: false,
 				data: {
 					email: email, password: password
 				},
@@ -86,6 +104,7 @@
 					} else {
 						toastr.error("Please input correct information", "Not registered user")
 					}
+					hideLoading()
 				}
 			});
 		})

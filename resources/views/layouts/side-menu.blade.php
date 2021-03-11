@@ -25,9 +25,9 @@
 						<li class="nav-item show">
 							<a class="nav-link" href="{{ url('/' . $page='api') }}"><i class="fa fa-code"></i><span class="sidemenu-label">API</span></a>
 						</li>
-						<li class="nav-item show">
+						<!-- <li class="nav-item show">
 							<a class="nav-link" href="{{ url('/' . $page='buy') }}"><i class="fa fa-cart-plus"></i><span class="sidemenu-label">Buy New Proxy</span></a>
-						</li>
+						</li> -->
 						<!-- <li class="nav-label">Dashboard</li>
 						<li class="nav-item show">
 							<a class="nav-link" href="{{ url('/' . $page='index') }}"><i class="fe fe-airplay"></i><span class="sidemenu-label">Dashboard</span></a>
