@@ -16,7 +16,10 @@
 	#deleteForm {
 		display: none;
 	}
-	#loadingBtn {
+	#loadingBtn, #loadingBtn1 {
+		display: none;
+	}
+	#randForm {
 		display: none;
 	}
 </style>
@@ -34,7 +37,7 @@
 	</div>
 	<div class="btn btn-list">
 		<a class="btn ripple btn-info" href="#"><i class="fe fe-help-circle"></i> Help</a>
-		<a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		<!-- <a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			<i class="fe fe-settings"></i> Settings <i class="fas fa-caret-down ml-1"></i>
 		</a>
 		<div class="dropdown-menu tx-13">
@@ -44,7 +47,7 @@
 			<a class="dropdown-item" href="#"><i class="fe fe-folder-plus mr-2"></i>Save</a>
 			<a class="dropdown-item" href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a>
 			<a class="dropdown-item" href="#"><i class="fe fe-settings mr-2"></i>More</a>
-		</div>
+		</div> -->
 	</div>
 </div>
 <!-- End Page Header -->
@@ -72,7 +75,6 @@
 	</div>
 </div>
 <!-- End Row -->
-
 
 <!-- Row -->
 <div class="row">
@@ -111,12 +113,15 @@
 								@foreach ($ports as $p) 
 									<tr>
 										<td class="text-center" style="vertical-align: middle">
+											<input type="hidden" value="{{$p->id}}">
 											<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
 												{{$p->city}}
 											</button><br>
+											<input type="hidden" value="{{$p->id}}">
 											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
 												Random
 											</button>
+											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span></button>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											@if (!$p->rotation)
@@ -233,6 +238,11 @@
 	<input type="text" name="id" value="0" id="deleteId">
 </form>
 
+<form action="{{route('randomLocation')}}" method="post" id="randForm">
+	@csrf
+	<input type="hidden" name="id" value="0" id="randInput">
+</form>
+
 </div>
 </div>
 <!-- End Main Content-->
@@ -258,11 +268,16 @@
 		})
 
 		$(".locationBtn").click(function(){
-			window.location = "{{url('/location_')}}"
+			const id = $(this).prev().val()
+			window.location = "{{url('/location_')}}?id=" + id
 		})
 
 		$(".randBtn").click(function(){
-			swal("Success!", "Location changed", "success");
+			const id = $(this).prev().val()
+			$(this).hide()
+			$(this).next().show()
+			$("#randInput").val(id)
+			$("#randForm").submit()
 		})
 
 		$(".hostBtn").click(function(){

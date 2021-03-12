@@ -28,12 +28,16 @@ Route::get('/signup', 'AuthController@signupView');
 
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
-    Route::get('/location', 'DashController@location');
-    Route::get('/profile', 'DashController@profile');
-    Route::get('/api', 'DashController@api');
 
     Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
     Route::post('/deleteProxy', 'ProxyController@deleteProxy')->name('deleteProxy');
 
+    Route::get('/location', 'LocationController@show');
+    Route::get('/location_', 'LocationController@allLocation');
+    Route::post('/changeLocation', 'LocationController@changeLocation')->name('changeLocation');
+    Route::post('/randomLocation', 'LocationController@randomLocation')->name('randomLocation');
+
+    Route::get('/profile', 'DashController@profile');
+    Route::get('/api', 'DashController@api');
     // Route::get('/{page}', 'AdminController@index');
 });
