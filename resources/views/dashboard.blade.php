@@ -36,7 +36,9 @@
 		</ol> -->
 	</div>
 	<div class="btn btn-list">
-		<a class="btn ripple btn-info" href="#"><i class="fe fe-help-circle"></i> Help</a>
+		<a class="btn ripple btn-info" href="javascript:void(0)" data-target="#modaldemo2" data-toggle="modal">
+			<i class="fe fe-help-circle"></i> Help
+		</a>
 		<!-- <a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			<i class="fe fe-settings"></i> Settings <i class="fas fa-caret-down ml-1"></i>
 		</a>
@@ -53,28 +55,6 @@
 <!-- End Page Header -->
 @endsection
 @section('content')
-
-<!-- Row -->
-<div class="row row-sm">
-	<div class="col-md">
-		<div class="card custom-card">
-			<div class="card-body">
-				<h5 class="card-title tx-dark tx-medium mg-b-10">Current Balance</h5>
-				<br>
-				<p class="card-subtitle mg-b-15">100USD</p>
-			</div>
-		</div>
-	</div>
-	<div class="col-md">
-		<div class="card custom-card">
-			<div class="card-body">
-				<h5 class="card-title tx-dark tx-medium mg-b-10">Affiliate Link</h5><br>
-				<p class="card-subtitle mg-b-15">Your affiliate link is: <a href="https://proxypanel.io/?sid=1002">https://proxypanel.io/?sid=1002</a></p>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End Row -->
 
 <!-- Row -->
 <div class="row">
@@ -99,7 +79,7 @@
 								<th class="text-center">City</th>
 								<th class="text-center">Rotation</th>
 								<th class="text-center">Change IP</th>
-								<th class="text-center">Ip WhiteList</th>
+								<th class="text-center">Ip Auth</th>
 								<th class="text-center">Host</th>
 								<th class="text-center">Name</th>
 								<th class="text-center">Password</th>
@@ -243,6 +223,22 @@
 	<input type="hidden" name="id" value="0" id="randInput">
 </form>
 
+<!-- Small modal -->
+<div class="modal" id="modaldemo2">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title"><i class="fe fe-help-circle text-info" style="font-size:45px"></i></h6>
+				<button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<p class="tx-16"><span class="text-primary">Skype:</span> live:support_56965</p>
+				<p class="tx-16"><span class="text-primary">Email:</span> support@proxypanel.io</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Small Modal -->
 </div>
 </div>
 <!-- End Main Content-->

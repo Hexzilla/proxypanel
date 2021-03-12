@@ -63,19 +63,39 @@ class LocationController extends Controller
     
     function randomLocation(Request $request) {
         $id = $request->id;
-
         $res = Http::get('http://status.proxypanel.io/statsapi.php');
-        $count = count($res->json());
-        $rand = rand(0, $count);
-
         $port = Port::find($id);
-        $port->city = $res->json()[$rand][0];
-
+        $port->city = self::getLeastLoad($res->json(), $port->city);
         try {
             $port->save();
         } catch (Exception $e) {
             return redirect()->back();
         }
         return redirect()->back();
+    }
+
+    function getLeastLoad($res, $own) {
+        $locations = array();
+        $loads = array();
+
+        foreach($res as $r) {
+            if ($r[0] == $own)
+                continue;
+            $temp['name'] = $r[0];
+            $temp['load'] = (int)(($r[1] + $r[2] + $r[3]) * 100 / $r[4]);
+            array_push($loads, (int)(($r[1] + $r[2] + $r[3]) * 100 / $r[4]));
+            array_push($locations, $temp);
+        }
+        $min = min($loads);
+
+        $name = '*';
+        foreach($locations as $v) {
+            if ($v['load'] == $min) {
+               $name = $v['name'];
+               break;
+            }
+        }
+
+        return $name;
     }
 }
