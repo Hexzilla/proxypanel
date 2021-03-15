@@ -102,7 +102,9 @@
 											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
 												Random
 											</button>
-											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span></button>
+											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button">
+												<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+											</button>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											@if (!$p->rotation)
@@ -112,9 +114,15 @@
 											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											<button class="btn btn-success btn-icon" style=" margin: auto; border-radius: 20px" title="Change IP">
-												<i class="fa fa-sync" tooltip="Change IP"></i>
+											<input type="hidden" value="{{$p->lastchangeipdate}}">
+											<input type="hidden" value="{{$p->id}}">
+											<input type="hidden" value="{{$p->username.'.'.$p->groupname}}">
+											<button class="btn btn-success btn-icon changeIPBtn" style=" margin: auto; border-radius: 20px" title="Change IP">
+												<i class="fa fa-sync"></i>
 											</button>
+											<div class="spinner-border text-success" role="status" style="display: none">
+												<span class="sr-only">Loading...</span>
+											</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
 											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
@@ -224,6 +232,12 @@
 	<input type="hidden" name="id" value="0" id="randInput">
 </form>
 
+<form action="{{route('changeIp')}}" method="post" id="changeIpForm">
+	@csrf
+	<input type="hidden" name="userInfo" value="0" id="userInfo">
+	<input type="hidden" name="portId" value="0" id="portId">
+</form>
+
 <!-- Small modal -->
 <div class="modal" id="modaldemo2">
 	<div class="modal-dialog modal-sm" role="document">
@@ -322,6 +336,30 @@
 				$("#loadingBtn").show()
 			}
 			$(".submitBtn").click()
+		})
+
+		$(".changeIPBtn").click(function(){
+			const lastDate = $(this).prev().prev().prev().val()
+			const last = new Date(lastDate)
+			const d1 = new Date()
+			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
+
+			const diff = (now.getTime() - last.getTime()) / 1000;
+			if (diff < 180) {
+				const seconds = 180 - diff
+				const min = Math.ceil(seconds / 60)
+				toastr.info("You can change Ip after " + min + " minutes.")
+				return
+			}
+			$(this).hide()
+			$(this).next().show()
+
+			const id = $(this).prev().prev().val()
+			const userInfo = $(this).prev().val()
+			
+			$("#userInfo").val(userInfo)
+			$("#portId").val(id)
+			$("#changeIpForm").submit()
 		})
 	}) 
 </script>

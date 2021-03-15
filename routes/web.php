@@ -37,6 +37,8 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::post('/changeLocation', 'LocationController@changeLocation')->name('changeLocation');
     Route::post('/randomLocation', 'LocationController@randomLocation')->name('randomLocation');
 
+    Route::post('/changeIp', 'IpController@changeIp')->name('changeIp');
+
     Route::get('/profile', 'DashController@profile');
     Route::get('/api', 'DashController@api');
     // Route::get('/{page}', 'AdminController@index');
