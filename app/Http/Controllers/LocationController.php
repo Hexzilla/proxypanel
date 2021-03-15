@@ -17,6 +17,7 @@ class LocationController extends Controller
             $temp['id'] = $p->id;
             $temp['name'] = $p->username.'.'.$p->groupname;
             $temp['location'] = $p->city;
+            $temp['last'] = $p->lastchangecitydate;
             $temp['load'] = self::getLocationLoad($res->json(), $p->city);
             array_push($locations, $temp);
         }
@@ -25,14 +26,19 @@ class LocationController extends Controller
 
     function allLocation(Request $request) {
         $id = $request->id;
+        
+        $port = Port::find($id);
+
+        $last = $port->lastchangecitydate;
         $res = Http::get('http://status.proxypanel.io/statsapi.php');
         $locations = array();
         foreach ($res->json() as $r) {
             $temp['location'] = $r[0];
             $temp['load'] = (int)(($r[1] + $r[2] + $r[3]) * 100 / $r[4]);
+
             array_push($locations, $temp);
         }
-        return view('location_', compact('locations', 'id'));
+        return view('location_', compact('locations', 'id', 'last'));
     }
 
     function getLocationLoad($all, $location) {
@@ -51,6 +57,7 @@ class LocationController extends Controller
 
         $port = Port::find($id);
         $port->city = $location;
+        $port->lastchangecitydate = date('Y-m-d H:i:s');
 
         try {
             $port->save();
@@ -64,8 +71,11 @@ class LocationController extends Controller
     function randomLocation(Request $request) {
         $id = $request->id;
         $res = Http::get('http://status.proxypanel.io/statsapi.php');
+
         $port = Port::find($id);
         $port->city = self::getLeastLoad($res->json(), $port->city);
+        $port->lastchangecitydate = date('Y-m-d H:i:s');
+
         try {
             $port->save();
         } catch (Exception $e) {

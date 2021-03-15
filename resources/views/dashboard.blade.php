@@ -97,6 +97,7 @@
 											<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
 												{{$p->city}}
 											</button><br>
+											<input type="hidden" value="{{$p->lastchangecitydate}}">
 											<input type="hidden" value="{{$p->id}}">
 											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
 												Random
@@ -269,11 +270,23 @@
 		})
 
 		$(".randBtn").click(function(){
-			const id = $(this).prev().val()
-			$(this).hide()
-			$(this).next().show()
-			$("#randInput").val(id)
-			$("#randForm").submit()
+			const lastDate = $(this).prev().prev().val()
+			const last = new Date(lastDate)
+			const d1 = new Date()
+			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
+
+			const diff = (now.getTime() - last.getTime()) / 1000;
+			if (diff < 180) {
+				const seconds = 180 - diff
+				const min = Math.ceil(seconds / 60)
+				toastr.info("You can change this location after " + min + " minutes.")
+			} else {
+				const id = $(this).prev().val()
+				$(this).hide()
+				$(this).next().show()
+				$("#randInput").val(id)
+				$("#randForm").submit()
+			}
 		})
 
 		$(".hostBtn").click(function(){

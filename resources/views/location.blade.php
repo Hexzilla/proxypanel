@@ -69,7 +69,10 @@
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="progress mg-b-10">
-										@if ($m['load'] == 0 )
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
+												{{$m['load']}}
+											</div>
+										<!-- @if ($m['load'] == 0 )
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
 											</div>
 										@elseif ($m['load'] <= 50 )
@@ -84,10 +87,11 @@
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-danger ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
-										@endif
+										@endif -->
 										</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
+										<input type="hidden" value="{{$m['last']}}"/>
 										<input type="hidden" value="{{$m['id']}}"/>
 										<button class="btn btn-sm ripple btn-main-primary mb-1 locationBtn">Change Location</button><br>
 										<button class="btn btn-sm ripple btn-main-primary randBtn">Random Location</button>
@@ -131,6 +135,18 @@
 		})
 
 		$(".randBtn").click(function(){
+			const lastDate = $(this).prev().prev().prev().prev().val()
+			const last = new Date(lastDate)
+			const d1 = new Date()
+			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
+
+			const diff = (now.getTime() - last.getTime()) / 1000;
+			if (diff < 180) {
+				const seconds = 180 - diff
+				const min = Math.ceil(seconds / 60)
+				toastr.info("You can change this location after " + min + " minutes.")
+				return
+			}
 			const id = $(this).prev().prev().prev().val()
 			$(this).hide()
 			$(this).next().show()

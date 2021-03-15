@@ -46,7 +46,9 @@
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<input type="hidden" value="{{$m['location']}}">
-										@if ($m['load'] <= 50 )
+										<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+										<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
+										<!-- @if ($m['load'] <= 50 )
 											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 											<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
 										@elseif ($m['load'] <= 80)
@@ -55,11 +57,14 @@
 										@else
 											<button class="btn btn-sm ripple btn-danger loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn">Connect</button>
-										@endif
+										@endif -->
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="progress mg-b-10">
-										@if ($m['load'] <= 50 )
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
+												{{$m['load']}}
+											</div>
+										<!-- @if ($m['load'] <= 50 )
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
@@ -71,7 +76,7 @@
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-danger ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
-										@endif
+										@endif -->
 										</div>
 									</td>
 								</tr>
@@ -109,6 +114,17 @@
 		})
 
 		$(".connectBtn").click(function(){
+			const last = new Date("{{$last}}")
+			const d1 = new Date()
+			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
+
+			const diff = (now.getTime() - last.getTime()) / 1000;
+			if (diff < 180) {
+				const seconds = 180 - diff
+				const min = Math.ceil(seconds / 60)
+				toastr.info("You can change this location after " + min + " minutes.")
+				return
+			}
 			const id = "{{$id}}"
 			const location = $(this).prev().prev().val()
 
