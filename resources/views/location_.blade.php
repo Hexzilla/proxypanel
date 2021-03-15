@@ -30,9 +30,9 @@
 					<table class="table table-hover mg-b-0">
 						<thead>
 							<tr>
-								<th width="20%" class="text-center">Location</th>
-								<th width="60%" class="text-center">Location Load</th>
-								<th width="20%" class="text-center">Action</th>
+								<th width="15%" class="text-center">Location</th>
+								<th width="15%" class="text-center">Action</th>
+								<th width="70%" class="text-center">Location Load</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,6 +41,19 @@
 								<tr>
 									<td class="text-center" style="vertical-align: middle">
 										{{$m['location']}}
+									</td>
+									<td class="text-center" style="vertical-align: middle">
+										<input type="hidden" value="{{$m['location']}}">
+										@if ($m['load'] <= 50 )
+											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+											<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
+										@elseif ($m['load'] <= 80)
+											<button class="btn btn-sm ripple btn-secondary loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+											<button class="btn btn-sm ripple btn-secondary mb-1 connectBtn">Connect</button>
+										@else
+											<button class="btn btn-sm ripple btn-danger loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn">Connect</button>
+										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="progress mg-b-10">
@@ -58,19 +71,6 @@
 											</div>
 										@endif
 										</div>
-									</td>
-									<td class="text-center" style="vertical-align: middle">
-										<input type="hidden" value="{{$m['location']}}">
-										@if ($m['load'] <= 50 )
-											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
-										@elseif ($m['load'] <= 80)
-											<button class="btn btn-sm ripple btn-secondary loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-secondary mb-1 connectBtn">Connect</button>
-										@else
-											<button class="btn btn-sm ripple btn-danger loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn">Connect</button>
-										@endif
 									</td>
 								</tr>
 								@endforeach
