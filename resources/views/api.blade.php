@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('css')
+<style type="text/css">
+#loadingButton {
+	display: none;
+}
+</style>
 @endsection
 @section('page-header')
 <!-- Page Header -->
@@ -20,7 +25,7 @@
 <div class="row">
 	<div class="col-md-12 col-xl-12">
 		<div class="card custom-card">
-			<div class="card-header custom-card-header">
+			<!-- <div class="card-header custom-card-header">
 				<div class="card-options">
 					<label class="custom-switch">
 						<input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
@@ -28,29 +33,54 @@
 						<span class="custom-switch-description">Enable API</span>
 					</label>
 				</div>
-			</div>
+			</div> -->
 			<div class="card-body">
 				<p class="h5">Your API Key:</p>
-				<p>7bac8875ae062f738aa33d2997d88c5d:G-UxLbYrkVN0b4McQiDXX3RCBKrN24sxM-FI6t4dv0U</p>
-				<button class="btn ripple btn-primary btn-with-icon">
+				<p>{{$apiKey}}</p>
+				
+				<button class="btn ripple btn-primary" id="apiBtn">
 					<i class="fa fa-sync"></i> Refresh API Key
-				</button><br>
-				<p class="h4 text-secondary">Change Proxy IP</p>
-				<p>https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/7bac8875ae062f738aa33d2997d88c5d:G-UxLbYrkVN0b4McQiDXX3RCBKrN24sxM-FI6t4dv0U</p>
-				<p class="h4 text-secondary">Change Proxy Location</p>
-				<p class="h6 text-info">Location conventions: Replace whitespace with underscore '_' symbol and use lowercase. Hermosa Beach -> hermosa_beach</p>
-				<p>https://proxypanel.io/proxy/locations/USERNAME/NICKNAME/LOCATION/7bac8875ae062f738aa33d2997d88c5d:G-UxLbYrkVN0b4McQiDXX3RCBKrN24sxM-FI6t4dv0U</p>
-				<p class="h4 text-secondary">Connect to a random location</p>
-				<p>https://proxypanel.io/proxy/locations/USERNAME/NICKNAME/7bac8875ae062f738aa33d2997d88c5d:G-UxLbYrkVN0b4McQiDXX3RCBKrN24sxM-FI6t4dv0U</p>
+				</button>
+				<button class="btn ripple btn-primary" id="loadingButton" disabled type="button">
+					<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>Saving...
+				</button>
+				<br><br>
+
+				<p class="h5 text-secondary mb-0">Change Proxy IP</p>
+				<p>https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/{{$apiKey}}</p>
+				<p class="h5 text-secondary mb-0">Change Proxy Location</p>
+				<p class="h6 text-info mb-0">Location conventions: Replace whitespace with underscore '_' symbol and use lowercase. Hermosa Beach -> hermosa_beach</p>
+				<p>https://proxypanel.io/proxy/locations/USERNAME/NICKNAME/LOCATION/{{$apiKey}}</p>
+				<p class="h5 text-secondary mb-0">Connect to a random location</p>
+				<p>https://proxypanel.io/proxy/locations/USERNAME/NICKNAME/{{$apiKey}}</p>
+				<p class="h5 text-secondary mb-0">List available locations</p>
+				<p class="h6 text-info mb-0">Locations can be used on Change Proxy Location API as listed here</p>
+				<p>https://proxypanel.io/proxy/list/locations</p>
+				<p class="h5 text-secondary mb-0">Update rotation of a proxy</p>
+				<p class="h6 text-info mb-0">Rotation must be an integer, followed by "s","m","h","d". For example, for 12 hours use "12h". Minimum rotation is 180 seconds</p>
+				<p>https://proxypanel.io/proxy/rotation/USERNAME/NICKNAME/ROTATION/{{$apiKey}}</p>
 			</div>
 		</div>
 	</div>
 </div>
 <!-- End Row -->
 
+<form method="post" action="{{route('changeApi')}}" id="apiForm">
+	@csrf
+</form>
+
 </div>
 </div>
 <!-- End Main Content-->
 @endsection
 @section('js')
+<script>
+	$(document).ready(function() {
+		$("#apiBtn").click(function() {
+			$(this).hide()
+			$("#loadingButton").show()
+			$("#apiForm").submit()
+		})
+	})
+</script>
 @endsection

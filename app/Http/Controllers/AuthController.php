@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\User;
 
 class AuthController extends Controller
 {
     public function signup(Request $request) {
+        //check
+        $find = User::where('username', $request->name)->count();
+        if ($find)
+            return redirect()->back()->withInput()->with('nameError', 'Name is duplicated');
+        $find = User::where('email', $request->email)->count();
+        if ($find)
+            return redirect()->back()->withInput()->with('emailError', 'Email is duplicated');
+
         $user = new User;
         $user->username = $request->name;
         $user->email = $request->email;
         $user->skype_id = $request->skype;
         $user->password = self::make_password($request->password);
+        $user->api_key = Str::random(32).'.'.Str::random(32);
         $user->save();
         return redirect('/signin');
     }

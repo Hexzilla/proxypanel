@@ -1,5 +1,6 @@
 @extends('layouts.master2')
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 @endsection
 @section('content')
 		<!-- Page -->
@@ -19,11 +20,11 @@
 								@csrf
 								<div class="form-group text-left">
 									<label class="form-label">Name <span class="tx-danger">*</span></label>
-									<input class="form-control" placeholder="" type="text" required="" maxlength="50" name="name">
+									<input class="form-control" placeholder="" type="text" required="" maxlength="50" name="name" value="{{old('name')}}">
 								</div>
 								<div class="form-group text-left">
 									<label class="form-label">Email <span class="tx-danger">*</span></label>
-									<input class="form-control" placeholder="" type="email" required="" maxlength="50" name="email">
+									<input class="form-control" placeholder="" type="email" required="" maxlength="50" name="email" value="{{old('email')}}">
 								</div>
 								<div class="form-group text-left">
 									<label class="form-label">Skype</label>
@@ -51,4 +52,14 @@
 <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{ URL::asset('assets/js/form-validation.js')}}"></script>
 <script src="{{ URL::asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+	<?php if (session('nameError')){?>
+		toastr.warning("{{session('nameError')}}", "Warning")
+	<?php } else if (session('emailError')){?>
+		toastr.warning("{{session('emailError')}}", "Warning")
+	<?php }?>
+})
+</script>
 @endsection
