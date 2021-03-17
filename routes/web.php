@@ -48,6 +48,6 @@ Route::group(['middleware' => ['check.auth']], function () {
 
 
 // route for processing payment
-Route::get('paypal', 'PaymentController@payWithpaypal')->name('paypal');
+Route::post('paypal', 'PaymentController@payWithpaypal')->name('paypal');
 // route for check status of the payment
 Route::get('status', 'PaymentController@getPaymentStatus')->name('status');

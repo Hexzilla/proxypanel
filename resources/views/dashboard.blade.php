@@ -177,7 +177,7 @@
 	</div>
 
 	<form method="post" action="{{ URL::to('paypal') }}">
-		<button class="btn btn-primary mt-3">Pay $224 via Paypal</button>
+		<button class="btn btn-primary mt-3">Pay $25 via Paypal</button>
 	</form>
 </div>
 <!-- End Row -->
