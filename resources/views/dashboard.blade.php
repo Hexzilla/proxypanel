@@ -175,7 +175,10 @@
 			</div>
 		</div>
 	</div>
-	<a href="{{ route('make.payment') }}" class="btn btn-primary mt-3">Pay $224 via Paypal</a>
+
+	<form method="post" action="{{ URL::to('paypal') }}">
+		<button class="btn btn-primary mt-3">Pay $224 via Paypal</button>
+	</form>
 </div>
 <!-- End Row -->
 

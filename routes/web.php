@@ -46,6 +46,8 @@ Route::group(['middleware' => ['check.auth']], function () {
     // Route::get('/{page}', 'AdminController@index');
 });
 
-Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
-Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
-Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');
+
+// route for processing payment
+Route::get('paypal', 'PaymentController@payWithpaypal')->name('paypal');
+// route for check status of the payment
+Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
