@@ -176,7 +176,7 @@
 		</div>
 	</div>
 
-	<form method="post" action="{{ URL::to('paypal') }}">
+	<form method="get" action="{{ route('paypal') }}">
 		<button class="btn btn-primary mt-3">Pay $25 via Paypal</button>
 	</form>
 </div>
