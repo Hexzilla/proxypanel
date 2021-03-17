@@ -175,6 +175,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="{{ route('make.payment') }}" class="btn btn-primary mt-3">Pay $224 via Paypal</a>
 </div>
 <!-- End Row -->
 

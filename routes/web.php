@@ -45,3 +45,7 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/profile', 'DashController@profile');
     // Route::get('/{page}', 'AdminController@index');
 });
+
+Route::get('handle-payment', 'PayPalPaymentController@handlePayment')->name('make.payment');
+Route::get('cancel-payment', 'PayPalPaymentController@paymentCancel')->name('cancel.payment');
+Route::get('payment-success', 'PayPalPaymentController@paymentSuccess')->name('success.payment');

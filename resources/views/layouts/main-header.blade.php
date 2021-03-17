@@ -65,8 +65,8 @@
 				<a class="main-img-user" href=""><img alt="avatar" src="{{URL::asset('assets/img/users/1.jpg')}}"></a>
 				<div class="dropdown-menu">
 					<div class="header-navheading">
-						<h6 class="main-notification-title">Sonia Taylor</h6>
-						<p class="main-notification-text">Web Designer</p>
+						<h6 class="main-notification-title">{{session('username')}}</h6>
+						<p class="main-notification-text">{{session('email')}}</p>
 					</div>
 					<a class="dropdown-item border-top" href="{{url('/profile')}}">
 						<i class="fe fe-user"></i> My Profile
