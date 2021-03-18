@@ -90,14 +90,15 @@ class PaymentController extends Controller
 
             if (\Config::get('app.debug')) {
 
-                \Session::put('error', 'Connection timeout');
-                return Redirect::to('/');
+                // \Session::put('error', 'Connection timeout');
+                // return Redirect::to('/');
+                return redirect('/dashboard')->with('paymentFailed', 'Connection timeout');
 
             } else {
 
-                \Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect::to('/');
-
+                // \Session::put('error', 'Some error occur, sorry for inconvenient');
+                // return Redirect::to('/');
+                return redirect('/dashboard')->with('paymentFailed', 'Some error occur, sorry for inconvenient');
             }
 
         }
@@ -123,9 +124,9 @@ class PaymentController extends Controller
 
         }
 
-        \Session::put('error', 'Unknown error occurred');
-        return Redirect::to('/');
-
+        // \Session::put('error', 'Unknown error occurred');
+        // return Redirect::to('/');
+        return redirect('/dashboard')->with('paymentFailed', 'Unknown error occurred');
     }
 
     public function getPaymentStatus(Request $request)
@@ -139,7 +140,7 @@ class PaymentController extends Controller
         // if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
         if (empty($request->PayerID || $request->token)) {
 
-            \Session::put('error', 'Payment failed');
+            // \Session::put('error', 'Payment failed');
             // return Redirect::to('/');
             return redirect('/dashboard')->with('paymentFailed', 'Payment failed');
         }
@@ -154,19 +155,19 @@ class PaymentController extends Controller
 
         if ($result->getState() == 'approved') {
 
-            \Session::put('success', 'Payment success');
+            // \Session::put('success', 'Payment success');
             // return Redirect::to('/');
             return redirect('/dashboard')->with('paymentSuccess', 'Payment success');
 
         }
 
-        \Session::put('error', 'Payment failed');
+        // \Session::put('error', 'Payment failed');
         // return Redirect::to('/');
         return redirect('/dashboard')->with('paymentFailed', 'Payment failed');
     }
 
     public function cancel() {
-        var_dump('cancel');
+        return redirect('/dashboard')->with('paymentCancel', 'Payment canceled');
     }
 
 }
