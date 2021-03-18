@@ -39,9 +39,8 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
-        var_dump('paypal');
-        exit;
         $payer = new Payer();
+
         $payer->setPaymentMethod('paypal');
 
         $item_1 = new Item();

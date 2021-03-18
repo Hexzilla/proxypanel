@@ -177,6 +177,7 @@
 	</div>
 
 	<form method="post" action="{{ route('paypal') }}">
+		@csrf
 		<button class="btn btn-primary mt-3">Pay $25 via Paypal</button>
 	</form>
 </div>
