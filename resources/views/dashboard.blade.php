@@ -142,9 +142,10 @@
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->paidtill}}<br>
 											@if($p->paidtill <= $current)
-												<button class="btn ripple btn-success btn-sm payBtn">
+												<input type="hidden" value="{{$p->id}}">
+												<a class="modal-effect btn btn-success btn-sm payBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo10">
 													Renew
-												</button>
+												</a>
 											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
@@ -175,11 +176,34 @@
 			</div>
 		</div>
 	</div>
-	
-	<a href="{{ route('payment') }}" class="btn btn-success">Pay $100 from Paypal</a>
-
 </div>
 <!-- End Row -->
+
+<!-- Modal effects -->
+<div class="modal" id="modaldemo10">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content modal-content-demo">
+			<form method="get" action="{{ route('payment') }}">
+				<input type="hidden" value="" name="payId" id="payId">
+				<div class="modal-header">
+					<h6 class="modal-title">Payment</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
+					<label class="rdiobox"><input name="rdio" type="radio" value="monthly" checked> <span>Monthly | 175$</span></label>
+					<label class="rdiobox"><input name="rdio" type="radio" value="weekly"> <span>Weekly | 75$</span></label>
+					<label class="rdiobox"><input name="rdio" type="radio" value="daily"> <span>Daily | 20$</span></label>
+					<label class="rdiobox"><input name="rdio" type="radio" value="hour"> <span>One Hour | 10$</span></label>
+				</div>
+				<div class="modal-footer">
+					<button class="btn ripple btn-success">Pay by PayPal</button>
+					<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- End Modal effects-->
 
 <!-- Modal effects -->
 <div class="modal" id="modaldemo9">
@@ -310,10 +334,6 @@
 			swal("Success!", "Copied", "success");
 		})
 
-		$(".payBtn").click(function(){
-			window.location = "{{url('/payment')}}"
-		})
-
 		$(".deleteBtn").click(function(){
 			const id = $(this).prev().val()
 
@@ -363,6 +383,12 @@
 			$("#userInfo").val(userInfo)
 			$("#portId").val(id)
 			$("#changeIpForm").submit()
+		})
+
+		$(".payBtn").click(function() {
+			const id = $(this).prev().val()
+			$("#payId").val(id)
+			$("#paySpan").html(id)
 		})
 	}) 
 </script>

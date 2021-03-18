@@ -12,19 +12,27 @@ class PayPalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function payment()
+    public function payment(Request $request)
     {
+        $type = $request->rdio;
+        $id = $request->payId;
+
+        $types['monthly'] = 175;
+        $types['weekly'] = 75;
+        $types['daily'] = 20;
+        $types['hour'] = 10;
+
         $data = [];
         $data['items'] = [
             [
-                'name' => 'ItSolutionStuff.com',
-                'price' => 100,
-                'desc'  => 'Description for ItSolutionStuff.com',
+                'name' => 'proxy',
+                'price' => $types[$type],
+                'desc'  => $type.' | $'.$types[$type],
                 'qty' => 1
             ]
         ];
   
-        $data['invoice_id'] = 1;
+        $data['invoice_id'] = $id;
         $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
         $data['return_url'] = route('payment.success');
         $data['cancel_url'] = route('payment.cancel');
