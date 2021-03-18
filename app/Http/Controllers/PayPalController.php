@@ -75,4 +75,20 @@ class PayPalController extends Controller
   
         return redirect('/dashboard')->with('paymentFailed', 'Your payment was failed');
     }
+
+    public function postNotify(Request $request)
+    {
+        // Import the namespace Srmklive\PayPal\Services\ExpressCheckout first in your controller.
+        $provider = new ExpressCheckout;
+        
+        $request->merge(['cmd' => '_notify-validate']);
+        $post = $request->all();        
+        
+        $response = (string) $provider->verifyIPN($post);
+        
+        if ($response === 'VERIFIED') {                      
+            // Your code goes here ...
+            var_dump('ipn....');
+        }                            
+    }        
 }
