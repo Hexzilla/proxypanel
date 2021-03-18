@@ -46,7 +46,9 @@ Route::group(['middleware' => ['check.auth']], function () {
     // Route::get('/{page}', 'AdminController@index');
 });
 
-Route::get('payment', 'PayPalController@payment')->name('payment');
-Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
-Route::get('payment/success', 'PayPalController@success')->name('payment.success');
-Route::post('ipn/notify','PayPalController@postNotify');
+// Route::get('payment', 'PayPalController@payment')->name('payment');
+// Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
+// Route::get('payment/success', 'PayPalController@success')->name('payment.success');
+// Route::post('ipn/notify','PayPalController@postNotify');
+
+Route::get('payment', 'PaymentController@payWithpaypal')->name('payment');
