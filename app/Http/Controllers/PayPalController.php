@@ -56,6 +56,7 @@ class PayPalController extends Controller
      */
     public function success(Request $request)
     {
+        $provider = new ExpressCheckout;
         $response = $provider->getExpressCheckoutDetails($request->token);
   
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
