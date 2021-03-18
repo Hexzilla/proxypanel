@@ -47,28 +47,34 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
+        $types['monthly'] = 175;
+        $types['weekly'] = 75;
+        $types['daily'] = 20;
+        $types['hour'] = 10;
+
+        $price = $types[$type];
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $item_1 = new Item();
 
-        $item_1->setName('Item 1') /** item name **/
+        $item_1->setName('proxy') /** item name **/
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice(100); /** unit price **/
+            ->setPrice($price); /** unit price **/
 
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-            ->setTotal(100);
+            ->setTotal($price);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription('Your transaction description');
+            ->setDescription($type.' | $'.$types['hour']);
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/
