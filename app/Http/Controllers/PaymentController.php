@@ -80,8 +80,8 @@ class PaymentController extends Controller
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
-            
-        dd($payment->create($this->_api_context));exit;
+
+        // dd($payment->create($this->_api_context));exit;
 
         try {
 
@@ -159,7 +159,6 @@ class PaymentController extends Controller
 
         \Session::put('error', 'Payment failed');
         return Redirect::to('/');
-
     }
 
 }
