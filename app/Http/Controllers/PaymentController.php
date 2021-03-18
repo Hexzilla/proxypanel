@@ -47,6 +47,7 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
+        $type = $request->rdio;
         $types['monthly'] = 175;
         $types['weekly'] = 75;
         $types['daily'] = 20;
