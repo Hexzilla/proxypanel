@@ -42,7 +42,7 @@ class PaymentController extends Controller
 
     public function index()
     {
-        return view('paywithpaypal');
+        // return view('paywithpaypal');
     }
 
     public function payWithpaypal(Request $request)
