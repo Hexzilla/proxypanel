@@ -26,11 +26,6 @@ Route::post('/signup', 'AuthController@signup')->name('signup');
 Route::get('/signin', 'AuthController@signin');
 Route::get('/signup', 'AuthController@signupView');
 
-// route for processing payment
-Route::post('paypal', 'PaymentController@payWithpaypal')->name('paypal');
-// route for check status of the payment
-Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
-
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
 
@@ -50,3 +45,7 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/profile', 'DashController@profile');
     // Route::get('/{page}', 'AdminController@index');
 });
+
+Route::get('payment', 'PayPalController@payment')->name('payment');
+Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
+Route::get('payment/success', 'PayPalController@success')->name('payment.success');

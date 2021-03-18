@@ -175,11 +175,9 @@
 			</div>
 		</div>
 	</div>
+	
+	<a href="{{ route('payment') }}" class="btn btn-success">Pay $100 from Paypal</a>
 
-	<form method="post" action="{{ route('paypal') }}">
-		@csrf
-		<button class="btn btn-primary mt-3">Pay $25 via Paypal</button>
-	</form>
 </div>
 <!-- End Row -->
 
