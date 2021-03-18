@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -129,14 +128,16 @@ class PaymentController extends Controller
 
     }
 
-    public function getPaymentStatus()
+    public function getPaymentStatus(Request $request)
     {
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
 
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
-        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+        
+        // if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+        if (empty($request->PayerID || $request->token)) {
 
             \Session::put('error', 'Payment failed');
             return Redirect::to('/');
@@ -145,7 +146,8 @@ class PaymentController extends Controller
 
         $payment = Payment::get($payment_id, $this->_api_context);
         $execution = new PaymentExecution();
-        $execution->setPayerId(Input::get('PayerID'));
+        // $execution->setPayerId(Input::get('PayerID'));
+        $execution->setPayerId($request->PayerID);
 
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
