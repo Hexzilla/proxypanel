@@ -78,7 +78,6 @@ class PayPalController extends Controller
 
     public function postNotify(Request $request)
     {
-        // Import the namespace Srmklive\PayPal\Services\ExpressCheckout first in your controller.
         $provider = new ExpressCheckout;
         
         $request->merge(['cmd' => '_notify-validate']);
@@ -88,7 +87,7 @@ class PayPalController extends Controller
         
         if ($response === 'VERIFIED') {                      
             // Your code goes here ...
-            var_dump('ipn....');
+            var_dump('ipn data', $post);
         }                            
     }        
 }
