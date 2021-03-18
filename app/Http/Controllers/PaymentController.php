@@ -52,6 +52,7 @@ class PaymentController extends Controller
         $types['weekly'] = 75;
         $types['daily'] = 20;
         $types['hour'] = 10;
+        $types['test'] = 0.01;
 
         $price = $types[$type];
 

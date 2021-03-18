@@ -194,6 +194,7 @@
 					<label class="rdiobox"><input name="rdio" type="radio" value="weekly"> <span>Weekly | 75$</span></label>
 					<label class="rdiobox"><input name="rdio" type="radio" value="daily"> <span>Daily | 20$</span></label>
 					<label class="rdiobox"><input name="rdio" type="radio" value="hour"> <span>One Hour | 10$</span></label>
+					<label class="rdiobox"><input name="rdio" type="radio" value="test"> <span>test | 0.01$</span></label>
 				</div>
 				<div class="modal-footer">
 					<button class="btn ripple btn-success">Pay by PayPal</button>
