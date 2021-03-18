@@ -140,8 +140,8 @@ class PaymentController extends Controller
         if (empty($request->PayerID || $request->token)) {
 
             \Session::put('error', 'Payment failed');
-            return Redirect::to('/');
-
+            // return Redirect::to('/');
+            return redirect('/dashboard')->with('paymentFailed', 'Payment failed');
         }
 
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -155,12 +155,14 @@ class PaymentController extends Controller
         if ($result->getState() == 'approved') {
 
             \Session::put('success', 'Payment success');
-            return Redirect::to('/');
+            // return Redirect::to('/');
+            return redirect('/dashboard')->with('paymentSuccess', 'Payment success');
 
         }
 
         \Session::put('error', 'Payment failed');
-        return Redirect::to('/');
+        // return Redirect::to('/');
+        return redirect('/dashboard')->with('paymentFailed', 'Payment failed');
     }
 
 }
