@@ -72,7 +72,7 @@ class PaymentController extends Controller
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/
-            ->setCancelUrl(URL::to('status'));
+            ->setCancelUrl(URL::to('cancel'));
 
         $payment = new Payment();
         $payment->setIntent('Sale')
@@ -163,6 +163,10 @@ class PaymentController extends Controller
         \Session::put('error', 'Payment failed');
         // return Redirect::to('/');
         return redirect('/dashboard')->with('paymentFailed', 'Payment failed');
+    }
+
+    public function cancel() {
+        var_dump('cancel');
     }
 
 }
