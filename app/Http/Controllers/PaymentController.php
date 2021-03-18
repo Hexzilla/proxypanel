@@ -39,6 +39,8 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
+        var_dump('paypal');
+        exit;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -127,7 +129,7 @@ class PaymentController extends Controller
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
 
             \Session::put('error', 'Payment failed');
-            return Redirect::route('/');
+            return redirect('/');
 
         }
 
@@ -141,11 +143,12 @@ class PaymentController extends Controller
         if ($result->getState() == 'approved') {
 
             \Session::put('success', 'Payment success');
-            return Redirect::route('/');
+            return redirect('/');
 
         }
 
         \Session::put('error', 'Payment failed');
-        return Redirect::route('/');
+        return redirect('/');
     }
+    
 }
