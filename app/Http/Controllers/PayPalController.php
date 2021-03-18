@@ -54,7 +54,8 @@ class PayPalController extends Controller
      */
     public function cancel()
     {
-        dd('Your payment is canceled. You can create cancel page here.');
+        // dd('Your payment is canceled. You can create cancel page here.');
+        return redirect('/dashboard')->with('paymentCancel', 'Your payment is canceled');
     }
   
     /**
@@ -68,9 +69,10 @@ class PayPalController extends Controller
         $response = $provider->getExpressCheckoutDetails($request->token);
   
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            dd('Your payment was successfully. You can create success page here.');
+            // dd('Your payment was successfully. You can create success page here.');
+            return redirect('/dashboard')->with('paymentSuccess', 'Your payment was successfully');
         }
   
-        dd('Something is wrong.');
+        return redirect('/dashboard')->with('paymentFailed', 'Your payment was failed');
     }
 }

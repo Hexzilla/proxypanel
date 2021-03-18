@@ -299,6 +299,14 @@
 			toastr.error("{{session('delete-failed')}}", "Error")
 		<?php }?>
 
+		<?php if (session('paymentSuccess')){?>
+			toastr.success("{{session('paymentSuccess')}}", "Success")
+		<?php } else if (session('paymentCancel')){?>
+			toastr.info("{{session('paymentCancel')}}", "Info")
+		<?php } else if (session('paymentFailed')){?>
+			toastr.error("{{session('paymentFailed')}}", "error")
+		<?php }?>
+
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
