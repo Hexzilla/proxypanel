@@ -55,9 +55,7 @@ class PaymentController extends Controller
         $types['hour'] = 10;
         $types['test'] = 0.01;
 
-        // $price = $types[$type];
-
-        $price = 0;
+        $price = $types[$type];
 
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
