@@ -31,13 +31,6 @@ class PaymentController extends Controller
     public function __construct()
     {
 
-        /** PayPal api context **/
-        $paypal_conf = \Config::get('paypal');
-        $this->_api_context = new ApiContext(new OAuthTokenCredential(
-            $paypal_conf['client_id'],
-            $paypal_conf['secret'])
-        );
-        $this->_api_context->setConfig($paypal_conf['settings']);
 
     }
 
@@ -48,6 +41,16 @@ class PaymentController extends Controller
 
     public function payWithpaypal(Request $request)
     {
+        
+        /** PayPal api context **/
+        $paypal_conf = \Config::get('paypal');
+        $this->_api_context = new ApiContext(new OAuthTokenCredential(
+            $paypal_conf['client_id'],
+            $paypal_conf['secret'])
+        );
+        $this->_api_context->setConfig($paypal_conf['settings']);
+
+        dd($this->_api_context);exit;
         $type = $request->rdio;
         $types['monthly'] = 175;
         $types['weekly'] = 75;
@@ -93,7 +96,7 @@ class PaymentController extends Controller
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
-        dd($payment->create($this->_api_context));exit;
+        // dd($payment->create($this->_api_context));exit;
 
         try {
 
