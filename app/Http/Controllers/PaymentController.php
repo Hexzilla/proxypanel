@@ -83,7 +83,8 @@ class PaymentController extends Controller
         $transaction->setAmount($amount)
             ->setItemList($item_list)
             ->setDescription($type.' | $'.$types['hour'])
-            ->setPayee($payee);
+            ->setPayee($payee)
+            ->setInvoiceNumber(uniqid());
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/

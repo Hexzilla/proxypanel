@@ -7,8 +7,8 @@
             'http.ConnectionTimeOut' => 30,
             'log.LogEnabled' => true,
             'log.FileName' => storage_path() . '/logs/paypal.log',
-            'log.LogLevel' => 'ERROR',
-            'service.EndPoint' => 'https://api.paypal.com'
+            'log.LogLevel' => 'INFO',
+            // 'service.EndPoint' => 'https://api.paypal.com'
             // 'service.EndPoint' => 'https://api-m.paypal.com/v2/checkout/orders/', 
         ),
     ];
