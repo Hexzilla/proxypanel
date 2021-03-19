@@ -217,8 +217,8 @@
 	<input type="hidden" name="invoice" value="invoice-1-1534-1079-9" id="id_invoice">
 	<!-- <input type="hidden" name="notify_url" value="https://proxypanel.io/paypal/" id="id_notify_url"> -->
 	<input type="hidden" name="rm" value="1" id="id_rm">
-	<input type="hidden" name="return" value="{{route('/')}}" id="id_return">
-	<input type="hidden" name="cancel_return" value="{{route('/')}}" id="id_cancel_return">
+	<input type="hidden" name="return" value="{{url('/')}}" id="id_return">
+	<input type="hidden" name="cancel_return" value="{{url('/')}}" id="id_cancel_return">
 	<input type="hidden" name="custom" value="premium_plan" id="id_custom">
 	<div class="form-group">
 		<input class="btn btn-primary" type="submit" value="Test pay 0.01$">
