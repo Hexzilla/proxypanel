@@ -89,7 +89,7 @@ class PaymentController extends Controller
             ->setCancelUrl(URL::to('cancel'));
 
         $payment = new Payment();
-        $payment->setIntent('CAPTURE')
+        $payment->setIntent('Sale')
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
