@@ -73,10 +73,15 @@ class PaymentController extends Controller
         $amount->setCurrency('USD')
             ->setTotal($price);
 
+        //set payee
+        $payee = new Api\Payee();
+        $payee->setEmail("vpnrgr@gmail.com");
+
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription($type.' | $'.$types['hour']);
+            ->setDescription($type.' | $'.$types['hour'])
+            ->setPayee($payee);
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/
@@ -87,7 +92,6 @@ class PaymentController extends Controller
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
-
         // dd($payment->create($this->_api_context));exit;
 
         try {
