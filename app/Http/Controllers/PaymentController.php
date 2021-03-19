@@ -9,6 +9,7 @@ use PayPal\Api\Item;
 /** All Paypal Details class **/
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
+use PayPal\Api\Payee;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
@@ -74,7 +75,7 @@ class PaymentController extends Controller
             ->setTotal($price);
 
         //set payee
-        $payee = new Api\Payee();
+        $payee = new Payee();
         $payee->setEmail("vpnrgr@gmail.com");
 
         $transaction = new Transaction();
