@@ -50,7 +50,6 @@ class PaymentController extends Controller
         );
         $this->_api_context->setConfig($paypal_conf['settings']);
 
-        dd($this->_api_context);exit;
         $type = $request->rdio;
         $types['monthly'] = 175;
         $types['weekly'] = 75;
@@ -96,6 +95,7 @@ class PaymentController extends Controller
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
+        dd($payment);exit;
         // dd($payment->create($this->_api_context));exit;
 
         try {
