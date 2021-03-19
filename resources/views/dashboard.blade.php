@@ -205,8 +205,8 @@
 	</div>
 </div>
 <!-- End Modal effects-->
-<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> -->
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
 	<input type="hidden" name="cmd" value="_xclick" id="id_cmd">
 	<input type="hidden" name="charset" value="utf-8" id="id_charset">
 	<input type="hidden" name="currency_code" value="USD" id="id_currency_code">
