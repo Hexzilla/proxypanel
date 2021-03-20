@@ -186,4 +186,7 @@ class PaymentController extends Controller
         return redirect('/dashboard')->with('paymentCancel', 'Payment canceled');
     }
 
+    public function notify(Request $request) {
+        var_dump('notify');
+    }
 }
