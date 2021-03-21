@@ -194,7 +194,8 @@ class PaymentController extends Controller
         //         "payment_status ".$request->payment_status."\n".
         //         "item_name ".$request->item_name."\n".
         //         "mc_currency ".$request->mc_currency."\n";
-        $txt = $request->item_name;
+        // $txt = $request->item_name;
+        $txt = 'ok';
         fwrite($myfile, $txt);
         fclose($myfile);
     }
