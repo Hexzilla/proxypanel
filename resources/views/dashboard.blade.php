@@ -242,6 +242,7 @@
 		<input class="btn btn-primary" type="submit" value="Test pay 100$">
 	</div>
 </form>
+
 <!-- Modal effects -->
 <div class="modal" id="modaldemo9">
 	<div class="modal-dialog modal-dialog-centered" role="document">
