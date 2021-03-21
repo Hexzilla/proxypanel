@@ -187,7 +187,7 @@ class PaymentController extends Controller
     }
 
     public function notify(Request $request) {
-        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
         // $txt = "payer_email " . $request->payer_email . "\n".
         //         "payment_amount ".$request->payment_amount."\n".
         //         "txn_id ".$request->txn_id."\n".
@@ -195,8 +195,27 @@ class PaymentController extends Controller
         //         "item_name ".$request->item_name."\n".
         //         "mc_currency ".$request->mc_currency."\n";
         // $txt = $request->item_name;
-        $txt = 'ok';
-        fwrite($myfile, $txt);
-        fclose($myfile);
+        // $txt = 'ok';
+        // fwrite($myfile, $txt);
+        // fclose($myfile);
+        $postdata = "";
+        $post_json = [];
+        foreach($_POST as $key => $value) {
+            $postdata .= $key . '=' . urlencode($value) . '&';
+        }
+        $postdata .= 'cmd=_notify-validate';
+
+        $curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
+        curl_setopt ($curl, CURLOPT_HEADER, 0);
+        curl_setopt ($curl, CURLOPT_POST, 1);
+        curl_setopt ($curl, CURLOPT_POSTFIELDS, $postdata);
+        curl_setopt ($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt ($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt ($curl, CURLOPT_SSL_VERIFYHOST, 1);
+        $response = curl_exec($curl);
+        if($response == 'VERIFIED') {
+            file_put_contents('log.txt', $_POST['txn_id']."\n", "w");
+        }
+        curl_close($curl);
     }
 }
