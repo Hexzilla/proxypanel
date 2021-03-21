@@ -224,13 +224,12 @@
 	</div>
 </form> -->
 
-<!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 	<input type="hidden" name="cmd" value="_notify-validate" id="id_cmd">
-	<!-- <input type="hidden" name="charset" value="utf-8" id="id_charset"> -->
+	<input type="hidden" name="charset" value="utf-8" id="id_charset">
 	<input type="hidden" name="currency_code" value="USD" id="id_currency_code">
 	<input type="hidden" name="no_shipping" value="1" id="id_no_shipping">
-	<input type="hidden" name="business" value="vpnrgr@gmail.com" id="id_business">
+	<input type="hidden" name="business" value="sb-1b2tq5457191@business.example.com" id="id_business">
 	<input type="hidden" name="amount" value="100" id="id_amount">
 	<input type="hidden" name="item_name" value="test" id="id_item_name">
 	<input type="hidden" name="invoice" value="invoice-1-1534-1079-9" id="id_invoice">
