@@ -239,7 +239,8 @@
 	<input type="hidden" name="cancel_return" value="{{url('/')}}" id="id_cancel_return">
 	<input type="hidden" name="custom" value="premium_plan" id="id_custom">
 	<div class="form-group">
-		<input class="btn btn-primary" type="submit" value="Test pay 100$">
+		<!-- <input class="btn btn-primary" type="submit" value="Test pay 100$"> -->
+		<button class="btn ripple btn-primary" type="submit">Test 100$</button>
 	</div>
 </form>
 
