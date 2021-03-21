@@ -188,7 +188,7 @@ class PaymentController extends Controller
 
     public function notify(Request $request) {
         $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = "payer_email ";
+        $txt = "payer_email " . $request->payer_email;
         fwrite($myfile, $txt);
         fclose($myfile);
     }
