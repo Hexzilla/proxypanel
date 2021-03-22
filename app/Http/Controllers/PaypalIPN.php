@@ -62,6 +62,10 @@ class PaypalIPN
     {
         if ( ! count($_POST)) {
             throw new Exception("Missing POST Data");
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "no post";
+            fwrite($myfile, $txt);
+            fclose($myfile);
         }
 
         $raw_post_data = file_get_contents('php://input');
@@ -120,12 +124,22 @@ class PaypalIPN
             $errno = curl_errno($ch);
             $errstr = curl_error($ch);
             curl_close($ch);
+            
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "\n curl error";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             throw new Exception("cURL error: [$errno] $errstr");
         }
 
         $info = curl_getinfo($ch);
         $http_code = $info['http_code'];
         if ($http_code != 200) {
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "\n respond error";
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
             throw new Exception("PayPal responded with http code $http_code");
         }
 

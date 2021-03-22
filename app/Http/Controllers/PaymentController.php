@@ -202,6 +202,11 @@ class PaymentController extends Controller
         // fwrite($myfile, $txt);
         // fclose($myfile);
 
+        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        $txt = "\n notify";
+        fwrite($myfile, $txt);
+        fclose($myfile);
+
         $ipn = new PaypalIPN();
 
         // Use the sandbox endpoint during testing.
