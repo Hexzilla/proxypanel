@@ -192,7 +192,7 @@ class PaymentController extends Controller
         $pay = new Payments;
         $pay->info = 'info';
         $pay->date = date('Y-m-d H:i:s');
-        $pay->current = 'USD';
+        $pay->currency = 'USD';
         $pay->save();
     }
 }
