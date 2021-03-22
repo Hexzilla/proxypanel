@@ -55,4 +55,4 @@ Route::group(['middleware' => ['check.auth']], function () {
 Route::get('payment', 'PaymentController@payWithpaypal')->name('payment');
 Route::get('status', 'PaymentController@getPaymentStatus')->name('status');
 Route::get('cancel', 'PaymentController@cancel')->name('cancel');
-Route::get('notify', 'PaymentController@notify')->name('notify');
+Route::post('notify', 'PaymentController@notify')->name('notify');
