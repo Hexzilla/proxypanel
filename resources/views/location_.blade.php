@@ -47,7 +47,7 @@
 									<td class="text-center" style="vertical-align: middle">
 										<input type="hidden" value="{{$m['location']}}">
 										<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-										<button class="btn btn-sm ripple btn-success mb-1 connectBtn" city="{{$m['location']}}">Connect</button>
+										<button class="btn btn-sm ripple btn-success mb-1 connectBtn" city="{{$city}}">Connect</button>
 										<!-- @if ($m['load'] <= 50 )
 											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 											<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
@@ -115,7 +115,6 @@
 
 		$(".connectBtn").click(function(){
 			const city = $(".connectBtn").attr('city')
-alert(city)
 			const last = new Date("{{$last}}")
 			const d1 = new Date()
 			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
@@ -148,6 +147,7 @@ alert(city)
 
 					if (result == 1) {
 						toastr.success("Location is changed", "Success")
+						window.location.reload()
 					} else {
 						toastr.error("Something went wrong", "Failed")
 					}
