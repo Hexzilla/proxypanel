@@ -348,10 +348,7 @@
 		<?php }?>
 
 		<?php if (session('paymentSuccess')){?>
-			toastr.success("{{session('paymentSuccess')}}", "Success")
-			setTimeout(function(){ 
-				window.location.reload()
-			}, 3000);
+			toastr.success("{{session('paymentSuccess')}}\n Date will be updated after some time", "Success")
 		<?php } else if (session('paymentCancel')){?>
 			toastr.info("{{session('paymentCancel')}}", "Info")
 		<?php } else if (session('paymentFailed')){?>
