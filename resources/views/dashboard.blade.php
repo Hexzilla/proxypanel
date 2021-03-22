@@ -125,13 +125,18 @@
 											</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle;">
-											<a class="modal-effect btn btn-success btn-sm" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
+											<input type="hidden" value="{{$p->fwdauthips}}">
+											<input type="hidden" value="{{$p->id}}">
+											<a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
 												IPv4 List
 											</a>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											<div class="hostBtn1">http: 66.42.95.53:8080</div>
 											<div class="hostBtn1">socks5: 66.42.95.53:9090</div>
+											@if($p->fwdauthips)
+												<div class="hostBtn2">socks5: 66.42.95.53:10072</div>
+											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->username}}.{{$p->groupname}}
@@ -189,11 +194,11 @@
 			</div>
 			<div class="modal-body">
 				<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
-				<label class="rdiobox"><input name="rdio" id="typeMonth" type="radio" value="monthly" checked> <span>Monthly | 175$</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeWeek" type="radio" value="weekly"> <span>Weekly | 75$</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | 20$</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | 10$</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeTest" type="radio" value="test"> <span>test | 0.01$</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeMonth" type="radio" value="monthly" checked> <span>Monthly | $175</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeWeek" type="radio" value="weekly"> <span>Weekly | $75</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | $20</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | $10</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeTest" type="radio" value="test"> <span>test | $0.01</span></label>
 			</div>
 			<div class="modal-footer">
 				<button class="btn ripple btn-success" type="button" id="proceedPay">Pay by PayPal</button>
@@ -203,7 +208,7 @@
 	</div>
 </div>
 <!-- End Modal effects-->
-<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="payForm" style="display:none">
 	<input type="hidden" name="cmd" value="_xclick" id="id_cmd">
 	<input type="hidden" name="charset" value="utf-8" id="id_charset">
 	<input type="hidden" name="currency_code" value="USD" id="id_currency_code">
@@ -250,14 +255,19 @@
 		<div class="modal-content modal-content-demo">
 			<div class="modal-body">
 				<br>
-				<div class="form-group">
-					<p class="mg-b-10">IPv4 whitelist</p>
-					<input type="text" class="form-control" name="example-text-input" placeholder="IPv4">
-					<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresse</p>
-				</div>
+				<form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm">
+					@csrf
+					<div class="form-group">
+						<input type="hidden" id="idForAuth" name="id">
+						<p class="mg-b-10">IPv4 whitelist</p>
+						<input type="text" class="form-control" name="ip" placeholder="IPv4" id="ipAuthInput">
+						<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresse</p>
+					</div>
+				</form>
 			</div>
 			<div class="modal-footer">
-				<button class="btn ripple btn-primary" type="button">Save</button>
+				<button class="btn ripple btn-primary" type="button" id="ipAuthBtn">Save</button>
+				<button class="btn ripple btn-primary" style="display: none" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 				<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
 			</div>
 		</div>
@@ -467,6 +477,42 @@
 			$("#id_amount").val(amount)
 			$("#id_item_name").val(item_name)
 			$("#payForm").submit()
+		})
+
+		$(".openIPAuthBtn").click(function () {
+			const id = $(this).prev().val()
+			const ips = $(this).prev().prev().val()
+			$("#idForAuth").val(id)
+			$("#ipAuthInput").val(ips)
+		})
+
+		function ValidateIPaddress(ipaddress) 
+		{
+			if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
+			{
+				return (true)
+			}
+			return (false)
+		}
+
+		$("#ipAuthBtn").click(function() {
+			const ip = $("#ipAuthInput").val()
+			if (!ip) {
+				toastr.error("Please input ip address", "Error")
+				return
+			} else {
+				const ips = ip.split(',')
+				for(let i in ips) {
+					const item = ips[i].trim()
+					if (!ValidateIPaddress(item)) {
+						toastr.error("Please input valid ip address", "Error")
+						return
+					}
+				}
+			}
+			$(this).hide()
+			$(this).next().show()
+			$("#ipAuthForm").submit()
 		})
 	}) 
 </script>

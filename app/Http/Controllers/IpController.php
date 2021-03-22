@@ -18,4 +18,15 @@ class IpController extends Controller
 
         return redirect()->back();
     }
+
+    function changeAuthIP(Request $request) {
+        $ip = $request->ip;
+        $id = $request->id;
+
+        $port = Port::find($id);
+        $port->fwdauthips = $ip;
+        $port->save();
+
+        return redirect()->back();
+    }
 }

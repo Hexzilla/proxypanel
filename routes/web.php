@@ -38,6 +38,7 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::post('/randomLocation', 'LocationController@randomLocation')->name('randomLocation');
 
     Route::post('/changeIp', 'IpController@changeIp')->name('changeIp');
+    Route::post('/changeAuthIP', 'IpController@changeAuthIP')->name('changeAuthIP');
 
     Route::get('/api', 'ApiController@show');
     Route::post('/changeApi', 'ApiController@change')->name('changeApi');
