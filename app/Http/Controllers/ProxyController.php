@@ -25,13 +25,9 @@ class ProxyController extends Controller
         $port->paidtill = $paidTill;
         $port->groupname = $name;
         $port->rotation = 0;
-        try {
-            $port->save();
-        } catch(Exception $e) {
-            return redirect()->back();
-        }
+        $port->save();
 
-        return redirect()->back();
+        return redirect('/location_?id='.$port->id);
     }
     
     public function deleteProxy(Request $request) {

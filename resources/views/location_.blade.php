@@ -147,7 +147,7 @@
 
 					if (result == 1) {
 						toastr.success("Location is changed", "Success")
-						window.location.reload()
+						window.location = "{{url('/dashboard')}}"
 					} else {
 						toastr.error("Something went wrong", "Failed")
 					}
