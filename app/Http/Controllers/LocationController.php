@@ -38,7 +38,8 @@ class LocationController extends Controller
 
             array_push($locations, $temp);
         }
-        return view('location_', compact('locations', 'id', 'last'));
+        $city = $port->city;
+        return view('location_', compact('locations', 'id', 'last', 'city'));
     }
 
     function getLocationLoad($all, $location) {

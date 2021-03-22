@@ -99,7 +99,7 @@
 											</button><br>
 											<input type="hidden" value="{{$p->lastchangecitydate}}">
 											<input type="hidden" value="{{$p->id}}">
-											<button class="btn ripple btn-primary btn-sm mb-1 randBtn">
+											<button class="btn ripple btn-primary btn-sm mb-1 randBtn" city="{{$p->city}}">
 												Random
 											</button>
 											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button">
@@ -367,13 +367,15 @@
 		})
 
 		$(".randBtn").click(function(){
+			const cityName = $(this).attr('city')
+
 			const lastDate = $(this).prev().prev().val()
 			const last = new Date(lastDate)
 			const d1 = new Date()
 			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
 
 			const diff = (now.getTime() - last.getTime()) / 1000;
-			if (diff < 180) {
+			if (cityName != '*' && diff < 180) {
 				const seconds = 180 - diff
 				const min = Math.ceil(seconds / 60)
 				toastr.info("You can change this location after " + min + " minutes.")
