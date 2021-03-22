@@ -20,6 +20,8 @@ use Redirect;
 use Session;
 use URL;
 
+use App\Payments;
+
 class PaymentController extends Controller
 {
     private $_api_context;
@@ -187,10 +189,10 @@ class PaymentController extends Controller
     }
 
     public function notify(Request $request) {
-        var_dump('notify');
-        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = "ok";
-        fwrite($myfile, $txt);
-        fclose($myfile);
+        $pay = new Payment;
+        $pay->info = 'info';
+        $pay->date = date('Y-m-d H:i:s');
+        $pay->current = 'USD';
+        $pay->save();
     }
 }
