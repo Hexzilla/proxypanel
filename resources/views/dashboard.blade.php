@@ -183,24 +183,22 @@
 <div class="modal" id="modaldemo10">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content modal-content-demo">
-			<form method="get" action="{{ route('payment') }}">
-				<input type="hidden" value="" name="payId" id="payId">
-				<div class="modal-header">
-					<h6 class="modal-title">Payment</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-				</div>
-				<div class="modal-body">
-					<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
-					<label class="rdiobox"><input name="rdio" type="radio" value="monthly" checked> <span>Monthly | 175$</span></label>
-					<label class="rdiobox"><input name="rdio" type="radio" value="weekly"> <span>Weekly | 75$</span></label>
-					<label class="rdiobox"><input name="rdio" type="radio" value="daily"> <span>Daily | 20$</span></label>
-					<label class="rdiobox"><input name="rdio" type="radio" value="hour"> <span>One Hour | 10$</span></label>
-					<label class="rdiobox"><input name="rdio" type="radio" value="test"> <span>test | 0.01$</span></label>
-				</div>
-				<div class="modal-footer">
-					<button class="btn ripple btn-success">Pay by PayPal</button>
-					<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
-				</div>
-			</form>
+			<input type="hidden" value="" name="payId" id="payId">
+			<div class="modal-header">
+				<h6 class="modal-title">Payment</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
+				<label class="rdiobox"><input name="rdio" id="typeMonth" type="radio" value="monthly" checked> <span>Monthly | 175$</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeWeek" type="radio" value="weekly"> <span>Weekly | 75$</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | 20$</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | 10$</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeTest" type="radio" value="test"> <span>test | 0.01$</span></label>
+			</div>
+			<div class="modal-footer">
+				<button class="btn ripple btn-success" type="button" id="proceedPay">Pay by PayPal</button>
+				<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -226,7 +224,7 @@
 
 <!-- _notify-validate -->
 
-<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="payForm" style="display:none">
 	<input type="hidden" name="cmd" value="_xclick" id="id_cmd">
 	<input type="hidden" name="charset" value="utf-8" id="id_charset">
 	<input type="hidden" name="currency_code" value="USD" id="id_currency_code">
@@ -438,6 +436,37 @@
 			const id = $(this).prev().val()
 			$("#payId").val(id)
 			$("#paySpan").html(id)
+		})
+
+		$("#proceedPay").click(function() {
+			const month = $("#typeMonth").is(':checked');
+			const week = $("#typeWeek").is(':checked');
+			const day = $("#typeDay").is(':checked');
+			const hour = $("#typeHour").is(':checked');
+			const test = $("#typeTest").is(':checked');
+
+			let amount = 0
+			let item_name = ''
+			if (month) {
+				amount = 175
+				item_name = 'monthly | $175'
+			} else if (week) {
+				amount = 75
+				item_name = 'weekly | $75'
+			} else if (day) {
+				amount = 20
+				item_name ='weekly | $20'
+			} else if (hour) {
+				amount = 10
+				item_name ='weekly | $10'
+			} else if (test) {
+				amount = 0.01
+				item_name ='weekly | $0.01'
+			}
+
+			$("#id_amount").val(amount)
+			$("#id_item_name").val(item_name)
+			$("#payForm").submit()
 		})
 	}) 
 </script>
