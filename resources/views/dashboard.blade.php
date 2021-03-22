@@ -202,6 +202,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn ripple btn-success" type="button" id="proceedPay">Pay by PayPal</button>
+				<button class="btn ripple btn-success" style="display: none" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 				<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
 			</div>
 		</div>
@@ -473,6 +474,9 @@
 				amount = 0.01
 				item_name ='test | $0.01 | order | ' + id
 			}
+
+			$(this).hide()
+			$(this).next().show()
 
 			$("#id_amount").val(amount)
 			$("#id_item_name").val(item_name)
