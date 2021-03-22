@@ -235,16 +235,17 @@
 	<input type="hidden" name="amount" value="100" id="id_amount">
 	<input type="hidden" name="item_name" value="test" id="id_item_name">
 	<input type="hidden" name="invoice" value="invoice-1-1534-1079-9" id="id_invoice">
-	<input type="hidden" name="notify_url" value="{{urlencode(stripslashes(route('notify')))}}" id="id_notify_url">
+	<input type="hidden" name="notify_url" value="{route('notify')}}" id="id_notify_url">
 	<input type="hidden" name="rm" value="1" id="id_rm">
-	<input type="hidden" name="return" value="{{urlencode(stripslashes(url('/')))}}" id="id_return">
-	<input type="hidden" name="cancel_return" value="{{urlencode(stripslashes(url('/')))}}" id="id_cancel_return">
+	<input type="hidden" name="return" value="{{url('/')}}" id="id_return">
+	<input type="hidden" name="cancel_return" value="{{url('/')}}" id="id_cancel_return">
 	<input type="hidden" name="custom" value="premium_plan" id="id_custom">
 	<div class="form-group">
 		<!-- <input class="btn btn-primary" type="submit" value="Test pay 100$"> -->
 		<button class="btn ripple btn-primary" type="submit">Test 100$</button>
 	</div>
 </form>
+
 <!-- Modal effects -->
 <div class="modal" id="modaldemo9">
 	<div class="modal-dialog modal-dialog-centered" role="document">
