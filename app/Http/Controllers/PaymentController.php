@@ -214,11 +214,6 @@ class PaymentController extends Controller
             $type = trim($pieces[0]);
 
             $port = Port::find($order_id);
-            
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-$txt = $order_id . '/'.$type.'/';
-fwrite($myfile, $txt);
-fclose($myfile);
 
             $date = new DateTime();
             if ($type == 'monthly') {
