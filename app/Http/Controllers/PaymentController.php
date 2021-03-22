@@ -20,6 +20,9 @@ use Redirect;
 use Session;
 use URL;
 
+require('PaypalIPN.php');
+use PaypalIPN;
+
 class PaymentController extends Controller
 {
     private $_api_context;
@@ -187,7 +190,7 @@ class PaymentController extends Controller
     }
 
     public function notify(Request $request) {
-        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
         // $txt = "payer_email " . $request->payer_email . "\n".
         //         "payment_amount ".$request->payment_amount."\n".
         //         "txn_id ".$request->txn_id."\n".
@@ -195,8 +198,29 @@ class PaymentController extends Controller
         //         "item_name ".$request->item_name."\n".
         //         "mc_currency ".$request->mc_currency."\n";
         // $txt = $request->item_name;
-        $txt = "ok";
-        fwrite($myfile, $txt);
-        fclose($myfile);
+        // $txt = "ok";
+        // fwrite($myfile, $txt);
+        // fclose($myfile);
+
+        $ipn = new PaypalIPN();
+
+        // Use the sandbox endpoint during testing.
+        $ipn->useSandbox();
+        $verified = $ipn->verifyIPN();
+        if ($verified) {
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "ok";
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
+            /*
+            * Process IPN
+            * A list of variables is available here:
+            * https://developer.paypal.com/webapps/developer/docs/classic/ipn/integration-guide/IPNandPDTVariables/
+            */
+        }
+
+        // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
+        header("HTTP/1.1 200 OK");
     }
 }
