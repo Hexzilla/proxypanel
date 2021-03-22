@@ -190,9 +190,9 @@ class PaymentController extends Controller
 
     public function notify(Request $request) {
         $pay = new Payments;
-        $pay->info = 'info';
+        $pay->info = $request->item_name;
         $pay->date = date('Y-m-d H:i:s');
-        $pay->currency = 'USD';
+        $pay->currency = $request->mc_currency;
         $pay->save();
     }
 }
