@@ -214,7 +214,18 @@ class PaymentController extends Controller
         curl_setopt ($curl, CURLOPT_SSL_VERIFYHOST, 1);
         $response = curl_exec($curl);
         if($response == 'VERIFIED') {
-            file_put_contents('log.txt', $_POST['txn_id']."\n", "w");
+            // file_put_contents('log.txt', $_POST['txn_id']."\n", "w");
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            // $txt = "payer_email " . $request->payer_email . "\n".
+            //         "payment_amount ".$request->payment_amount."\n".
+            //         "txn_id ".$request->txn_id."\n".
+            //         "payment_status ".$request->payment_status."\n".
+            //         "item_name ".$request->item_name."\n".
+            //         "mc_currency ".$request->mc_currency."\n";
+            // $txt = $request->item_name;
+            $txt = 'ok';
+            fwrite($myfile, $txt);
+            fclose($myfile);
         }
         curl_close($curl);
     }
