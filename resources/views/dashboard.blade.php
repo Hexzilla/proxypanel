@@ -237,7 +237,7 @@
 	<input type="hidden" name="business" value="sb-1b2tq5457191@business.example.com" id="id_business">
 	<input type="hidden" name="amount" value="100" id="id_amount">
 	<input type="hidden" name="item_name" value="test" id="id_item_name">
-	<input type="hidden" name="invoice" value="invoice-1-1534-1079-909" id="id_invoice">
+	<!-- <input type="hidden" name="invoice" value="invoice-1-1534-1079-908" id="id_invoice"> -->
 	<!-- <input type="hidden" name="notify_url" value="{{route('notify')}}" id="id_notify_url"> -->
 	<input type="hidden" name="rm" value="2" id="id_rm">
 	<input type="hidden" name="return" value="{{url('/')}}" id="id_return">
