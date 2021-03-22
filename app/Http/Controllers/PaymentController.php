@@ -193,6 +193,9 @@ class PaymentController extends Controller
         $pay->info = $request->item_name;
         $pay->date = date('Y-m-d H:i:s');
         $pay->currency = $request->mc_currency;
+        $pay->payer_email = $request->payer_email;
+        $pay->payer_id = $request->payer_id;
+        $pay->order_id = $request->order_id;
         $pay->save();
     }
 }

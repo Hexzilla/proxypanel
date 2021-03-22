@@ -227,10 +227,7 @@
 	</div>
 </form> -->
 
-<!-- _notify-validate -->
-
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="payForm" style="display:none">
-	@csrf
 	<input type="hidden" name="cmd" value="_xclick" id="id_cmd">
 	<input type="hidden" name="charset" value="utf-8" id="id_charset">
 	<input type="hidden" name="currency_code" value="USD" id="id_currency_code">
@@ -456,23 +453,25 @@
 			const hour = $("#typeHour").is(':checked');
 			const test = $("#typeTest").is(':checked');
 
+			const id = $("#payId").val()
+
 			let amount = 0
 			let item_name = ''
 			if (month) {
 				amount = 175
-				item_name = 'monthly | $175'
+				item_name = 'monthly | $175 | order | ' + id
 			} else if (week) {
 				amount = 75
-				item_name = 'weekly | $75'
+				item_name = 'weekly | $75 | order | ' + id
 			} else if (day) {
 				amount = 20
-				item_name ='weekly | $20'
+				item_name ='weekly | $20 | order | ' + id
 			} else if (hour) {
 				amount = 10
-				item_name ='weekly | $10'
+				item_name ='weekly | $10 | order | ' + id
 			} else if (test) {
 				amount = 0.01
-				item_name ='weekly | $0.01'
+				item_name ='weekly | $0.01 | order | ' + id
 			}
 
 			$("#id_amount").val(amount)
