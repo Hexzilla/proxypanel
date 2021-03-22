@@ -190,7 +190,7 @@ class PaymentController extends Controller
 
     public function notify(Request $request) {
         $pay = new Payments;
-        $pay->info = $request->item_name;
+        $pay->item_name = $request->item_name;
         $pay->date = date('Y-m-d H:i:s');
         $pay->currency = $request->mc_currency;
         $pay->payer_email = $request->payer_email;
