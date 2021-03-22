@@ -224,6 +224,8 @@ class PaymentController extends Controller
                 $date->add(new DateInterval('P1D'));
             } else if ($type == 'hour') {
                 $date->add(new DateInterval('P1H'));
+            } else if ($type == 'test') {
+                $date->add(new DateInterval('P1D'));
             }
 
             $port->paidtill = $date->format('Y-m-d H:i:s');
