@@ -215,6 +215,11 @@ class PaymentController extends Controller
 
             $port = Port::find($order_id);
             
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = $order_id . '/'.$type.'/';
+fwrite($myfile, $txt);
+fclose($myfile);
+
             $date = new DateTime();
             if ($type == 'monthly') {
                 $date->add(new DateInterval('P1M'));
@@ -225,7 +230,7 @@ class PaymentController extends Controller
             } else if ($type == 'hour') {
                 $date->add(new DateInterval('P1H'));
             } else if ($type == 'test') {
-                $date->add(new DateInterval('P1D'));
+                $date->add(new DateInterval('P7D'));
             }
 
             $port->paidtill = $date->format('Y-m-d H:i:s');
