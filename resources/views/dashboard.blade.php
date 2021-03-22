@@ -349,7 +349,9 @@
 
 		<?php if (session('paymentSuccess')){?>
 			toastr.success("{{session('paymentSuccess')}}", "Success")
-			alert('success')
+			setTimeout(function(){ 
+				window.location.reload()
+			}, 3000);
 		<?php } else if (session('paymentCancel')){?>
 			toastr.info("{{session('paymentCancel')}}", "Info")
 		<?php } else if (session('paymentFailed')){?>
