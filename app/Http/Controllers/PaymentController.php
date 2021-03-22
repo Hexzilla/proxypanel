@@ -194,7 +194,7 @@ class PaymentController extends Controller
     }
 
     public function success() {
-        return redirect('/dashboard')->with('paymentSuccess', 'Payment success');
+        return redirect('/dashboard')->with('paymentSuccess', "Payment success \n Date will be updated after some time");
     }
 
     public function notify(Request $request) {
