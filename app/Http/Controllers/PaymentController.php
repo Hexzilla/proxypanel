@@ -208,14 +208,12 @@ class PaymentController extends Controller
         $ipn->useSandbox();
         $verified = $ipn->verifyIPN();
         
-        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = "ok";
-        fwrite($myfile, $txt);
-        fclose($myfile);
 
         if ($verified) {
-
-
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "ok";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             /*
             * Process IPN
             * A list of variables is available here:
@@ -224,6 +222,6 @@ class PaymentController extends Controller
         }
 
         // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
-        // header("HTTP/1.1 200 OK");
+        header("HTTP/1.1 200 OK");
     }
 }

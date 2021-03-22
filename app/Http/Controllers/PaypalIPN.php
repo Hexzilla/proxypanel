@@ -60,8 +60,14 @@ class PaypalIPN
      */
     public function verifyIPN()
     {
+            $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+            $txt = "start verify";
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
         if ( ! count($_POST)) {
             throw new Exception("Missing POST Data");
+
             $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
             $txt = "no post";
             fwrite($myfile, $txt);
