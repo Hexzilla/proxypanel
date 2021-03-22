@@ -22,6 +22,7 @@ use URL;
 
 use App\Payments;
 use App\User;
+use App\Port;
 
 class PaymentController extends Controller
 {
@@ -204,7 +205,7 @@ class PaymentController extends Controller
         $order_id = trim($pieces[3]);
         $type = trim($pieces[0]);
 
-        $user = User::find($order_id);
+        $port = Port::find($order_id);
         
         $date = new DateTime();
         if ($option == 'monthly') {
@@ -217,7 +218,7 @@ class PaymentController extends Controller
             $date->add(new DateInterval('P1H'));
         }
 
-        $user->paidtill = $date->format('Y-m-d H:i:s');
-        $user->save();
+        $port->paidtill = $date->format('Y-m-d H:i:s');
+        $port->save();
     }
 }
