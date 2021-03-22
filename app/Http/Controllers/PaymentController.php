@@ -193,35 +193,41 @@ class PaymentController extends Controller
         return redirect('/dashboard')->with('paymentCancel', 'Payment canceled');
     }
 
+    public function success() {
+        return redirect('/dashboard')->with('paymentSuccess', 'Payment success');
+    }
+
     public function notify(Request $request) {
-        $pay = new Payments;
-        $pay->txn_id = $request->txn_id;
-        $pay->item_name = $request->item_name;
-        $pay->date = date('Y-m-d H:i:s');
-        $pay->currency = $request->mc_currency;
-        $pay->payer_email = $request->payer_email;
-        $pay->payer_id = $request->payer_id;
-        $pay->save();
+        if ($request->txn_id) {
+            $pay = new Payments;
+            $pay->txn_id = $request->txn_id;
+            $pay->item_name = $request->item_name;
+            $pay->date = date('Y-m-d H:i:s');
+            $pay->currency = $request->mc_currency;
+            $pay->payer_email = $request->payer_email;
+            $pay->payer_id = $request->payer_id;
+            $pay->save();
 
-        $item = $request->item_name;
-        $pieces = explode("|", $item);
-        $order_id = trim($pieces[3]);
-        $type = trim($pieces[0]);
+            $item = $request->item_name;
+            $pieces = explode("|", $item);
+            $order_id = trim($pieces[3]);
+            $type = trim($pieces[0]);
 
-        $port = Port::find($order_id);
-        
-        $date = new DateTime();
-        if ($type == 'monthly') {
-            $date->add(new DateInterval('P1M'));
-        } else if ($type == 'weekly') {
-            $date->add(new DateInterval('P7D'));
-        } else if ($type == 'daily') {
-            $date->add(new DateInterval('P1D'));
-        } else if ($type == 'hour') {
-            $date->add(new DateInterval('P1H'));
+            $port = Port::find($order_id);
+            
+            $date = new DateTime();
+            if ($type == 'monthly') {
+                $date->add(new DateInterval('P1M'));
+            } else if ($type == 'weekly') {
+                $date->add(new DateInterval('P7D'));
+            } else if ($type == 'daily') {
+                $date->add(new DateInterval('P1D'));
+            } else if ($type == 'hour') {
+                $date->add(new DateInterval('P1H'));
+            }
+
+            $port->paidtill = $date->format('Y-m-d H:i:s');
+            $port->save();
         }
-
-        $port->paidtill = $date->format('Y-m-d H:i:s');
-        $port->save();
     }
 }
