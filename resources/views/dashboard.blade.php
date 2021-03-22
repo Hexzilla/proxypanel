@@ -465,13 +465,13 @@
 				item_name = 'weekly | $75 | order | ' + id
 			} else if (day) {
 				amount = 20
-				item_name ='weekly | $20 | order | ' + id
+				item_name ='daily | $20 | order | ' + id
 			} else if (hour) {
 				amount = 10
-				item_name ='weekly | $10 | order | ' + id
+				item_name ='hour | $10 | order | ' + id
 			} else if (test) {
 				amount = 0.01
-				item_name ='weekly | $0.01 | order | ' + id
+				item_name ='test | $0.01 | order | ' + id
 			}
 
 			$("#id_amount").val(amount)

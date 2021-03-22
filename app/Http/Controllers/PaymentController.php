@@ -21,6 +21,7 @@ use Session;
 use URL;
 
 use App\Payments;
+use App\User;
 
 class PaymentController extends Controller
 {
@@ -197,5 +198,26 @@ class PaymentController extends Controller
         $pay->payer_email = $request->payer_email;
         $pay->payer_id = $request->payer_id;
         $pay->save();
+
+        $item = $request->item_name;
+        $pieces = explode("|", $item);
+        $order_id = trim($pieces[3]);
+        $type = trim($pieces[0]);
+
+        $user = User::find($order_id);
+        
+        $date = new DateTime();
+        if ($option == 'monthly') {
+            $date->add(new DateInterval('P1M'));
+        } else if ($option == 'weekly') {
+            $date->add(new DateInterval('P7D'));
+        } else if ($option == 'daily') {
+            $date->add(new DateInterval('P1D'));
+        } else if ($option == 'hour') {
+            $date->add(new DateInterval('P1H'));
+        }
+
+        $user->paidtill = $date->format('Y-m-d H:i:s');
+        $user->save();
     }
 }
