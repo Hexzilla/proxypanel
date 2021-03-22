@@ -208,13 +208,13 @@ class PaymentController extends Controller
         $port = Port::find($order_id);
         
         $date = new DateTime();
-        if ($option == 'monthly') {
+        if ($type == 'monthly') {
             $date->add(new DateInterval('P1M'));
-        } else if ($option == 'weekly') {
+        } else if ($type == 'weekly') {
             $date->add(new DateInterval('P7D'));
-        } else if ($option == 'daily') {
+        } else if ($type == 'daily') {
             $date->add(new DateInterval('P1D'));
-        } else if ($option == 'hour') {
+        } else if ($type == 'hour') {
             $date->add(new DateInterval('P1H'));
         }
 
