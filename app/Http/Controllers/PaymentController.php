@@ -195,7 +195,6 @@ class PaymentController extends Controller
         $pay->currency = $request->mc_currency;
         $pay->payer_email = $request->payer_email;
         $pay->payer_id = $request->payer_id;
-        $pay->order_id = $request->order_id;
         $pay->save();
     }
 }
