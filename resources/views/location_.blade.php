@@ -113,6 +113,10 @@
 			}
 		})
 
+		setInterval(function() {
+			window.location.reload()
+		}, 10000)
+
 		$(".connectBtn").click(function(){
 			const city = $(".connectBtn").attr('city')
 			const last = new Date("{{$last}}")
