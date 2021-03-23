@@ -55,6 +55,26 @@ class AuthController extends Controller
         }
     }
 
+    public function changePassword(Request $request) {
+        $current = $request->current;
+        $new = $request->newP;
+
+        $userId = session('id');
+        $user = User::find($userId);
+        $correct = self::verify_Password($user->password, $current);
+        if ($correct) {
+            $user->password = self::make_password($new);
+            try {
+                $user->save();
+            } catch (Exception $e) {
+                echo '0';
+            }
+            echo '1';
+        } else {
+            echo '-1';
+        }
+    }
+
     public function logout(Request $request) {
         $request->session()->flush();
         return redirect('/');

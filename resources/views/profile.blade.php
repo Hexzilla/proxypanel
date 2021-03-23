@@ -1,295 +1,268 @@
 @extends('layouts.master')
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<style type="text/css">
+	.saveLoadingBtn {
+		display: none;
+	}
+</style>
 @endsection
 @section('page-header')
-					<!-- Page Header -->
-					<div class="page-header">
-						<div>
-							<h2 class="main-content-title tx-20 mg-b-5">Profile</h2>
-							<!-- <ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Pages</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Profile</li>
-							</ol> -->
-						</div>
-					</div>
-					<!-- End Page Header -->
+	<!-- Page Header -->
+	<div class="page-header">
+		<div>
+			<h2 class="main-content-title tx-20 mg-b-5">Profile</h2>
+			<!-- <ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Pages</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Profile</li>
+			</ol> -->
+		</div>
+	</div>
+	<!-- End Page Header -->
 @endsection
 @section('content')
-					<!-- Row -->
-					<div class="row">
-						<div class="col-lg-4 col-md-12">
-							<div class="card custom-card">
-								<div class="card-body text-center">
-									<div class="main-profile-overview widget-user-image text-center">
-										<div class="main-img-user"><img alt="avatar" src="{{URL::asset('assets/img/users/1.jpg')}}"></div>
-									</div>
-									<div class="item-user pro-user">
-										<h4 class="pro-user-username text-dark mt-2 mb-0">Sonia Taylor</h4>
-										<p class="pro-user-desc text-muted mb-1">Web Designer</p>
-										<p class="user-info-rating">
-											<a href="#"><i class="fa fa-star text-warning"> </i></a>
-											<a href="#"><i class="fa fa-star text-warning"> </i></a>
-											<a href="#"><i class="fa fa-star text-warning"> </i></a>
-											<a href="#"><i class="fa fa-star text-warning"> </i></a>
-											<a href="#"><i class="far fa-star text-warning"> </i></a>
-										</p>
-										<div class="contact-info mb-3">
-											<a href="#" class="contact-icon border text-primary"><i class="fab fa-facebook-f"></i></a>
-											<a href="#" class="contact-icon border text-primary"><i class="fab fa-twitter"></i></a>
-											<a href="#" class="contact-icon border text-primary"><i class="fab fa-google"></i></a>
-											<a href="#" class="contact-icon border text-primary"><i class="fab fa-dribbble"></i></a>
-										</div>
-										<a href="#" class="btn ripple btn-primary btn-sm"><i class="far fa-edit mr-1"></i>Edit</a>
-										<a href="#" class="btn ripple btn-secondary btn-sm"><i class="fas fa-rss mr-1"></i>Follow</a>
-									</div>
-								</div>
-								<div class="card-footer p-0">
-									<div class="row text-center">
-										<div class="col-sm-6 border-right">
-											<div class="description-block">
-												<h5 class="description-header mb-1">689k</h5>
-												<span class="text-muted">Followers</span>
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="description-block">
-												<h5 class="description-header mb-1">3,765</h5>
-												<span class="text-muted">Following</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card custom-card">
-								<div class="card-header custom-card-header">
-									<div>
-										<h6 class="card-title mb-0">Skills</h6>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="skill-tags">
-										<ul class="list-unstyled mb-0">
-											<li><a href="#">HTML5</a></li>
-											<li><a href="#">CSS</a></li>
-											<li><a href="#">Java Script</a></li>
-											<li><a href="#">Photo Shop</a></li>
-											<li><a href="#">Php</a></li>
-											<li><a href="#">Wordpress</a></li>
-											<li><a href="#">Sass</a></li>
-											<li><a href="#">Angular</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="card custom-card">
-								<div class="card-header custom-card-header">
-									<div>
-										<h6 class="card-title mb-0">Contact Information</h6>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="main-profile-contact-list main-profile-work-list">
-										<div class="media">
-											<div class="media-logo bg-light text-dark">
-												<i class="fe fe-smartphone"></i>
-											</div>
-											<div class="media-body">
-												<span>Mobile</span>
-												<div>
-													(+63) 123 4567 890
-												</div>
-											</div>
-										</div>
-										<div class="media">
-											<div class="media-logo bg-light text-dark">
-												<i class="fe fe-mail"></i>
-											</div>
-											<div class="media-body">
-												<span>Slack</span>
-												<div>
-													@sophia.w
-												</div>
-											</div>
-										</div>
-										<div class="media">
-											<div class="media-logo bg-light text-dark">
-												<i class="fe fe-map-pin"></i>
-											</div>
-											<div class="media-body">
-												<span>Current Address</span>
-												<div>
-													San Francisco, CA
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+	<!-- Row -->
+	<div class="row">
+		<div class="col-lg-6 col-md-6" style="margin: 0 auto">
+			<div class="card custom-card">
+				<div class="card-body text-center">
+					<div class="main-profile-overview widget-user-image text-center">
+						<div class="main-img-user"><img alt="avatar" src="{{URL::asset('assets/img/users/1.jpg')}}"></div>
+					</div>
+					<div class="item-user pro-user">
+						<!-- <h4 class="pro-user-username text-dark mt-2 mb-0">{{$userInfo->username}}</h4> -->
+						<!-- <p class="pro-user-desc text-muted mb-1">Web Designer</p> -->
+					</div>
+					<br>
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">User Name *</label>
 						</div>
-						<div class="col-lg-8 col-md-12">
-							<div class="card custom-card main-content-body-profile">
-								<nav class="nav main-nav-line">
-									<a class="nav-link active" data-toggle="tab" href="#tab1over">Overview</a>
-									<a class="nav-link" data-toggle="tab" href="#tab2rev">Reviews</a>
-								</nav>
-								<div class="card-body tab-content h-100">
-									<div class="tab-pane active" id="tab1over">
-										<div class="main-content-label tx-13 mg-b-20">
-											Personal Information
-										</div>
-										<div class="table-responsive ">
-											<table class="table row table-borderless">
-												<tbody class="col-lg-12 col-xl-6 p-0">
-													<tr>
-														<td><strong>Full Name :</strong>Sonia Taylor</td>
-													</tr>
-													<tr>
-														<td><strong>Location :</strong> UK</td>
-													</tr>
-													<tr>
-														<td><strong>Languages :</strong> English, German, Spanish.</td>
-													</tr>
-												</tbody>
-												<tbody class="col-lg-12 col-xl-6 p-0">
-													<tr>
-														<td><strong>Website :</strong> domain.com</td>
-													</tr>
-													<tr>
-														<td><strong>Email :</strong> klomitoor@doamin.com</td>
-													</tr>
-													<tr>
-														<td><strong>Phone :</strong> +125 254 3562 </td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="main-content-label tx-13 mg-b-20">
-											About
-										</div>
-										<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy  when an unknown printer took a galley of type and scrambled Lorem Ipsum has been the industry's standard dummy  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived .</p>
-										<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit Lorem Ipsum has been the industry's standard dummy  when an unknown printer took a galley of type and scrambled in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-										<div class="main-content-label tx-13 mg-b-20">
-											Work &amp; Education
-										</div>
-										<div class="main-profile-work-list">
-											<div class="media">
-												<div class="media-logo bg-success">
-													<i class="icon ion-logo-whatsapp"></i>
-												</div>
-												<div class="media-body">
-													<h6>UI/UX Designer at <a href="">Whatsapp</a></h6><span>2016 - present</span>
-													<p>Past Work: spruko, Inc.</p>
-												</div>
-											</div>
-											<div class="media">
-												<div class="media-logo bg-primary">
-													<i class="icon ion-logo-buffer"></i>
-												</div>
-												<div class="media-body">
-													<h6>Studied at <a href="">Buffer University</a></h6><span>2002 - 2006</span>
-													<p>Degree: Bachelor of Science in Computer Science</p>
-												</div>
-											</div>
-										</div>
-										<div class="main-content-label tx-13 mg-b-20 mt-3">
-											Photos
-										</div>
-										<div class="row">
-											<div class="col-6 col-md-3">
-												<img alt="Responsive image" class="img-thumbnail" src="{{URL::asset('assets/img/media/1.jpg')}}">
-											</div>
-											<div class="col-6 col-md-3">
-												<img alt="Responsive image" class="img-thumbnail" src="{{URL::asset('assets/img/media/2.jpg')}}">
-											</div>
-											<div class="col-6 col-md-3 mg-t-10 mg-sm-t-0">
-												<img alt="Responsive image" class="img-thumbnail" src="{{URL::asset('assets/img/media/3.jpg')}}">
-											</div>
-											<div class="col-6 col-md-3 mg-t-10 mg-sm-t-0">
-												<img alt="Responsive image" class="img-thumbnail" src="{{URL::asset('assets/img/media/4.jpg')}}">
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane" id="tab2rev">
-										<div class="media mb-4">
-											<div class="main-img-user mr-3"><img alt="avatar" src="{{URL::asset('assets/img/users/5.jpg')}}"></div>
-											<div class="media-body">
-												<div class="media-contact-name mb-1">
-													<h6 class="mb-0">Julia Carr<small class="text-muted ml-2"><i class="fe fe-clock"></i> Yesterday, 2:00 am</small> </h6>
-												</div>
-												<p class="mb-2">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-												<ul class="reviewnavs mb-0">
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-thumbs-up"></i> 794</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-message-square"></i> 253</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fa fa-share"></i> 24</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="media mb-4">
-											<div class="main-img-user mr-3"><img alt="avatar" src="{{URL::asset('assets/img/users/6.jpg')}}"></div>
-											<div class="media-body">
-												<div class="media-contact-name mb-1">
-													<h6 class="mb-0">Victor	White<small class="text-muted ml-2"><i class="fe fe-clock"></i> Yesterday, 2:00 am</small> </h6>
-												</div>
-												<p class="mb-2">Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?</p>
-												<ul class="reviewnavs">
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-thumbs-up"></i> 794</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-message-square"></i> 253</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fa fa-share"></i> 24</a></li>
-												</ul>
-												<div class="media">
-													<div class="main-img-user mr-3"><img alt="avatar" src="{{URL::asset('assets/img/users/7.jpg')}}"></div>
-													<div class="media-body">
-														<div class="media-contact-name mb-1">
-															<h6 class="mb-0">Megan Mackay<small class="text-muted ml-2"><i class="fe fe-clock"></i> Yesterday, 2:00 am</small> </h6>
-														</div>
-														<p class="mb-2">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-														<ul class="reviewnavs">
-															<li><a href="#" title="" class="mr-2"><i class="fe fe-thumbs-up"></i> 794</a></li>
-															<li><a href="#" title="" class="mr-2"><i class="fe fe-message-square"></i> 253</a></li>
-															<li><a href="#" title="" class="mr-2"><i class="fa fa-share"></i> 24</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="media mb-4">
-											<div class="main-img-user mr-3"><img alt="avatar" src="{{URL::asset('assets/img/users/8.jpg')}}"></div>
-											<div class="media-body">
-												<div class="media-contact-name mb-1">
-													<h6 class="mb-0">Audrey	Hudson<small class="text-muted ml-2"><i class="fe fe-clock"></i> Yesterday, 2:00 am</small> </h6>
-												</div>
-												<p class="mb-2">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. </p>
-												<ul class="reviewnavs">
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-thumbs-up"></i> 794</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-message-square"></i> 253</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fa fa-share"></i> 24</a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="media">
-											<div class="main-img-user mr-3"><img alt="avatar" src="{{URL::asset('assets/img/users/9.jpg')}}"></div>
-											<div class="media-body">
-												<div class="media-contact-name mb-1">
-													<h6 class="mb-0">Sean Grant<small class="text-muted ml-2"><i class="fe fe-clock"></i> Yesterday, 2:00 am</small> </h6>
-												</div>
-												<p class="mb-2">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-												<ul class="reviewnavs mb-0">
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-thumbs-up"></i> 794</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fe fe-message-square"></i> 253</a></li>
-													<li><a href="#" title="" class="mr-2"><i class="fa fa-share"></i> 24</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->username}}" id="userName" maxlength="50">
 						</div>
 					</div>
-					<!-- End Row -->
-
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">First Name</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->first_name}}" id="firstName" maxlength="50">
+						</div>
+					</div>
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Last Name</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->last_name}}" id="lastName" maxlength="50">
+						</div>
+					</div>	
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Email *</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="email" value="{{$userInfo->email}}" id="email" maxlength="50">
+						</div>
+					</div>	
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Skype</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->skype_id}}" id="skype" maxlength="50">
+						</div>
+					</div>	
+				</div>
+				<div class="form-group row justify-content-end mb-10">
+					<div class="col-md-8 pl-md-2">
+						<button class="btn ripple btn-primary pd-x-30 mg-r-5" id="saveBtn">Save</button>
+						
+						<button class="btn ripple btn-primary pd-x-30 mg-r-5 saveLoadingBtn" disabled type="button">
+							<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+						</button>
+						<button class="modal-effect btn ripple btn-secondary pd-x-30"  data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">Change Password</button>
+					</div>
 				</div>
 			</div>
-			<!-- End Main Content-->
+		</div>
+	</div>
+	<!-- End Row -->
+
+	<!-- Modal effects -->
+	<div class="modal" id="modaldemo8">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content modal-content-demo">
+				<div class="modal-header">
+					<h6 class="modal-title">Password</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Current Password</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="password" id="currentPsd" maxlength="50">
+						</div>
+					</div>
+					
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">New Password</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="password" id="newPsd" maxlength="50">
+						</div>
+					</div>
+					
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Confirm</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="password" id="confirmPsd" maxlength="50">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn ripple btn-primary" type="button" id="savePassword">Save</button>
+
+					<button class="btn ripple btn-primary pd-x-30 mg-r-5 saveLoadingBtn" disabled type="button">
+						<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+					</button>
+					<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Modal effects-->
+</div>
+</div>
+<!-- End Main Content-->
 @endsection
 @section('js')
+<script src="{{ URL::asset('assets/js/modal.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function(){
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		})
+
+		function validateEmail(mail) 
+		{
+			if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+			{
+				return (true)
+			}
+			return (false)
+		}
+
+		$("#saveBtn").click(function(){
+			const userName = $("#userName").val()
+			const firstName = $("#firstName").val()
+			const lastName = $("#lastName").val()
+			const email = $("#email").val()
+			const skype = $("#skype").val()
+
+			if (!userName) {
+				toastr.error("Please input username", "Error")
+				$("#userName").focus()
+				return
+			}
+			if (!email) {
+				toastr.error("Please input email address", "Error")
+				$("#email").focus()
+				return
+			}
+			if (!validateEmail(email)) {
+				toastr.error("Please input valid email address", "Error")
+				$("#email").focus()
+				return
+			}
+
+			const thisElement = $(this)
+			const nextElement = $(this).next()
+
+			thisElement.hide()
+			nextElement.show()
+			$.ajax({
+				type: "POST",
+				url: "{{route('changeUser')}}",
+				data: {
+					userName: userName, firstName: firstName, lastName: lastName, email: email, skype: skype
+				},
+				success: function(result) {
+					thisElement.show()
+					nextElement.hide()
+					
+					if (result == 1) {
+						toastr.success("Data is saved", "Success")
+					} else {
+						toastr.error("Something went wrong", "Error")
+					}
+				}
+			})
+		})
+
+		$("#savePassword").click(function() {
+			const current = $("#currentPsd").val()
+			const newP = $("#newPsd").val()
+			const confirm = $("#confirmPsd").val()
+
+			if (!current) {
+				toastr.error("Please input current password", "Error")
+				$("#currentPsd").focus()
+				return
+			}
+			if (!newP) {
+				toastr.error("Please input new password", "Error")
+				$("#newPsd").focus()
+				return
+			}
+			if (!confirm) {
+				toastr.error("Please input password confirm", "Error")
+				$("#confirmPsd").focus()
+				return
+			}
+			if (current.length < 8 || newP.length < 8 || confirm.length < 8) {
+				toastr.warning("password must be at least 8 characters", "Warning")
+				return
+			}
+			
+			if (newP != confirm) {
+				toastr.warning("Please confirm password again", "Warning")
+				$("#confirmPsd").focus()
+				return
+			}
+
+			const thisElement = $(this)
+			const nextElement = $(this).next()
+			thisElement.hide()
+			nextElement.show()
+			$.ajax({
+				type: "POST",
+				url: "{{route('changePassword')}}",
+				data: {
+					current: current,
+					new: newP
+				},
+				success: function(result) {
+					thisElement.show()
+					nextElement.hide()
+					if (result == -1) {
+						toastr.error("Current Password is not correct", "Error")
+					} else if (result == 1) {
+						toastr.success("Password is changed", "Success")
+					} else {
+						toastr.error("Something went wrong", "Error")
+					}
+				}
+			})
+		})
+	})
+</script>
 @endsection

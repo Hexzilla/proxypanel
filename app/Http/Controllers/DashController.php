@@ -16,10 +16,6 @@ class DashController extends Controller
         return view('dashboard', compact('ports', 'now', 'current'));
     }
     
-    function profile() {
-        return view('profile');
-    }
-
     function api() {
         return view('api');
     }

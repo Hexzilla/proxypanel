@@ -43,7 +43,9 @@ Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/api', 'ApiController@show');
     Route::post('/changeApi', 'ApiController@change')->name('changeApi');
 
-    Route::get('/profile', 'DashController@profile');
+    Route::get('/profile', 'ProfileController@show');
+    Route::post('/changeUser', 'ProfileController@changeUser')->name('changeUser');
+    Route::post('/changePassword', 'AuthController@changePassword')->name('changePassword');
     // Route::get('/{page}', 'AdminController@index');
 });
 
