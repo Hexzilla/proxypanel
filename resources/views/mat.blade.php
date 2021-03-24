@@ -58,11 +58,11 @@
       </div>
     </div>
   </nav>
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('mat/img/tech3.png')">
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('mat/img/tech3.png'); height: 450px">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h2 class="title" style="margin-top: 0">4G Mobile Proxy</h2>
+          <h2 class="title">4G Mobile Proxy</h2>
           <h5>4G Mobile proxy. Rotating new clear mobile IP every 5 min. HTTP/HTTPS or SOCKS connection. Mobile proxies have direct connection to mobile network, your accounts never will be blocked. USA, Europe or UK mobile proxy 4G LTE / 3G connections and mixed mobile carriers and cities. 4G proxy can be used with Chrome, Firefox, Safari or any other browser or application (jarvee, instagram, telegram etc).</h5>
         </div>
       </div>
