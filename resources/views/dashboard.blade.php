@@ -29,7 +29,11 @@
 <div class="page-header">
 	<div>
 		<h2 class="main-content-title tx-20 mg-b-5">Dashboard</h2>
-		<p class="text-muted card-sub-title">Welcome to the unique proxy web app experience!</p>
+		<p class="text-muted card-sub-title">Mobile proxies will be locked by ip, username and password, you will get personal IP:PORT. <br>
+		Max dedicated 4G proxy internet connection speed up to 60mbps. <br>
+		Some mobile proxy has unlimited internet data. Anonymous, unique and clear mobile proxy. <br>
+		Get up to 40000 Mobile IP month / per connection. SOCKS5 and mobile ip IPv4. All our proxy has auto renewal option. <br>
+		Mobile proxy more reliable than standard proxy. Simple switch between http, https, socks5</p>
 		<!-- <ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Pages</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Empty Page</li>
