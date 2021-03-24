@@ -28,43 +28,37 @@
 <!-- Page Header -->
 <div class="page-header">
 	<div>
-		<h2 class="main-content-title tx-20 mg-b-5">Dashboard</h2>
-		<p class="text-muted card-sub-title">Mobile proxies will be locked by ip, username and password, you will get personal IP:PORT. <br>
-		Max dedicated 4G proxy internet connection speed up to 60mbps. <br>
-		Some mobile proxy has unlimited internet data. Anonymous, unique and clear mobile proxy. <br>
-		Get up to 40000 Mobile IP month / per connection. SOCKS5 and mobile ip IPv4. All our proxy has auto renewal option. <br>
-		Mobile proxy more reliable than standard proxy. Simple switch between http, https, socks5</p>
-		<!-- <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Pages</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Empty Page</li>
-		</ol> -->
 	</div>
 	<div class="btn btn-list">
 		<a class="btn ripple btn-info" href="javascript:void(0)" data-target="#modaldemo2" data-toggle="modal">
 			<i class="fe fe-help-circle"></i> Help
 		</a>
-		<!-- <a class="btn ripple btn-danger dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			<i class="fe fe-settings"></i> Settings <i class="fas fa-caret-down ml-1"></i>
-		</a>
-		<div class="dropdown-menu tx-13">
-			<a class="dropdown-item" href="#"><i class="fe fe-eye mr-2"></i>View</a>
-			<a class="dropdown-item" href="#"><i class="fe fe-plus-circle mr-2"></i>Add</a>
-			<a class="dropdown-item" href="#"><i class="fe fe-mail mr-2"></i>Email</a>
-			<a class="dropdown-item" href="#"><i class="fe fe-folder-plus mr-2"></i>Save</a>
-			<a class="dropdown-item" href="#"><i class="fe fe-trash-2 mr-2"></i>Remove</a>
-			<a class="dropdown-item" href="#"><i class="fe fe-settings mr-2"></i>More</a>
-		</div> -->
 	</div>
 </div>
 <!-- End Page Header -->
 @endsection
 @section('content')
 
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<h1>4G Mobile Proxy</h1>
+			<span style="font-size: 1.1rem;font-weight: 300;">4G Mobile proxy. Rotating new clear mobile IP every 5 min. HTTP/HTTPS or SOCKS connection. Mobile proxies have direct connection to mobile network, your accounts never will be blocked. USA, Europe or UK mobile proxy 4G LTE / 3G connections and mixed mobile carriers and cities. 4G proxy can be used with Chrome, Firefox, Safari or any other browser or application (jarvee, instagram, telegram etc).</span>
+		</div>
+		<div class="col-lg-6">
+			<img src="land/images/mobile-proxy.svg" class="img-fluid" style="max-width:70%;">
+		</div>
+	</div>
+</div>
+
 <!-- Row -->
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card custom-card">
 			<div class="card-body">
+				<h2>4G proxy service</h2>
+				<span style="font-size: 1rem;font-weight: 300;">Mobile proxies will be locked by ip, username and password, you will get personal IP:PORT. Max dedicated 4G proxy internet connection speed up to 60mbps. Some mobile proxy has unlimited internet data. Anonymous, unique and clear mobile proxy. Get up to 40000 Mobile IP month / per connection. SOCKS5 and mobile ip IPv4. All our proxy has auto renewal option. Mobile proxy more reliable than standard proxy. Simple switch between http, https, socks5</span>
+				<br><br>
 				<div class="row">
 					<div class="col-md-6">
 					</div>
@@ -75,7 +69,6 @@
 					</div>
 					<!-- <p class="text-muted card-sub-title">To enable a hover state on table rows.</p> -->
 				</div><br>
-
 				<div class="table-responsive">
 					<table class="table table-hover mg-b-0">
 						<thead>
