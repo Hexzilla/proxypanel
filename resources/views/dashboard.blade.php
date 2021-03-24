@@ -39,7 +39,7 @@
 @endsection
 @section('content')
 
-<div class="container">
+<div class="container mb-5" style="max-width: 1000px; margin: 0 auto;">
 	<div class="row">
 		<div class="col-lg-6">
 			<h1>4G Mobile Proxy</h1>
