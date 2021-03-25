@@ -73,16 +73,16 @@
 					<table class="table table-hover mg-b-0">
 						<thead>
 							<tr>
-								<th class="text-center">City</th>
-								<th class="text-center">Rotation</th>
-								<th class="text-center">Change IP</th>
-								<th class="text-center">Ip Auth</th>
-								<th class="text-center">Host</th>
-								<th class="text-center">Name</th>
-								<th class="text-center">Password</th>
-								<th class="text-center">Next Billing</th>
-								<th class="text-center">Status</th>
-								<th class="text-center"></th>
+								<th width="20%" class="text-center">City</th>
+								<th width="7%" class="text-center">Rotation</th>
+								<th width="7%" class="text-center">Change IP</th>
+								<th width="7%" class="text-center">Ip Auth</th>
+								<th width="25%" class="text-center">Host</th>
+								<th width="7%" class="text-center">Name</th>
+								<th width="10%" class="text-center">Password</th>
+								<th width="10%" class="text-center">Next Billing</th>
+								<th width="10%" class="text-center">Status</th>
+								<th width="7%" class="text-center"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,12 +92,16 @@
 										<td class="text-center" style="vertical-align: middle">
 											<input type="hidden" value="{{$p->id}}">
 											<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-												{{$p->city}}
+												@if ($p->city == '*')
+													Select Location
+												@else
+													{{$p->city}}
+												@endif
 											</button><br>
 											<input type="hidden" value="{{$p->lastchangecitydate}}">
 											<input type="hidden" value="{{$p->id}}">
 											<button class="btn ripple btn-primary btn-sm mb-1 randBtn" city="{{$p->city}}">
-												Random
+												Random Location
 											</button>
 											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button">
 												<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>

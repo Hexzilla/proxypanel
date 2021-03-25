@@ -34,6 +34,7 @@ Route::group(['middleware' => ['check.auth']], function () {
 
     Route::get('/location', 'LocationController@show');
     Route::get('/location_', 'LocationController@allLocation');
+    Route::post('/refreshLocation', 'LocationController@refreshLocation')->name('refreshLocation');
     Route::post('/changeLocation', 'LocationController@changeLocation')->name('changeLocation');
     Route::post('/randomLocation', 'LocationController@randomLocation')->name('randomLocation');
 

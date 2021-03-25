@@ -46,25 +46,23 @@
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<input type="hidden" value="{{$m['location']}}">
-										<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-										<button class="btn btn-sm ripple btn-success mb-1 connectBtn" city="{{$city}}">Connect</button>
-										<!-- @if ($m['load'] <= 50 )
+										@if ($m['load'] <= 50 )
 											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-success mb-1 connectBtn">Connect</button>
+											<button class="btn btn-sm ripple btn-success mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
 										@elseif ($m['load'] <= 80)
 											<button class="btn btn-sm ripple btn-secondary loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-secondary mb-1 connectBtn">Connect</button>
+											<button class="btn btn-sm ripple btn-secondary mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
 										@else
 											<button class="btn btn-sm ripple btn-danger loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn">Connect</button>
-										@endif -->
+											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
+										@endif
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										<div class="progress mg-b-10">
-											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
+											<!-- <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
-											</div>
-										<!-- @if ($m['load'] <= 50 )
+											</div> -->
+										@if ($m['load'] <= 50 )
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-success ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
@@ -76,7 +74,7 @@
 											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-danger ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
-										@endif -->
+										@endif
 										</div>
 									</td>
 								</tr>
@@ -94,6 +92,10 @@
 	</div>
 </div>
 <!-- End Row -->
+
+<div id="test">
+
+</div>
 
 </div>
 </div>
@@ -114,50 +116,61 @@
 		})
 
 		setInterval(function() {
-			window.location.reload()
-		}, 10000)
-
-		$(".connectBtn").click(function(){
-			const city = $(".connectBtn").attr('city')
-			const last = new Date("{{$last}}")
-			const d1 = new Date()
-			const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
-
-			const diff = (now.getTime() - last.getTime()) / 1000;
-			if (city != "*" && diff < 180) {
-				const seconds = 180 - diff
-				const min = Math.ceil(seconds / 60)
-				toastr.info("You can change this location after " + min + " minutes.")
-				return
-			}
 			const id = "{{$id}}"
-			const location = $(this).prev().prev().val()
-
-			const thisBtn = $(this)
-			const loadingBtn = $(this).prev()
-			loadingBtn.show()
-			thisBtn.hide()
-
 			$.ajax({
 				type: 'POST',
-				url: "{{ route('changeLocation') }}",
+				url: "{{ route('refreshLocation') }}",
 				data: {
-					id: id, 
-					location: location
+					id: id
 				},
 				success: function(result) {
-					loadingBtn.hide()
-					thisBtn.show()
-
-					if (result == 1) {
-						toastr.success("Location is changed", "Success")
-						window.location = "{{url('/dashboard')}}"
-					} else {
-						toastr.error("Something went wrong", "Failed")
-					}
+					$("tbody").html(result)
 				}
-			});
-			
+			})
+		}, 5000)
+
+	})
+
+	$(document).on("click", ".connectBtn", function() {
+		const city = $(".connectBtn").attr('city')
+		// const last = new Date("{{$last}}")
+		const last = new Date($(".connectBtn").attr('date'))
+		const d1 = new Date()
+		const now = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds())
+
+		const diff = (now.getTime() - last.getTime()) / 1000;
+		if (city != "*" && diff < 180) {
+			const seconds = 180 - diff
+			const min = Math.ceil(seconds / 60)
+			toastr.info("You can change this location after " + min + " minutes.")
+			return
+		}
+		const id = "{{$id}}"
+		const location = $(this).prev().prev().val()
+
+		const thisBtn = $(this)
+		const loadingBtn = $(this).prev()
+		loadingBtn.show()
+		thisBtn.hide()
+
+		$.ajax({
+			type: 'POST',
+			url: "{{ route('changeLocation') }}",
+			data: {
+				id: id, 
+				location: location
+			},
+			success: function(result) {
+				loadingBtn.hide()
+				thisBtn.show()
+
+				if (result == 1) {
+					toastr.success("Location is changed", "Success")
+					window.location = "{{url('/dashboard')}}"
+				} else {
+					toastr.error("Something went wrong", "Failed")
+				}
+			}
 		})
 	})
 </script>
