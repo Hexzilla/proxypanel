@@ -249,7 +249,7 @@
 <div class="row" style="margin: 0 auto">
 	<div class="col-md-3"></div>
 	<div class="col-md-3">
-		<div class="card card-pricing custom-card" style="border: 1px solid #8760fb">
+		<div class="card card-pricing custom-card" style="border: 3px solid #8760fb">
 			<div class="bg-transparent border-0">
 				<div class="pricing-title">Monthly</div>
 				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">175</span></h1>
