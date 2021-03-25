@@ -62,7 +62,7 @@
 				<div class="row">
 					<div class="col-md-6">
 					</div>
-					<div class="col-md-6 text-right">
+					<div class="col-md-6 text-right my-2">
 						@if(session('id'))
 							<button class="modal-effect btn ripple btn-primary" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
 								Buy
@@ -192,6 +192,197 @@
 </div>
 <!-- End Row -->
 
+<div class="row my-5">
+	<div class="col-md-12">
+		<h1 class="text-center">Locations</h1>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Denver</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Los Angeles</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Dallas</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">New York</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Atlanta</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Seattle</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Orlando</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Philadelphia</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Portland</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Helena</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Chicago</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Birmingham</button>
+	</div>
+	<div class="col-md-6 text-right my-2">
+		<button class="btn btn-primary" style="width: 200px">Cleveland</button>
+	</div>
+	<div class="col-md-6 text-left my-2">
+		<button class="btn btn-primary" style="width: 200px">Pensacola</button>
+	</div>
+</div>
+
+<div class="row my-5">
+	<div class="col-md-12">
+		<h1 class="text-center">Pricing</h1>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="card card-pricing custom-card">
+			<div class="bg-transparent border-0">
+				<div class="pricing-title">Monthly</div>
+				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">175</span></h1>
+			</div>
+			<hr><br>
+			<div class="card-body pt-0 text-center">
+				<ul class="list-unstyled mb-4">
+					<li>Multi location</li>
+					<li>Monthly</li>
+				</ul>
+				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="card card-pricing2 custom-card">
+			<div class="bg-transparent border-0">
+				<div class="pricing-title text-primary">Weekly</div>
+				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">75</span></h1>
+			</div>
+			<hr><br>
+			<div class="card-body pt-0 text-center">
+				<ul class="list-unstyled mb-4">
+					<li>Multi location</li>
+					<li>Weekly</li>
+				</ul>
+				<a href="javascript:void(0)" class="btn ripple btn-primary mb-2">Order Now</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="card card-pricing3 custom-card">
+			<div class="bg-transparent border-0">
+				<div class="pricing-title">Daily</div>
+				<h1 class="h1 font-weight-normal  mb-0" data-pricing-value="30">$<span class="price">20</span></h1>
+			</div>
+			<hr><br>
+			<div class="card-body pt-0 text-center">
+				<ul class="list-unstyled mb-4">
+					<li>Multi location</li>
+					<li>Daily</li>
+				</ul>
+				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="card card-pricing4 custom-card">
+			<div class="bg-transparent border-0">
+				<div class="pricing-title">One hour</div>
+				<h1 class="h1 font-weight-normal mb-0" data-pricing-value="30">$<span class="price">10</span></h1>
+			</div>
+			<hr><br>
+			<div class="card-body pt-0 text-center">
+				<ul class="list-unstyled mb-4">
+					<li>Multi location</li>
+					<li>One hour</li>
+				</ul>
+				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row my-5">
+	<div class="col-md-12">
+		<h1 class="text-center">Faqs</h1>
+	</div>
+	<div class="col-sm-12 col-md-12">
+		<div class="card custom-card">
+			<div class="card-body">
+				<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
+					<div class="card">
+						<div class="card-header" id="headingOne" role="tab">
+							<a aria-controls="collapseOne" aria-expanded="true" data-toggle="collapse" href="#collapseOne">1.How To Insert All The Plugins?</a>
+						</div>
+						<div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingTwo" role="tab">
+							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo">2.How Can I contact?</a>
+						</div>
+						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordion" id="collapseTwo" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingThree" role="tab">
+							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree">3.Can I use this Plugins in Another Template?</a>
+						</div>
+						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordion" id="collapseThree" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div><!-- collapse -->
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingfour" role="tab">
+							<a aria-controls="collapsefour" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefour">4.How Can I Add another page in Template?</a>
+						</div>
+						<div aria-labelledby="headingfour" class="collapse" data-parent="#accordion" id="collapsefour" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div><!-- collapse -->
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingfive" role="tab">
+							<a aria-controls="collapsefive" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefive">5.It is Easy to Customizable?</a>
+						</div>
+						<div aria-labelledby="headingfive" class="collapse" data-parent="#accordion" id="collapsefive" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div><!-- collapse -->
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingsix" role="tab">
+							<a aria-controls="collapsesix" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsesix">6.How can I download This template?</a>
+						</div>
+						<div aria-labelledby="headingsix" class="collapse" data-parent="#accordion" id="collapsesix" role="tabpanel">
+							<div class="card-body">
+								I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences
+							</div>
+						</div><!-- collapse -->
+					</div>
+				</div><!-- accordion -->
+			</div>
+		</div>
+	</div>
+</div>
 <!-- Modal effects -->
 <div class="modal" id="modaldemo10">
 	<div class="modal-dialog modal-dialog-centered" role="document">
