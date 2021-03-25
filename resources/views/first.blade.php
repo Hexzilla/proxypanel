@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('css')
 <!---Sweet-Alert css-->
 <link href="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
@@ -22,24 +22,49 @@
 	#randForm {
 		display: none;
 	}
+	.myNav {
+		padding: 20px 40px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: white;
+		position: fixed;
+		width: 100%;
+		top: 0;
+		z-index: 100;
+		box-shadow: 0 1px 4px 0 rgb(0 0 0 / 30%);
+	}
+	.myNav a {
+		font-size: 20px;
+		font-weight:bold;
+	 }
+	 .myNav div {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	 }
+	 .myNav div a {
+		font-size: 14px;
+		font-weight: normal;
+	 }
 </style>
 @endsection
-@section('page-header')
-<!-- Page Header -->
-<div class="page-header">
+@section('content')
+<div class="myNav">
+	<a href="javascript:void(0)">
+		Proxy Panel
+	</a>
 	<div>
-	</div>
-	<div class="btn btn-list">
-		<a class="btn ripple btn-info" href="javascript:void(0)" data-target="#modaldemo2" data-toggle="modal">
-			<i class="fe fe-help-circle"></i> Help
-		</a>
+	 	@if($userId)
+	 		<a class="btn btn-success" href="{{url('/dashboard')}}">dashboard</a>
+		@else
+			<a class="btn btn-success mr-2" href="{{url('/signin')}}">Login</a>
+			<a class="btn btn-secondary" href="{{url('/signup')}}">Register</a>
+		@endif
 	</div>
 </div>
-<!-- End Page Header -->
-@endsection
-@section('content')
 
-<div class="container mb-5" style="max-width: 1000px; margin: 0 auto;">
+<div class="container mb-5" style="max-width: 1000px; margin: 130px auto 0;">
 	<div class="row">
 		<div class="col-lg-6">
 			<h1>4G Mobile Proxy</h1>
@@ -51,139 +76,143 @@
 	</div>
 </div>
 
-<!-- Row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card custom-card">
-			<div class="card-body">
-				<h2>4G proxy service</h2>
-				<span style="font-size: 1rem;font-weight: 300;">Mobile proxies will be locked by ip, username and password, you will get personal IP:PORT. Max dedicated 4G proxy internet connection speed up to 60mbps. Some mobile proxy has unlimited internet data. Anonymous, unique and clear mobile proxy. Get up to 40000 Mobile IP month / per connection. SOCKS5 and mobile ip IPv4. All our proxy has auto renewal option. Mobile proxy more reliable than standard proxy. Simple switch between http, https, socks5</span>
-				<br><br>
-				<div class="row">
-					<div class="col-md-6">
-					</div>
-					<div class="col-md-6 text-right">
-						<button class="modal-effect btn ripple btn-primary" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
-							Buy
-						</button>
-					</div>
-					<!-- <p class="text-muted card-sub-title">To enable a hover state on table rows.</p> -->
-				</div><br>
-				<div class="table-responsive">
-					<table class="table table-hover mg-b-0">
-						<thead>
-							<tr>
-								<th width="20%" class="text-center">City</th>
-								<th width="7%" class="text-center">Rotation</th>
-								<th width="7%" class="text-center">Change IP</th>
-								<th width="7%" class="text-center">Ip Auth</th>
-								<th width="25%" class="text-center">Host</th>
-								<th width="7%" class="text-center">Name</th>
-								<th width="10%" class="text-center">Password</th>
-								<th width="10%" class="text-center">Next Billing</th>
-								<th width="10%" class="text-center">Status</th>
-								<th width="7%" class="text-center"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@if (count($ports) > 0)
-								@foreach ($ports as $p) 
-									<tr>
-										<td class="text-center" style="vertical-align: middle">
-											<input type="hidden" value="{{$p->id}}">
-											<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
-												@if ($p->city == '*')
-													Select Location
-												@else
-													{{$p->city}}
-												@endif
-											</button><br>
-											<input type="hidden" value="{{$p->lastchangecitydate}}">
-											<input type="hidden" value="{{$p->id}}">
-											<button class="btn ripple btn-primary btn-sm mb-1 randBtn" city="{{$p->city}}">
-												Random Location
-											</button>
-											<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button">
-												<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
-											</button>
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											@if (!$p->rotation)
-												No<br>Rotations
-											@else
-												{{$p->rotation}}
-											@endif
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											<input type="hidden" value="{{$p->lastchangeipdate}}">
-											<input type="hidden" value="{{$p->id}}">
-											<input type="hidden" value="{{$p->username.'.'.$p->groupname}}">
-											<button class="btn btn-success btn-icon changeIPBtn" style=" margin: auto; border-radius: 20px" title="Change IP">
-												<i class="fa fa-sync"></i>
-											</button>
-											<div class="spinner-border text-success" role="status" style="display: none">
-												<span class="sr-only">Loading...</span>
-											</div>
-										</td>
-										<td class="text-center" style="vertical-align: middle;">
-											<input type="hidden" value="{{$p->fwdauthips}}">
-											<input type="hidden" value="{{$p->id}}">
-											<a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
-												IPv4 List
-											</a>
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											<div class="hostBtn1">http: 66.42.95.53:8080</div>
-											<div class="hostBtn1">socks5: 66.42.95.53:9090</div>
-											@if($p->fwdauthips)
-												<div class="hostBtn2">socks5: 66.42.95.53:10072</div>
-											@endif
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											{{$p->username}}.{{$p->groupname}}
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											{{$p->pass}}
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											{{$p->paidtill}}<br>
-											@if($p->paidtill <= $current)
-												<input type="hidden" value="{{$p->id}}">
-												<a class="modal-effect btn btn-success btn-sm payBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo10">
-													Renew
-												</a>
-											@endif
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											@if($p->paidtill > $current)
-												<i class="fa fa-check text-success"></i>
-											@else
-												<i class="fa fa-times text-danger"></i>
-											@endif
-										</td>
-										<td class="text-center" style="vertical-align: middle">
-											@if($p->paidtill <= $current)
-												<input type="hidden" value="{{$p->id}}">
-												<button class="btn ripple btn-danger btn-icon deleteBtn" title="delete">
-													<i class="fa fa-trash"></i>
-												</button>
-											@endif
-										</td>
-									</tr>
-								@endforeach
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card custom-card">
+				<div class="card-body">
+					<h2>4G proxy service</h2>
+					<span style="font-size: 1rem;font-weight: 300;">Mobile proxies will be locked by ip, username and password, you will get personal IP:PORT. Max dedicated 4G proxy internet connection speed up to 60mbps. Some mobile proxy has unlimited internet data. Anonymous, unique and clear mobile proxy. Get up to 40000 Mobile IP month / per connection. SOCKS5 and mobile ip IPv4. All our proxy has auto renewal option. Mobile proxy more reliable than standard proxy. Simple switch between http, https, socks5</span>
+					<br><br>
+					<div class="row">
+						<div class="col-md-6">
+						</div>
+						<div class="col-md-6 text-right">
+	 						@if($userId)
+								<button class="modal-effect btn ripple btn-primary" data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">
+									Buy
+								</button>
 							@else
-								<tr>
-									<td colspan="20" class="no-data">No data</td>
-								</tr>
+								<a class="btn btn-primary ripple" href="{{url('/signin')}}">Buy</a>
 							@endif
-						</tbody>
-					</table>
+						</div>
+						<!-- <p class="text-muted card-sub-title">To enable a hover state on table rows.</p> -->
+					</div><br>
+					<div class="table-responsive">
+						<table class="table table-hover mg-b-0">
+							<thead>
+								<tr>
+									<th width="20%" class="text-center">City</th>
+									<th width="7%" class="text-center">Rotation</th>
+									<th width="7%" class="text-center">Change IP</th>
+									<th width="7%" class="text-center">Ip Auth</th>
+									<th width="25%" class="text-center">Host</th>
+									<th width="7%" class="text-center">Name</th>
+									<th width="10%" class="text-center">Password</th>
+									<th width="10%" class="text-center">Next Billing</th>
+									<th width="10%" class="text-center">Status</th>
+									<th width="7%" class="text-center"></th>
+								</tr>
+							</thead>
+							<tbody>
+								@if (count($ports) > 0)
+									@foreach ($ports as $p) 
+										<tr>
+											<td class="text-center" style="vertical-align: middle">
+												<input type="hidden" value="{{$p->id}}">
+												<button class="btn ripple btn-primary btn-sm mb-1 locationBtn">
+													@if ($p->city == '*')
+														Select Location
+													@else
+														{{$p->city}}
+													@endif
+												</button><br>
+												<input type="hidden" value="{{$p->lastchangecitydate}}">
+												<input type="hidden" value="{{$p->id}}">
+												<button class="btn ripple btn-primary btn-sm mb-1 randBtn" city="{{$p->city}}">
+													Random Location
+												</button>
+												<button class="btn ripple btn-primary btn-sm mb-1" id="loadingBtn1" disabled type="button">
+													<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+												</button>
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												@if (!$p->rotation)
+													No<br>Rotations
+												@else
+													{{$p->rotation}}
+												@endif
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												<input type="hidden" value="{{$p->lastchangeipdate}}">
+												<input type="hidden" value="{{$p->id}}">
+												<input type="hidden" value="{{$p->username.'.'.$p->groupname}}">
+												<button class="btn btn-success btn-icon changeIPBtn" style=" margin: auto; border-radius: 20px" title="Change IP">
+													<i class="fa fa-sync"></i>
+												</button>
+												<div class="spinner-border text-success" role="status" style="display: none">
+													<span class="sr-only">Loading...</span>
+												</div>
+											</td>
+											<td class="text-center" style="vertical-align: middle;">
+												<input type="hidden" value="{{$p->fwdauthips}}">
+												<input type="hidden" value="{{$p->id}}">
+												<a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
+													IPv4 List
+												</a>
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												<div class="hostBtn1">http: 66.42.95.53:8080</div>
+												<div class="hostBtn1">socks5: 66.42.95.53:9090</div>
+												@if($p->fwdauthips)
+													<div class="hostBtn2">socks5: 66.42.95.53:10072</div>
+												@endif
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												{{$p->username}}.{{$p->groupname}}
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												{{$p->pass}}
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												{{$p->paidtill}}<br>
+												@if($p->paidtill <= $current)
+													<input type="hidden" value="{{$p->id}}">
+													<a class="modal-effect btn btn-success btn-sm payBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo10">
+														Renew
+													</a>
+												@endif
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												@if($p->paidtill > $current)
+													<i class="fa fa-check text-success"></i>
+												@else
+													<i class="fa fa-times text-danger"></i>
+												@endif
+											</td>
+											<td class="text-center" style="vertical-align: middle">
+												@if($p->paidtill <= $current)
+													<input type="hidden" value="{{$p->id}}">
+													<button class="btn ripple btn-danger btn-icon deleteBtn" title="delete">
+														<i class="fa fa-trash"></i>
+													</button>
+												@endif
+											</td>
+										</tr>
+									@endforeach
+								@else
+									<tr>
+										<td colspan="20" class="no-data">No data</td>
+									</tr>
+								@endif
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- End Row -->
 
 <!-- Modal effects -->
 <div class="modal" id="modaldemo10">

@@ -3,7 +3,7 @@
 		<link rel="icon" href="{{ URL::asset('assets/img/brand/favicon.ico')}}" type="image/x-icon"/>
 
 		<!-- Title -->
-		<title>ProxyPanel -  Dashboard</title>
+		<title>ProxyPanel</title>
 
 		<!---Fontawesome css-->
 		<link href="{{ URL::asset('assets/plugins/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
