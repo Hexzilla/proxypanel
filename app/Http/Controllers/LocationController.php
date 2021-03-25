@@ -24,6 +24,18 @@ class LocationController extends Controller
         return view('location', compact('locations'));
     }   
 
+    function showLocations(Request $request) {
+        $res = Http::get('http://status.proxypanel.io/statsapi.php');
+        $locations = array();
+        foreach ($res->json() as $r) {
+            $temp['location'] = $r[0];
+            $temp['load'] = (int)(($r[1] + $r[2] + $r[3]) * 100 / $r[4]);
+
+            array_push($locations, $temp);
+        }
+        return view('all-locations', compact('locations'));
+    }
+
     function allLocation(Request $request) {
         $id = $request->id;
         
@@ -40,6 +52,63 @@ class LocationController extends Controller
         }
         $city = $port->city;
         return view('location_', compact('locations', 'id', 'last', 'city'));
+    }
+
+    function refreshAllLocation(Request $request) {
+        $res = Http::get('http://status.proxypanel.io/statsapi.php');
+        $locations = array();
+        foreach ($res->json() as $r) {
+            $temp['location'] = $r[0];
+            $temp['load'] = (int)(($r[1] + $r[2] + $r[3]) * 100 / $r[4]);
+
+            array_push($locations, $temp);
+        }
+        
+        $output = "";
+        if (count($locations)) {
+            foreach ($locations as $m) {
+                $output .=  "<tr>
+                    <td class='text-center' style='vertical-align: middle'>
+                        {$m['location']}
+                    </td>
+                    <td class='text-center' style='vertical-align: middle'>
+                        <input type='hidden' value={$m['location']}>";
+                    
+                    if ($m['load'] <= 80 ) {
+                        $output .="<button class='btn btn-sm ripple btn-success mb-1 connectBtn' >Connect</button>";
+                    }
+                    elseif ($m['load'] < 100) {
+                        $output .= "<button class='btn btn-sm ripple btn-warning mb-1 connectBtn' style='color: white' >Connect</button>";
+                    }                            
+                    else {
+                        $output .= "<button class='btn btn-sm ripple btn-danger mb-1 connectBtn' >Connect</button>";
+                    }
+                    $output .= "</td>
+                    <td class='text-center' style='vertical-align: middle'>
+                        <div class='progress mg-b-10'>";
+                        if ($m['load'] <= 80 ) {
+                            $output .= "<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='60' class='progress-bar progress-bar-lg bg-success ht-20' role='progressbar' style='width: {$m['load']}%'>
+                                {$m['load']}
+                            </div>";
+                        } elseif ($m['load'] < 100)
+                            $output .= "<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='60' class='progress-bar progress-bar-lg bg-warning ht-20' role='progressbar' style='width: {$m['load']}%'>
+                                {$m['load']}
+                            </div>";
+                        else {
+                            $output .= "<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='60' class='progress-bar progress-bar-lg bg-danger ht-20' role='progressbar' style='width: {$m['load']}%'>
+                                {$m['load']}
+                            </div>";
+                        }
+                    $output .= "</div>
+                    </td>
+                </tr>";
+            }
+        } else {
+            $output = "<tr>
+                    <td colspan='20' class='text-center'>No data</td>
+                </tr>";
+        }
+        echo $output;
     }
 
     function refreshLocation(Request $request) {

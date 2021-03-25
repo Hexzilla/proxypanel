@@ -28,6 +28,9 @@ Route::post('/signup', 'AuthController@signup')->name('signup');
 Route::get('/signin', 'AuthController@signin');
 Route::get('/signup', 'AuthController@signupView');
 
+Route::get('/showLocations', 'LocationController@showLocations');
+Route::post('/refreshAllLocation', 'LocationController@refreshAllLocation')->name('refreshAllLocation');
+
 Route::group(['middleware' => ['check.auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
 

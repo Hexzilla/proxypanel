@@ -22,6 +22,9 @@
 	#randForm {
 		display: none;
 	}
+	.locBtn {
+		width: 200px;
+	}
 </style>
 @endsection
 @section('page-header')
@@ -197,54 +200,55 @@
 		<h1 class="text-center">Locations</h1>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Denver</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Denver</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Los Angeles</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Los Angeles</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Dallas</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Dallas</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">New York</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">New York</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Atlanta</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Atlanta</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Seattle</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Seattle</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Orlando</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Orlando</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Philadelphia</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Philadelphia</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Portland</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Portland</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Helena</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Helena</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Chicago</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Chicago</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Birmingham</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Birmingham</a>
 	</div>
 	<div class="col-md-6 text-right my-2">
-		<button class="btn btn-primary" style="width: 200px">Cleveland</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Cleveland</a>
 	</div>
 	<div class="col-md-6 text-left my-2">
-		<button class="btn btn-primary" style="width: 200px">Pensacola</button>
+		<a class="btn btn-primary locBtn" href="{{url('/showLocations')}}">Pensacola</a>
 	</div>
 </div>
 
-<div class="row my-5">
-	<div class="col-md-12">
-		<h1 class="text-center">Pricing</h1>
-	</div>
-	<div class="col-lg-3 col-sm-6">
+<div class="mt-5">
+	<h1 class="text-center">Pricing</h1>
+</div>
+<div class="row" style="margin: 0 auto">
+	<div class="col-md-3"></div>
+	<div class="col-md-3">
 		<div class="card card-pricing custom-card">
 			<div class="bg-transparent border-0">
 				<div class="pricing-title">Monthly</div>
@@ -260,7 +264,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3 col-sm-6">
+	<div class="col-md-3">
 		<div class="card card-pricing2 custom-card">
 			<div class="bg-transparent border-0">
 				<div class="pricing-title text-primary">Weekly</div>
@@ -276,39 +280,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3 col-sm-6">
-		<div class="card card-pricing3 custom-card">
-			<div class="bg-transparent border-0">
-				<div class="pricing-title">Daily</div>
-				<h1 class="h1 font-weight-normal  mb-0" data-pricing-value="30">$<span class="price">20</span></h1>
-			</div>
-			<hr><br>
-			<div class="card-body pt-0 text-center">
-				<ul class="list-unstyled mb-4">
-					<li>Multi location</li>
-					<li>Daily</li>
-				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
-			</div>
-		</div>
-	</div>
-	<div class="col-lg-3 col-sm-6">
-		<div class="card card-pricing4 custom-card">
-			<div class="bg-transparent border-0">
-				<div class="pricing-title">One hour</div>
-				<h1 class="h1 font-weight-normal mb-0" data-pricing-value="30">$<span class="price">10</span></h1>
-			</div>
-			<hr><br>
-			<div class="card-body pt-0 text-center">
-				<ul class="list-unstyled mb-4">
-					<li>Multi location</li>
-					<li>One hour</li>
-				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
-			</div>
-		</div>
-	</div>
 </div>
+
 
 <div class="row my-5">
 	<div class="col-md-12">
@@ -395,8 +368,8 @@
 				<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
 				<label class="rdiobox"><input name="rdio" id="typeMonth" type="radio" value="monthly" checked> <span>Monthly | $175</span></label>
 				<label class="rdiobox"><input name="rdio" id="typeWeek" type="radio" value="weekly"> <span>Weekly | $75</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | $20</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | $10</span></label>
+				<!-- <label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | $20</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | $10</span></label> -->
 				<label class="rdiobox"><input name="rdio" id="typeTest" type="radio" value="test"> <span>test(weekly) | $0.01</span></label>
 			</div>
 			<div class="modal-footer">

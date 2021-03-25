@@ -197,8 +197,8 @@
 				<h6 class="font-weight-bold">Order # <span id="paySpan"></span></h6>
 				<label class="rdiobox"><input name="rdio" id="typeMonth" type="radio" value="monthly" checked> <span>Monthly | $175</span></label>
 				<label class="rdiobox"><input name="rdio" id="typeWeek" type="radio" value="weekly"> <span>Weekly | $75</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | $20</span></label>
-				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | $10</span></label>
+				<!-- <label class="rdiobox"><input name="rdio" id="typeDay" type="radio" value="daily"> <span>Daily | $20</span></label>
+				<label class="rdiobox"><input name="rdio" id="typeHour" type="radio" value="hour"> <span>One Hour | $10</span></label> -->
 				<label class="rdiobox"><input name="rdio" id="typeTest" type="radio" value="test"> <span>test(weekly) | $0.01</span></label>
 			</div>
 			<div class="modal-footer">
