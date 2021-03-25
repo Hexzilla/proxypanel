@@ -34,8 +34,8 @@ class HomeController extends Controller
         return view('home-dashboard', compact('ports', 'now', 'current'));
     }
 
-    public function login()
+    public function video()
     {
-        
+        return redirect('https://www.youtube.com/watch?v=GBQwqhmSueU');
     }
 }
