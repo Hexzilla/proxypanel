@@ -50,8 +50,8 @@
 											<button class="btn btn-sm ripple btn-success loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 											<button class="btn btn-sm ripple btn-success mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
 										@elseif ($m['load'] <= 80)
-											<button class="btn btn-sm ripple btn-secondary loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-											<button class="btn btn-sm ripple btn-secondary mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
+											<button class="btn btn-sm ripple btn-warning loadingBtn" style="color:white" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+											<button class="btn btn-sm ripple btn-warning mb-1 connectBtn" style="color:white" date="{{$last}}" city="{{$city}}">Connect</button>
 										@else
 											<button class="btn btn-sm ripple btn-danger loadingBtn" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
 											<button class="btn btn-sm ripple btn-danger mb-1 connectBtn" date="{{$last}}" city="{{$city}}">Connect</button>
@@ -67,7 +67,7 @@
 												{{$m['load']}}
 											</div>
 										@elseif ($m['load'] <= 80)
-											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-secondary ht-20" role="progressbar" style="width: {{$m['load']}}%">
+											<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-lg bg-warning ht-20" role="progressbar" style="width: {{$m['load']}}%">
 												{{$m['load']}}
 											</div>
 										@else
