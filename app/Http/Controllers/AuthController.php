@@ -21,6 +21,7 @@ class AuthController extends Controller
         $user->username = $request->name;
         $user->email = $request->email;
         $user->skype_id = $request->skype;
+        $user->telegram_id = $request->telegram;
         $user->password = self::make_password($request->password);
         $user->api_key = Str::random(32).'.'.Str::random(32);
         $user->save();

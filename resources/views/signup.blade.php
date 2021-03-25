@@ -19,7 +19,7 @@
 							<form data-parsley-validate="" method="post" action="{{route('signup')}}">
 								@csrf
 								<div class="form-group text-left">
-									<label class="form-label">Name <span class="tx-danger">*</span></label>
+									<label class="form-label">User Name <span class="tx-danger">*</span></label>
 									<input class="form-control" placeholder="" type="text" required="" maxlength="50" name="name" value="{{old('name')}}">
 								</div>
 								<div class="form-group text-left">
@@ -29,6 +29,10 @@
 								<div class="form-group text-left">
 									<label class="form-label">Skype</label>
 									<input class="form-control" placeholder="" type="text" maxlength="50" name="skype">
+								</div>
+								<div class="form-group text-left">
+									<label class="form-label">Telegram</label>
+									<input class="form-control" placeholder="" type="text" maxlength="50" name="telegram">
 								</div>
 								<div class="form-group text-left">
 									<label class="form-label">Password <span class="tx-danger">*</span></label>

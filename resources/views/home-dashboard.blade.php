@@ -25,6 +25,12 @@
 	.locBtn {
 		width: 200px;
 	}
+	.fa-thumbs-up {
+		font-size: 30px;
+		position: absolute;
+		left: 10px;
+		top: 10px;
+	}
 </style>
 @endsection
 @section('page-header')
@@ -249,9 +255,10 @@
 <div class="row" style="margin: 0 auto">
 	<div class="col-md-3"></div>
 	<div class="col-md-3">
-		<div class="card card-pricing custom-card" style="border: 3px solid #8760fb">
+		<div class="card card-pricing custom-card" style="border: 3px solid #8760fb; position: relative">
+			<i class="fa fa-thumbs-up text-success"></i>
 			<div class="bg-transparent border-0">
-				<div class="pricing-title">Monthly</div>
+				<div class="pricing-title text-primary">Monthly</div>
 				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">175</span></h1>
 			</div>
 			<hr><br>
@@ -260,14 +267,14 @@
 					<li>Multi location</li>
 					<li>Monthly</li>
 				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
+				<a href="javascript:void(0)" class="btn ripple btn-primary mb-2">Order Now</a>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-3">
-		<div class="card card-pricing2 custom-card" style="border: 1px solid #8760fb">
+		<div class="card card-pricing2 custom-card">
 			<div class="bg-transparent border-0">
-				<div class="pricing-title text-primary">Weekly</div>
+				<div class="pricing-title">Weekly</div>
 				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">75</span></h1>
 			</div>
 			<hr><br>
@@ -276,7 +283,7 @@
 					<li>Multi location</li>
 					<li>Weekly</li>
 				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-primary mb-2">Order Now</a>
+				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
 			</div>
 		</div>
 	</div>
