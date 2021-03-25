@@ -331,6 +331,9 @@
 			<div class="modal-body">
 				<p class="tx-16"><span class="text-primary">Skype:</span> live:support_56965</p>
 				<p class="tx-16"><span class="text-primary">Email:</span> support@proxypanel.io</p>
+				<p class="tx-16"><span class="text-primary">Video:</span> 
+					<a href="https://www.youtube.com/watch?v=GBQwqhmSueU" style="text-decoration: underline" target="_blank">Watch video</a>
+				</p>
 			</div>
 		</div>
 	</div>
