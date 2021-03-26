@@ -31,6 +31,51 @@
 		left: 10px;
 		top: 10px;
 	}
+
+	#accordion .card .card-header a {
+		background-color: white;
+		font-size: 1.2em;
+		line-height: 1.3;
+		font-weight: 600;
+	}
+
+	#accordion .card .card-header {
+		border: 0;
+	}
+
+	#accordion .card .card-body {
+		border: 0;
+	}
+
+	#accordion .card {
+		border-bottom: 1.5px solid rgba(159, 165, 169, 0.2);
+	}
+
+	.priceCard {
+		border: 1px solid rgba(159, 165, 169, 0.2);
+		border-radius: 1rem;
+		padding: 1rem;
+		box-shadow: rgb(0 25 40 / 10%) 0px 0px 0.1rem 0px, rgb(0 27 41 / 10%) 0px 0rem 0.3rem 0px;
+	}
+
+	.priceButton {
+		border: 2px solid;
+		border-radius: 14px;
+		height: 48px;
+	}
+	.priceType span:nth-child(2) {
+		color: rgb(159, 165, 169);
+		font-size: 1.5em;
+	}
+	.priceType span:nth-child(1) {
+		font-size: 2rem;
+		line-height: 1.22;
+		color: rgb(64, 64, 64);
+		font-weight: 600;
+	}
+	.activeColor {
+		color: rgb(255, 144, 0);
+	}
 </style>
 @endsection
 @section('page-header')
@@ -253,50 +298,80 @@
 	<h1 class="text-center">Pricing</h1>
 </div>
 <div class="row" style="margin: 0 auto">
-	<div class="col-md-3"></div>
-	<div class="col-md-3">
-		<div class="card card-pricing custom-card" style="border: 3px solid #8760fb; position: relative">
-			<i class="fa fa-thumbs-up text-success"></i>
-			<div class="bg-transparent border-0">
-				<div class="pricing-title text-primary">Monthly</div>
-				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">175</span></h1>
-			</div>
-			<hr><br>
-			<div class="card-body pt-0 text-center">
-				<ul class="list-unstyled mb-4">
-					<li>Multi location</li>
-					<li>Monthly</li>
-				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-primary mb-2">Order Now</a>
+	<div class="col-md-2"></div>
+	<div class="col-md-4">
+		<div class="card priceCard">
+			<div class="card-body">
+				<h3 class="activeColor">Monthly</h3>
+				<p class="font-weight-bold">The easiest way to get started with Apify. Forever free, but with limits.</p>
+				<p class="priceType">
+					<span>$175</span>
+					<span class="ml-1"> / Month</span>
+				</p>
+				<p>
+					<i class="fa fa-check mr-3 activeColor"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3 activeColor"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3 activeColor"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3 activeColor"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3 activeColor"></i>
+					$5 platform usage credits
+				</p>
+				<button class="btn btn-block ripple priceButton mt-3 activeColor">Order Now</button>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="card card-pricing2 custom-card">
-			<div class="bg-transparent border-0">
-				<div class="pricing-title">Weekly</div>
-				<h1 class="h1 font-weight-normal text-center mb-0" data-pricing-value="30">$<span class="price">75</span></h1>
-			</div>
-			<hr><br>
-			<div class="card-body pt-0 text-center">
-				<ul class="list-unstyled mb-4">
-					<li>Multi location</li>
-					<li>Weekly</li>
-				</ul>
-				<a href="javascript:void(0)" class="btn ripple btn-light mb-2">Order Now</a>
+	<div class="col-md-4">
+		<div class="card priceCard">
+			<div class="card-body">
+				<h3>Weekly</h3>
+				<p class="font-weight-bold">The easiest way to get started with Apify. Forever free, but with limits.</p>
+				<p class="priceType">
+					<span>$75</span>
+					<span class="ml-1"> / Week</span>
+				</p>
+				<p>
+					<i class="fa fa-check mr-3"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3"></i>
+					$5 platform usage credits
+				</p>
+				<p>
+					<i class="fa fa-check mr-3"></i>
+					$5 platform usage credits
+				</p>
+				<button class="btn btn-block ripple priceButton mt-3">Order Now</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <div class="row my-5">
-	<div class="col-md-12">
-		<h1 class="text-center">Faqs</h1>
-	</div>
 	<div class="col-sm-12 col-md-12">
 		<div class="card custom-card">
 			<div class="card-body">
+				<h1 class="text-center">Frequently asked questions</h1>
 				<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
 					<div class="card">
 						<div class="card-header" id="headingOne" role="tab">
