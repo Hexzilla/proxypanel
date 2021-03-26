@@ -37,6 +37,6 @@ class HomeController extends Controller
     public function video()
     {
         sleep(2);
-        return redirect('https://www.youtube.com/watch?v=GBQwqhmSueU');
+        return redirect('https://www.youtube.com/watch?v=5ujP9zrYiV4');
     }
 }

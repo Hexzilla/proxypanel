@@ -37,6 +37,7 @@
 		font-size: 1.2em;
 		line-height: 1.3;
 		font-weight: 600;
+		text-align: center;
 	}
 
 	#accordion .card .card-header {
@@ -378,6 +379,7 @@
 		<div class="card custom-card">
 			<div class="card-body">
 				<h1 class="text-center">Frequently asked questions</h1>
+				<br>
 				<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
 					<div class="card">
 						<div class="card-header" id="headingOne" role="tab">
