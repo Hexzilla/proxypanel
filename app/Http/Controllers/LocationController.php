@@ -137,11 +137,11 @@ class LocationController extends Controller
                     <td class='text-center' style='vertical-align: middle'>
                         <input type='hidden' value={$m['location']}>";
                     
-                    if ($m['load'] <= 50 ) {
+                    if ($m['load'] <= 80 ) {
                         $output .="<button class='btn btn-sm ripple btn-success loadingBtn' disabled type='button'><span aria-hidden='true' class='spinner-border spinner-border-sm' role='status'></span> Saving...</button>
                         <button class='btn btn-sm ripple btn-success mb-1 connectBtn' date='{$last}' city='{$city}'>Connect</button>";
                     }
-                    elseif ($m['load'] <= 80) {
+                    elseif ($m['load'] < 100) {
                         $output .= "<button class='btn btn-sm ripple btn-warning loadingBtn' style='color: white' disabled type='button'><span aria-hidden='true' class='spinner-border spinner-border-sm' role='status'></span> Saving...</button>
                         <button class='btn btn-sm ripple btn-warning mb-1 connectBtn' style='color: white' date='{$last}' city='{$city}'>Connect</button>";
                     }                            
@@ -152,11 +152,11 @@ class LocationController extends Controller
                     $output .= "</td>
                     <td class='text-center' style='vertical-align: middle'>
                         <div class='progress mg-b-10'>";
-                        if ($m['load'] <= 50 ) {
+                        if ($m['load'] <= 80 ) {
                             $output .= "<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='60' class='progress-bar progress-bar-lg bg-success ht-20' role='progressbar' style='width: {$m['load']}%'>
                                 {$m['load']}
                             </div>";
-                        } elseif ($m['load'] <= 80)
+                        } elseif ($m['load'] < 100)
                             $output .= "<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='60' class='progress-bar progress-bar-lg bg-warning ht-20' role='progressbar' style='width: {$m['load']}%'>
                                 {$m['load']}
                             </div>";
