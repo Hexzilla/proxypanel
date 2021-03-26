@@ -13,10 +13,7 @@
 <!-- Page Header -->
 <div class="page-header">
 	<div>
-		<h2 class="main-content-title tx-20 mg-b-5">Manage proxy locations</h2>
-		<p class="text-muted card-sub-title">Choose a city to connect to.<br>
-		Location Load means how full a location is.<br>
-		For example, if there is are 100 4G modems in Los Angels, and the load shows 44, that means there are 44 modems in use and 66 available.</p>
+		<h2 class="main-content-title tx-20 mg-b-5">Proxy locations</h2>
 	</div>
 </div>
 <!-- End Page Header -->
