@@ -796,6 +796,10 @@
 			$("#ipAuthForm").submit()
 		})
 
+		$("#accordion i").click(function(e) {
+			return false;
+		})
+
 		$(".collapseCardHeader").click(function() {
 			const aTag = $(this).children().eq(0)
 			const iTag = $(this).children().eq(1)
