@@ -47,7 +47,7 @@
 
 	#accordion .card .card-header i {
 		position: absolute;
-		font-size: 15px;
+		font-size: 17px;
 		top: 15px;
     	right: 17px;
 	}
@@ -392,7 +392,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingOne" role="tab">
 							<a aria-controls="collapseOne" aria-expanded="true" data-toggle="collapse" href="#collapseOne">1.How To Insert All The Plugins?</a>
-							<i class="fa fa-minus"></i>
+							<i class="fa fa-minus plusIcon1"></i>
 						</div>
 						<div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
 							<div class="card-body">
@@ -403,7 +403,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingTwo" role="tab">
 							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo">2.How Can I contact?</a>
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-plus plusIcon2"></i>
 						</div>
 						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordion" id="collapseTwo" role="tabpanel">
 							<div class="card-body">
@@ -414,7 +414,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingThree" role="tab">
 							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree">3.Can I use this Plugins in Another Template?</a>
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-plus plusIcon3"></i>
 						</div>
 						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordion" id="collapseThree" role="tabpanel">
 							<div class="card-body">
@@ -425,7 +425,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingfour" role="tab">
 							<a aria-controls="collapsefour" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefour">4.How Can I Add another page in Template?</a>
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-plus plusIcon4"></i>
 						</div>
 						<div aria-labelledby="headingfour" class="collapse" data-parent="#accordion" id="collapsefour" role="tabpanel">
 							<div class="card-body">
@@ -436,7 +436,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingfive" role="tab">
 							<a aria-controls="collapsefive" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefive">5.It is Easy to Customizable?</a>
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-plus plusIcon5"></i>
 						</div>
 						<div aria-labelledby="headingfive" class="collapse" data-parent="#accordion" id="collapsefive" role="tabpanel">
 							<div class="card-body">
@@ -447,7 +447,7 @@
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingsix" role="tab">
 							<a aria-controls="collapsesix" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsesix">6.How can I download This template?</a>
-							<i class="fa fa-plus"></i>
+							<i class="fa fa-plus plusIcon6"></i>
 						</div>
 						<div aria-labelledby="headingsix" class="collapse" data-parent="#accordion" id="collapsesix" role="tabpanel">
 							<div class="card-body">
@@ -801,9 +801,29 @@
 			const iTag = $(this).children().eq(1)
 			const expand = aTag.attr('aria-expanded')
 			if(expand == 'false') {
-				iTag.attr('class', 'fa fa-minus')
+				$(".plusIcon1").attr('class', 'fa fa-plus plusIcon1')
+				$(".plusIcon2").attr('class', 'fa fa-plus plusIcon2')
+				$(".plusIcon3").attr('class', 'fa fa-plus plusIcon3')
+				$(".plusIcon4").attr('class', 'fa fa-plus plusIcon4')
+				$(".plusIcon5").attr('class', 'fa fa-plus plusIcon5')
+				$(".plusIcon6").attr('class', 'fa fa-plus plusIcon6')
+
+				let aaa = iTag.attr('class')
+				const classes = aaa.split(' ')
+
+				iTag.attr('class', 'fa fa-minus ' + classes[2])
 			} else {
-				iTag.attr('class', 'fa fa-plus')
+				// $(".plusIcon1").attr('class', 'fa fa-minus plusIcon1')
+				// $(".plusIcon2").attr('class', 'fa fa-minus plusIcon2')
+				// $(".plusIcon3").attr('class', 'fa fa-minus plusIcon3')
+				// $(".plusIcon4").attr('class', 'fa fa-minus plusIcon4')
+				// $(".plusIcon5").attr('class', 'fa fa-minus plusIcon5')
+				// $(".plusIcon6").attr('class', 'fa fa-minus plusIcon6')
+
+				const aaa = iTag.attr('class')
+				const classes = aaa.split(' ');
+
+				iTag.attr('class', 'fa fa-plus ' + classes[2])
 			}
 		})
 	}) 
