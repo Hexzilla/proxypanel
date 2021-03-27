@@ -42,6 +42,14 @@
 
 	#accordion .card .card-header {
 		border: 0;
+		position: relative;
+	}
+
+	#accordion .card .card-header i {
+		position: absolute;
+		font-size: 15px;
+		top: 15px;
+    	right: 17px;
 	}
 
 	#accordion .card .card-body {
@@ -382,8 +390,9 @@
 				<br>
 				<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
 					<div class="card">
-						<div class="card-header" id="headingOne" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingOne" role="tab">
 							<a aria-controls="collapseOne" aria-expanded="true" data-toggle="collapse" href="#collapseOne">1.How To Insert All The Plugins?</a>
+							<i class="fa fa-minus"></i>
 						</div>
 						<div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
 							<div class="card-body">
@@ -392,8 +401,9 @@
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingTwo" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingTwo" role="tab">
 							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo">2.How Can I contact?</a>
+							<i class="fa fa-plus"></i>
 						</div>
 						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordion" id="collapseTwo" role="tabpanel">
 							<div class="card-body">
@@ -402,8 +412,9 @@
 						</div>
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingThree" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingThree" role="tab">
 							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree">3.Can I use this Plugins in Another Template?</a>
+							<i class="fa fa-plus"></i>
 						</div>
 						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordion" id="collapseThree" role="tabpanel">
 							<div class="card-body">
@@ -412,8 +423,9 @@
 						</div><!-- collapse -->
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingfour" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingfour" role="tab">
 							<a aria-controls="collapsefour" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefour">4.How Can I Add another page in Template?</a>
+							<i class="fa fa-plus"></i>
 						</div>
 						<div aria-labelledby="headingfour" class="collapse" data-parent="#accordion" id="collapsefour" role="tabpanel">
 							<div class="card-body">
@@ -422,8 +434,9 @@
 						</div><!-- collapse -->
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingfive" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingfive" role="tab">
 							<a aria-controls="collapsefive" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefive">5.It is Easy to Customizable?</a>
+							<i class="fa fa-plus"></i>
 						</div>
 						<div aria-labelledby="headingfive" class="collapse" data-parent="#accordion" id="collapsefive" role="tabpanel">
 							<div class="card-body">
@@ -432,8 +445,9 @@
 						</div><!-- collapse -->
 					</div>
 					<div class="card">
-						<div class="card-header" id="headingsix" role="tab">
+						<div class="card-header collapseCardHeader" count="0" id="headingsix" role="tab">
 							<a aria-controls="collapsesix" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsesix">6.How can I download This template?</a>
+							<i class="fa fa-plus"></i>
 						</div>
 						<div aria-labelledby="headingsix" class="collapse" data-parent="#accordion" id="collapsesix" role="tabpanel">
 							<div class="card-body">
@@ -780,6 +794,17 @@
 			$(this).hide()
 			$(this).next().show()
 			$("#ipAuthForm").submit()
+		})
+
+		$(".collapseCardHeader").click(function() {
+			const aTag = $(this).children().eq(0)
+			const iTag = $(this).children().eq(1)
+			const expand = aTag.attr('aria-expanded')
+			if(expand == 'false') {
+				iTag.attr('class', 'fa fa-minus')
+			} else {
+				iTag.attr('class', 'fa fa-plus')
+			}
 		})
 	}) 
 </script>
