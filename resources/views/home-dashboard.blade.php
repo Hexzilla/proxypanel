@@ -40,6 +40,16 @@
 		text-align: center;
 	}
 
+	#accordion .card .card-header .accordionActive:after {
+		content: "\002B";
+		float: right;
+	}
+
+	#accordion .card .card-header .accordionDeactive:after {
+		content: "\2212";
+		float: right;
+	}
+
 	#accordion .card .card-header {
 		border: 0;
 		position: relative;
@@ -391,8 +401,7 @@
 				<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingOne" role="tab">
-							<a aria-controls="collapseOne" aria-expanded="true" data-toggle="collapse" href="#collapseOne">1.How To Insert All The Plugins?</a>
-							<i class="fa fa-minus plusIcon1"></i>
+							<a class="accordionDeactive" aria-controls="collapseOne" aria-expanded="true" data-toggle="collapse" href="#collapseOne">1.How To Insert All The Plugins?</a>
 						</div>
 						<div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
 							<div class="card-body">
@@ -402,8 +411,7 @@
 					</div>
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingTwo" role="tab">
-							<a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo">2.How Can I contact?</a>
-							<i class="fa fa-plus plusIcon2"></i>
+							<a class="accordionActive" aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseTwo">2.How Can I contact?</a>
 						</div>
 						<div aria-labelledby="headingTwo" class="collapse" data-parent="#accordion" id="collapseTwo" role="tabpanel">
 							<div class="card-body">
@@ -413,8 +421,7 @@
 					</div>
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingThree" role="tab">
-							<a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree">3.Can I use this Plugins in Another Template?</a>
-							<i class="fa fa-plus plusIcon3"></i>
+							<a class="accordionActive" aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapseThree">3.Can I use this Plugins in Another Template?</a>
 						</div>
 						<div aria-labelledby="headingThree" class="collapse" data-parent="#accordion" id="collapseThree" role="tabpanel">
 							<div class="card-body">
@@ -424,8 +431,7 @@
 					</div>
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingfour" role="tab">
-							<a aria-controls="collapsefour" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefour">4.How Can I Add another page in Template?</a>
-							<i class="fa fa-plus plusIcon4"></i>
+							<a class="accordionActive" aria-controls="collapsefour" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefour">4.How Can I Add another page in Template?</a>
 						</div>
 						<div aria-labelledby="headingfour" class="collapse" data-parent="#accordion" id="collapsefour" role="tabpanel">
 							<div class="card-body">
@@ -435,8 +441,7 @@
 					</div>
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingfive" role="tab">
-							<a aria-controls="collapsefive" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefive">5.It is Easy to Customizable?</a>
-							<i class="fa fa-plus plusIcon5"></i>
+							<a class="accordionActive" aria-controls="collapsefive" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsefive">5.It is Easy to Customizable?</a>
 						</div>
 						<div aria-labelledby="headingfive" class="collapse" data-parent="#accordion" id="collapsefive" role="tabpanel">
 							<div class="card-body">
@@ -446,8 +451,7 @@
 					</div>
 					<div class="card">
 						<div class="card-header collapseCardHeader" count="0" id="headingsix" role="tab">
-							<a aria-controls="collapsesix" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsesix">6.How can I download This template?</a>
-							<i class="fa fa-plus plusIcon6"></i>
+							<a class="accordionActive" aria-controls="collapsesix" aria-expanded="false" class="collapsed" data-toggle="collapse" href="#collapsesix">6.How can I download This template?</a>
 						</div>
 						<div aria-labelledby="headingsix" class="collapse" data-parent="#accordion" id="collapsesix" role="tabpanel">
 							<div class="card-body">
@@ -796,38 +800,18 @@
 			$("#ipAuthForm").submit()
 		})
 
-		$("#accordion i").click(function(e) {
-			return false;
-		})
+		// $("#accordion i").click(function(e) {
+		// })
 
 		$(".collapseCardHeader").click(function() {
 			const aTag = $(this).children().eq(0)
-			const iTag = $(this).children().eq(1)
 			const expand = aTag.attr('aria-expanded')
 			if(expand == 'false') {
-				$(".plusIcon1").attr('class', 'fa fa-plus plusIcon1')
-				$(".plusIcon2").attr('class', 'fa fa-plus plusIcon2')
-				$(".plusIcon3").attr('class', 'fa fa-plus plusIcon3')
-				$(".plusIcon4").attr('class', 'fa fa-plus plusIcon4')
-				$(".plusIcon5").attr('class', 'fa fa-plus plusIcon5')
-				$(".plusIcon6").attr('class', 'fa fa-plus plusIcon6')
-
-				let aaa = iTag.attr('class')
-				const classes = aaa.split(' ')
-
-				iTag.attr('class', 'fa fa-minus ' + classes[2])
+				$(".collapseCardHeader a").attr('class', 'accordionActive')
+				aTag.attr('class', 'accordionDeactive')
 			} else {
-				// $(".plusIcon1").attr('class', 'fa fa-minus plusIcon1')
-				// $(".plusIcon2").attr('class', 'fa fa-minus plusIcon2')
-				// $(".plusIcon3").attr('class', 'fa fa-minus plusIcon3')
-				// $(".plusIcon4").attr('class', 'fa fa-minus plusIcon4')
-				// $(".plusIcon5").attr('class', 'fa fa-minus plusIcon5')
-				// $(".plusIcon6").attr('class', 'fa fa-minus plusIcon6')
-
-				const aaa = iTag.attr('class')
-				const classes = aaa.split(' ');
-
-				iTag.attr('class', 'fa fa-plus ' + classes[2])
+				// $(".collapseCardHeader a").attr('class', 'accordionActive')
+				aTag.attr('class', 'accordionActive')
 			}
 		})
 	}) 
