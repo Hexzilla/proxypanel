@@ -81,7 +81,7 @@
                         <li class="nav-item">
                             <?php $email = session('email')?>
                             @if (!$email)
-                                <a class="nav-link" href="{{url('signin')}}">
+                                <a class="nav-link" href="{{url('login')}}">
                                     Login
                                 </a>
                             @else

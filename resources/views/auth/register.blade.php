@@ -16,7 +16,7 @@
 					<div class="card custom-card">
 						<div class="card-body">
 							<h4 class="text-center">Signup to Your Account</h4>
-							<form data-parsley-validate="" method="post" action="{{route('signup')}}">
+							<form data-parsley-validate="" method="post" action="{{route('register')}}">
 								@csrf
 								<div class="form-group text-left">
 									<label class="form-label">Name <span class="tx-danger">*</span></label>
@@ -37,7 +37,7 @@
 								<button class="btn ripple btn-main-primary btn-block">Create Account</button>
 							</form>
 							<div class="mt-3 text-center">
-								<p class="mb-0">Already have an account? <a href="{{ url('/' . $page='signin') }}">Sign In</a></p>
+								<p class="mb-0">Already have an account? <a href="{{ url('/' . $page='login') }}">Sign In</a></p>
 							</div>
 						</div>
 					</div>

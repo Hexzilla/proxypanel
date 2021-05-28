@@ -8,7 +8,7 @@ use App\User;
 
 class AuthController extends Controller
 {
-    public function signup(Request $request) {
+    /*public function signup(Request $request) {
         //check
         $find = User::where('username', $request->name)->count();
         if ($find)
@@ -111,5 +111,5 @@ class AuthController extends Controller
             //login fail
             return 0;
         }
-    }
+    }*/
 }

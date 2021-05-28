@@ -36,7 +36,7 @@
 							</form>
 							<div class="mt-3 text-center">
 								<p class="mb-1"><a href="">Forgot password?</a></p>
-								<p class="mb-0">Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
+								<p class="mb-0">Don't have an account? <a href="{{ url('/' . $page='register') }}">Create an Account</a></p>
 							</div>
 						</div>
 					</div>
@@ -95,17 +95,32 @@
 			$.ajax({
 				type: 'POST',
 				url: "{{ url('/login') }}",
+                headers: { 
+                    Accept : "application/json; charset=utf-8",
+                },
 				data: {
 					email: email, password: password
 				},
 				success: function(result) {
-					if (result == 1) {
+					if (result && result.success) {
 						window.location = "{{ url('/dashboard')}}"
 					} else {
 						toastr.error("Please input correct information", "Not registered user")
 					}
 					hideLoading()
-				}
+				},
+                error: function(xhr, status, errorText) {
+                    response = xhr.responseJSON
+                    console.log('login-error', response, status, errorText)
+                    if (response.errors && response.errors.email) {
+                        toastr.error(response.errors.email)
+                    }
+                    else {
+                        toastr.error(response.message)
+                    }
+					hideLoading()
+                }
+                
 			});
 		})
 	});

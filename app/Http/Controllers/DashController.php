@@ -9,14 +9,26 @@ use DateInterval;
 
 class DashController extends Controller
 {
-    function dashboard() {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['verified']);
+    }
+
+    function dashboard()
+    {
         $ports = Port::where('username', session('username'))->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
         return view('dashboard', compact('ports', 'now', 'current'));
     }
     
-    function api() {
+    function api()
+    {
         return view('api');
     }
 }

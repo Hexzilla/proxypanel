@@ -58,8 +58,8 @@
 	 	@if($userId)
 	 		<a class="btn btn-success" href="{{url('/dashboard')}}">dashboard</a>
 		@else
-			<a class="btn btn-success mr-2" href="{{url('/signin')}}">Login</a>
-			<a class="btn btn-secondary" href="{{url('/signup')}}">Register</a>
+			<a class="btn btn-success mr-2" href="{{url('/login')}}">Login</a>
+			<a class="btn btn-secondary" href="{{url('/register')}}">Register</a>
 		@endif
 	</div>
 </div>

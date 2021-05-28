@@ -19,14 +19,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-Route::post('/login', 'AuthController@login')->name('login');
-Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::post('/signup', 'AuthController@signup')->name('signup');
+// Route::post('/login', 'AuthController@login')->name('login');
+// Route::get('/logout', 'AuthController@logout')->name('logout');
+// Route::post('/signup', 'AuthController@signup')->name('signup');
 
-Route::get('/signin', 'AuthController@signin');
-Route::get('/signup', 'AuthController@signupView');
+// Route::get('/signin', 'AuthController@signin')->name('signin');
+// Route::get('/signup', 'AuthController@signupView')->name('signup');
 
-Route::group(['middleware' => ['check.auth']], function () {
+// Route::get('email/verify', 'VerificationController@show')->name('verification.notice');
+// Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+// Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
+
+Auth::routes(['verify' => true]);
+
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
 
     Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');

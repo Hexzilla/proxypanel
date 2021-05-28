@@ -15,16 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('password', 128);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->dateTime('last_login')->useCurrent();
             $table->tinyInteger('is_superuser')->default('0');
-            $table->string('username', 150);
             $table->string('first_name', 150)->nullable();
             $table->string('last_name', 150)->nullable();
             $table->tinyInteger('is_staff')->nullable();
             $table->tinyInteger('is_active')->nullable();
             $table->dateTime('date_joined')->nullable();
-            $table->string('email', 254);
             $table->string('bio', 250)->nullable();
             $table->string('avatar', 250)->nullable();
             $table->string('skype_id', 250)->nullable();
@@ -32,11 +34,6 @@ class CreateUsersTable extends Migration
             $table->string('company', 250)->nullable();
             $table->string('phone', 250)->nullable();
             $table->string('api_key', 250)->nullable();
-            // $table->string('name');
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->rememberToken();
             $table->timestamps();
         });
     }
