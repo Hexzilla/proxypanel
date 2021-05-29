@@ -30,7 +30,7 @@
 						<div class="main-img-user"><img alt="avatar" src="{{URL::asset('assets/img/users/1.jpg')}}"></div>
 					</div>
 					<div class="item-user pro-user">
-						<!-- <h4 class="pro-user-username text-dark mt-2 mb-0">{{$userInfo->username}}</h4> -->
+						<!-- <h4 class="pro-user-username text-dark mt-2 mb-0">{{$userInfo->name}}</h4> -->
 						<!-- <p class="pro-user-desc text-muted mb-1">Web Designer</p> -->
 					</div>
 					<br>
@@ -39,7 +39,7 @@
 							<label class="mg-b-0">User Name *</label>
 						</div>
 						<div class="col-md-8 mg-t-5 mg-md-t-0">
-							<input class="form-control" placeholder="" type="text" value="{{$userInfo->username}}" id="userName" maxlength="50">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->name}}" id="userName" maxlength="50">
 						</div>
 					</div>
 					<div class="row row-xs align-items-center mg-b-10">
@@ -200,7 +200,7 @@
 					nextElement.hide()
 					
 					if (result == 1) {
-						toastr.success("Data is saved", "Success")
+						toastr.success("Profile has been saved successfully", "Success")
 					} else {
 						toastr.error("Something went wrong", "Error")
 					}
@@ -247,20 +247,30 @@
 				type: "POST",
 				url: "{{route('changePassword')}}",
 				data: {
-					current: current,
-					new: newP
+					current_password: current,
+					new_password: newP,
 				},
 				success: function(result) {
 					thisElement.show()
 					nextElement.hide()
-					if (result == -1) {
-						toastr.error("Current Password is not correct", "Error")
-					} else if (result == 1) {
-						toastr.success("Password is changed", "Success")
+					if (result && result.success) {
+                        toastr.success(result.message, "Success")
 					} else {
 						toastr.error("Something went wrong", "Error")
 					}
-				}
+				},
+                error: function(xhr, status, errorText) {
+                    response = xhr.responseJSON
+                    console.log('login-error', response, status, errorText)
+                    if (response.errors && response.errors.current_password) {
+                        toastr.error(response.errors.current_password)
+                    }
+                    else {
+                        toastr.error(response.message)
+                    }
+					thisElement.show()
+					nextElement.hide()
+                }
 			})
 		})
 	})

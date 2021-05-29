@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\User;
 
@@ -53,14 +54,14 @@ class AuthController extends Controller
         } else {
             echo '0';
         }
-    }
+    }*/
 
     public function changePassword(Request $request) {
         $current = $request->current;
         $new = $request->newP;
 
-        $userId = session('id');
-        $user = User::find($userId);
+        //$userId = session('id');
+        $user = Auth::user();
         $correct = self::verify_Password($user->password, $current);
         if ($correct) {
             $user->password = self::make_password($new);
@@ -75,7 +76,7 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request) {
+    /*public function logout(Request $request) {
         $request->session()->flush();
         return redirect('/');
     }

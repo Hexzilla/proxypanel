@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/profile', 'ProfileController@show');
     Route::post('/changeUser', 'ProfileController@changeUser')->name('changeUser');
-    Route::post('/changePassword', 'AuthController@changePassword')->name('changePassword');
+    Route::post('/changePassword', 'Auth\ChangePasswordController@store')->name('changePassword');
     // Route::get('/{page}', 'AdminController@index');
 });
 
