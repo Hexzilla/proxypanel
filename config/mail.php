@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mandrill'),
 
     /*
     |--------------------------------------------------------------------------
@@ -50,6 +50,10 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+        ],
+
+        'mandrill' => [
+            'secret' => env('MAILCHIMP_API_KEY'),
         ],
 
         'postmark' => [
