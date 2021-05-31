@@ -23,6 +23,7 @@ class ProfileController extends Controller
         $user->last_name = $request->lastName;
         $user->email = $request->email;
         $user->skype_id = $request->skype;
+        $user->telegram_id = $request->telegram;
         try {
             $user->save();
         } catch (Exception $e) {

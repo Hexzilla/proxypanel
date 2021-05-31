@@ -19,6 +19,6 @@ class CheckAuth
         if ($email)
             return $next($request);
         else
-            return redirect('/');
+            return redirect('/login');
     }
 }

@@ -30,7 +30,12 @@ Route::get('/', 'HomeController@index');
 // Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
 // Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
+
+Route::get('/youtube/video', 'HomeController@video');
+
+Route::get('/showLocations', 'LocationController@showLocations');
+Route::post('/refreshAllLocation', 'LocationController@refreshAllLocation')->name('refreshAllLocation');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');

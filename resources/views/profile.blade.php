@@ -74,6 +74,14 @@
 							<input class="form-control" placeholder="" type="text" value="{{$userInfo->skype_id}}" id="skype" maxlength="50">
 						</div>
 					</div>	
+					<div class="row row-xs align-items-center mg-b-10">
+						<div class="col-md-4">
+							<label class="mg-b-0">Telegram</label>
+						</div>
+						<div class="col-md-8 mg-t-5 mg-md-t-0">
+							<input class="form-control" placeholder="" type="text" value="{{$userInfo->telegram_id}}" id="telegram" maxlength="50">
+						</div>
+					</div>	
 				</div>
 				<div class="form-group row justify-content-end mb-10">
 					<div class="col-md-8 pl-md-2">
@@ -167,7 +175,7 @@
 			const lastName = $("#lastName").val()
 			const email = $("#email").val()
 			const skype = $("#skype").val()
-
+			const telegram = $("#telegram").val()
 			if (!userName) {
 				toastr.error("Please input username", "Error")
 				$("#userName").focus()
@@ -193,7 +201,7 @@
 				type: "POST",
 				url: "{{route('changeUser')}}",
 				data: {
-					userName: userName, firstName: firstName, lastName: lastName, email: email, skype: skype
+					userName: userName, firstName: firstName, lastName: lastName, email: email, skype: skype, telegram: telegram
 				},
 				success: function(result) {
 					thisElement.show()

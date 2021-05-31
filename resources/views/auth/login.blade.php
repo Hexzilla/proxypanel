@@ -52,10 +52,10 @@
 <script>
 	$(document).ready(function() {
 		$.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		})
 
 		$('#email').keypress(function (e) {
 			if(e.which ==13)
@@ -95,9 +95,9 @@
 			$.ajax({
 				type: 'POST',
 				url: "{{ url('/login') }}",
-                headers: { 
-                    Accept : "application/json; charset=utf-8",
-                },
+				headers: { 
+					Accept : "application/json; charset=utf-8",
+				},
 				data: {
 					email: email, password: password
 				},
@@ -109,18 +109,18 @@
 					}
 					hideLoading()
 				},
-                error: function(xhr, status, errorText) {
-                    response = xhr.responseJSON
-                    console.log('login-error', response, status, errorText)
-                    if (response.errors && response.errors.email) {
-                        toastr.error(response.errors.email)
-                    }
-                    else {
-                        toastr.error(response.message)
-                    }
+				error: function(xhr, status, errorText) {
+					response = xhr.responseJSON
+					console.log('login-error', response, status, errorText)
+					if (response.errors && response.errors.email) {
+						toastr.error(response.errors.email)
+					}
+					else {
+						toastr.error(response.message)
+					}
 					hideLoading()
-                }
-                
+				}
+				
 			});
 		})
 	});
