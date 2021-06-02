@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mandrillapp.com'),
+            'host' => env('MAIL_HOST', 'smtp.zoho.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 'vpnsolutionsincorporated@gmail.com'),
+            'password' => env('MAIL_PASSWORD', 'realm101'),
             'timeout' => null,
         ],
 
@@ -87,8 +87,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'vpnsolutionsincorporated@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'VPN Solutions Inc'),
     ],
 
     /*
@@ -111,3 +111,4 @@ return [
     ],
 
 ];
+
