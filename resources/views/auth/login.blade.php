@@ -35,7 +35,7 @@
 								<button class="btn ripple btn-main-primary btn-block" id="loadingButton" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Loading...</button>
 							</form>
 							<div class="mt-3 text-center">
-								<p class="mb-1"><a href="">Forgot password?</a></p>
+								<p class="mb-1"><a href="{{ route('password.request') }}">Forgot password?</a></p>
 								<p class="mb-0">Don't have an account? <a href="{{ url('/' . $page='register') }}">Create an Account</a></p>
 							</div>
 						</div>

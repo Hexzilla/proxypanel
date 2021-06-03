@@ -19,9 +19,9 @@ Route::get('/youtube/video', 'HomeController@video');
 Route::get('/showLocations', 'LocationController@showLocations');
 Route::post('/refreshAllLocation', 'LocationController@refreshAllLocation')->name('refreshAllLocation');
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false, 'reset' => true]);
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
 
     Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
