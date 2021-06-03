@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card text-center" style="margin: 14% auto;">
                 <div class="card-header">
-                    <img alt="Verify Email" class="text-center" style="width: 120px;" src="{{URL::asset('assets/img/pngs/verify_email.png')}}">
+                    <img alt="Verify Email" class="text-center" style="width: 120px;" src="{{URL::asset('assets/img/pngs/verify_email.jpg')}}">
                     <h2 class="mt-4">{{ __('Verify Your Email') }}</h2>
                 </div>
 

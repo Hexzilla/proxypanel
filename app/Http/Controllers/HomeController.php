@@ -22,12 +22,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $userId = session('id');
-        // $ports = Port::where('username', session('username'))->get();
-        // $now = new DateTime();
-        // $current = $now->format('Y-m-d H:i:s');
-        // return view('first', compact('ports', 'now', 'current', 'userId'));
-        
         $ports = Port::where('username', session('username'))->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
