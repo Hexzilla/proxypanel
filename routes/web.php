@@ -30,7 +30,7 @@ Route::get('/', 'HomeController@index');
 // Route::get('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
 // Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
 
-Auth::routes(['verify' => false]);
+Auth::routes(['verify' => true]);
 
 Route::get('/youtube/video', 'HomeController@video');
 

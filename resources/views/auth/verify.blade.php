@@ -4,8 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+            <div class="card text-center" style="margin: 14% auto;">
+                <div class="card-header">
+                    <img alt="Verify Email" class="text-center" style="width: 120px;" src="{{URL::asset('assets/img/pngs/verify_email.png')}}">
+                    <h2 class="mt-4">{{ __('Verify Your Email') }}</h2>
+                </div>
 
                 <div class="card-body">
                     @if (session('resent'))
