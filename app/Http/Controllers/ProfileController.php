@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\User;
 
@@ -29,14 +30,16 @@ class ProfileController extends Controller
         $user->skype_id = $request->skype;
         $user->telegram_id = $request->telegram;
         
-        if ($request->file('avatar')) {
-            $imagePath = $request->file('avatar');
-            $uuid = Str::uuid()->toString();
-            $imageName = "{$user->id}-{$uuid}";
-            $user->avatar = $request->file('avatar')->storeAs('avatars', $imageName, 'public');
-        }
-
         try {
+            if ($request->file('avatar')) {
+                $imagePath = $request->file('avatar');
+                $originalName = $imagePath->getClientOriginalName();
+                $fileExt = $imagePath->getClientOriginalExtension();
+                $uuid = Str::uuid()->toString();
+                $imageName = "{$user->id}-{$uuid}.{$fileExt}";
+                $user->avatar = $request->file('avatar')->storeAs('avatars', $imageName, 'public');
+            }
+
             $user->save();
         }
         catch (Exception $e) {

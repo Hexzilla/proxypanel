@@ -29,7 +29,7 @@
                                 <input type="file" id="file-avatar" name="avatar" data-height="200">
                                 <div class="main-img-user">
                                     @if (empty($userInfo->avatar))
-                                        <img alt="avatar" src="{{URL::asset('assets/img/users/default.jpg')}}">
+                                        <img alt="avatar" id="img-avatar" src="{{URL::asset('assets/img/users/default.jpg')}}">
                                     @else
                                         <img alt="avatar" id="img-avatar" src="{{Storage::url($userInfo->avatar)}}">
                                     @endif
@@ -95,9 +95,9 @@
                     </div>
                     <div class="form-group row justify-content-end mb-10">
                         <div class="col-md-8 pl-md-2">
-                            <button class="btn ripple btn-primary pd-x-30 mg-r-5" type="submit">Save</button>
+                            <button id="saveBtn" class="btn ripple btn-primary pd-x-30 mg-r-5" type="submit">Save</button>
                             
-                            <button class="btn ripple btn-primary pd-x-30 mg-r-5 saveLoadingBtn" disabled type="button">
+                            <button id="changeBtn" class="btn ripple btn-primary pd-x-30 mg-r-5 saveLoadingBtn" disabled type="button">
                                 <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
                             </button>
                             <button class="modal-effect btn ripple btn-secondary pd-x-30"  data-effect="effect-scale" data-toggle="modal" href="#modaldemo8">Change Password</button>
@@ -176,18 +176,20 @@
 
         const readURL = function(input) {
             if (input.files && input.files[0]) {
-                var reader = new FileReader();
+                const type = input.files[0].type;
+                if (!type.startsWith('image')) {
+                    return
+                }
 
+                var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#img-avatar').attr('src', e.target.result);
                 }
-        
                 reader.readAsDataURL(input.files[0]);
             }
         }
         
         $("#file-avatar").on('change', function(){
-            console.log('file-avatar-change');
             readURL(this);
         });
 
@@ -208,7 +210,6 @@
 			const email = $("#email").val()
 			const skype = $("#skype").val()
 			const telegram = $("#telegram").val()
-			const avatar = $("#avatar").val()
 			if (!userName) {
 				toastr.error("Please input username", "Error")
 				$("#userName").focus()
@@ -225,13 +226,14 @@
 				return
 			}
 
-            let formData = new FormData(this);
+            const formData = new FormData(this);
+            console.log(formData)
 
-			// const thisElement = $(this)
-			// const nextElement = $(this).next()
+			const thisElement = $("#saveBtn")
+			const nextElement = thisElement.next()
 
-			// thisElement.hide()
-			// nextElement.show()
+			thisElement.hide()
+			nextElement.show()
 			$.ajax({
 				type: "POST",
 				url: "{{route('changeUser')}}",
@@ -239,8 +241,8 @@
                 contentType: false,
                 processData: false,
 				success: function(result) {
-					// thisElement.show()
-					// nextElement.hide()
+					thisElement.show()
+					nextElement.hide()
 					
 					if (result == 1) {
 						toastr.success("Profile has been saved successfully", "Success")
