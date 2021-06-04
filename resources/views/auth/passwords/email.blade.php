@@ -1,57 +1,53 @@
 @extends('layouts.master2')
-
+@section('css')
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card text-center" style="margin: 14% auto;">
-                <div class="card-header">
-                    <h3 class="mt-4 mb-4">{{ __('Forget your password?') }}</h3>
+		<!-- Page -->
+		<div class="page main-signin-wrapper">
 
-                    <div class="text-center mt-3 mb-3">
-                        Enter your email address and we will <br/>send you instructions to reset your password
-                    </div>
-                </div>
+			<!-- Row -->
+			<div class="row text-center pl-0 pr-0 ml-0 mr-0">
+				<div class="col-lg-3 d-block mx-auto">
+					<div class="text-center mb-2">
+						<img src="{{URL::asset('assets/img/brand/logo.png')}}" class="header-brand-img" alt="logo">
+						<img src="{{URL::asset('assets/img/brand/logo-light.png')}}" class="header-brand-img theme-logos" alt="logo">
+					</div>
+					<div class="card custom-card">
+						<div class="card-body">
+							<h4 class="text-center">Forgot Password</h4>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            
+							<form method="POST" action="{{ route('password.email') }}">
+                                @csrf
+								<div class="form-group text-left">
+									<label>Email</label>
+									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+								</div>
+								<button type="submit" class="btn ripple btn-main-primary btn-block">Request reset link</button>
+							</form>
+						</div>
+						<div class="card-footer border-top-0 text-center">
+							<p>Did you remembered your password?</p>
+							<p class="mb-0"><a href="{{ url('/' . $page='login') }}">Try to Signin</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Row-->
 
-                        <div class="form-group row mb-2">
-                            <label for="email" class="col-md-6 offset-md-3 col-form-label text-md-left">{{ __('Email address') }}</label>
-
-                            <div class="col-md-6 offset-md-3">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mt-3 mb-3">
-                            <div class="col-md-6 offset-md-3">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Continue') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="text-center mt-4">
-                        <a href="">Back to sign in</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		</div>
+		<!-- End Page -->
+@endsection
+@section('js')
 @endsection
