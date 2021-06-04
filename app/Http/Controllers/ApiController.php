@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\User;
 
 class ApiController extends Controller
 {
     function show() {
-        $id = session('id');
-        $user = User::find($id);
+        $user = Auth::user();
         $apiKey = $user->api_key;
 
         return view('api', compact('apiKey'));
@@ -21,8 +21,7 @@ class ApiController extends Controller
         $second = Str::random(32);
         $newKey = $first.':'.$second;
         
-        $id = session('id');
-        $user = User::find($id);
+        $user = Auth::user();
         $user->api_key = $newKey;
         $user->save();
 

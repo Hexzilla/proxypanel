@@ -15,8 +15,6 @@ class ProfileController extends Controller
     }
 
     public function changeUser(Request $request) {
-        //$userId = session('id');
-
         $user = Auth::user();
         $user->name = $request->userName;
         $user->first_name = $request->firstName;
