@@ -63,11 +63,17 @@
 					</div>
 				</div>
 				<div class="dropdown main-profile-menu">
-					<a class="main-img-user" href=""><img alt="avatar" src="{{URL::asset('assets/img/users/1.jpg')}}"></a>
+					<a class="main-img-user" href="">
+                        @if (empty(Auth::user()->avatar))
+                        <img alt="avatar" src="{{URL::asset('assets/img/users/default.jpg')}}">
+                        @else
+                        <img alt="avatar" src="{{Storage::url(Auth::user()->avatar)}}">
+                        @endif
+                    </a>
 					<div class="dropdown-menu">
 						<div class="header-navheading">
-							<h6 class="main-notification-title">{{session('username')}}</h6>
-							<p class="main-notification-text">{{session('email')}}</p>
+							<h6 class="main-notification-title">{{Auth::user()->name}}</h6>
+							<p class="main-notification-text">{{Auth::user()->email}}</p>
 						</div>
 						<a class="dropdown-item border-top" href="{{url('/profile')}}">
 							<i class="fe fe-user"></i> My Profile

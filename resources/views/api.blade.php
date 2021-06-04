@@ -42,7 +42,7 @@
 					<i class="fa fa-sync"></i> Refresh API Key
 				</button>
 				<button class="btn ripple btn-primary" id="loadingButton" disabled type="button">
-					<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>Saving...
+					<span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>&nbsp;Saving...
 				</button>
 				<br><br>
 
