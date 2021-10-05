@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Port;
 
 class LocationController extends Controller
 {
     function show() {
-        $ports = Port::where('username', session('username'))->get();
+        $user = Auth::user();
+        $ports = Port::where('username', $user->name)->get();
         $res = Http::get('http://status.proxypanel.io/statsapi.php');
-        
+
         $locations = array();
         foreach($ports as $p) {
-            $temp['id'] = $p->id;
-            $temp['name'] = $p->username.'.'.$p->groupname;
-            $temp['location'] = $p->city;
-            $temp['last'] = $p->lastchangecitydate;
-            $temp['load'] = self::getLocationLoad($res->json(), $p->city);
+            $temp = array(
+                'id' => $p->id,
+                'name' => $p->username.'.'.$p->groupname,
+                'location' => $p->city,
+                'last' => $p->lastchangecitydate,
+                'load' => $this->getLocationLoad($res->json(), $p->city)
+            );
             array_push($locations, $temp);
         }
         return view('location', compact('locations'));

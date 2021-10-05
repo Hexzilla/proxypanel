@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
     Route::post('/deleteProxy', 'ProxyController@deleteProxy')->name('deleteProxy');
 
+    Route::get('/myproxies', 'MyProxyController@show');
+
     Route::get('/location', 'LocationController@show');
     Route::get('/location_', 'LocationController@allLocation');
     Route::post('/refreshLocation', 'LocationController@refreshLocation')->name('refreshLocation');

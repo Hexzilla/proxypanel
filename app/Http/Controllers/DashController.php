@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Port;
 use DateTime;
 use DateInterval;
@@ -22,7 +23,8 @@ class DashController extends Controller
 
     function dashboard()
     {
-        $ports = Port::where('username', session('username'))->get();
+        $user = Auth::user();
+        $ports = Port::where('username', $user->name)->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
         return view('dashboard', compact('ports', 'now', 'current'));

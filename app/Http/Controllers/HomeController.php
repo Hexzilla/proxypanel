@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 use App\Port;
@@ -22,7 +23,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $ports = Port::where('username', session('username'))->get();
+        $ports = array();
+        $user = Auth::user();
+        if ($user) {
+            $ports = Port::where('username', $user->name)->get();
+        }
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
         return view('home-dashboard', compact('ports', 'now', 'current'));

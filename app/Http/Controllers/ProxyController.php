@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Port;
 use DateTime;
@@ -16,11 +17,11 @@ class ProxyController extends Controller
         $name = $request->name;
         // $rotation = $request->rotation;
         $password = self::generatePassword();
-        $user = session('username');
+        $user = Auth::user();
         $paidTill = self::getPaidTill('option');
 
         $port = new Port;
-        $port->username = $user;
+        $port->username = $user->name;
         $port->pass = $password;
         $port->paidtill = $paidTill;
         $port->groupname = $name;
