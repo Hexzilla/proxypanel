@@ -10,6 +10,9 @@
 	#randForm {
 		display: none;
 	}
+	.locationBtn, .randBtn {
+		width: 120px;
+	}
 </style>
 @endsection
 @section('page-header')
