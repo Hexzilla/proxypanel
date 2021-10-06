@@ -1,3 +1,8 @@
+<!---Sweet-Alert css-->
+<link href="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+<link href="{{ URL::asset('assets/css/proxies.css')}}" rel="stylesheet">
+
 <div class="proxies-table">
     <!-- Proxy Table -->
     <div class="table-responsive">
@@ -299,15 +304,6 @@
 		$(".copyable").click(function(){
 			const text = $(this).attr("data-text")
 			swal("Copied!", text + " has been copied to the clipboard!", "success");
-		})
-
-		$("#addProxyBtn").click(function(){
-			const name = $("#proxyName").val()
-			if (name) {
-				$(this).hide()
-				$("#loadingBtn").show()
-			}
-			$(".submitBtn").click()
 		})
 
 		$(".changeIPBtn").click(function(){

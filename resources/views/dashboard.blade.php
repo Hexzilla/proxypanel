@@ -1,29 +1,8 @@
 @extends('layouts.master')
+
 @section('css')
-<!---Sweet-Alert css-->
-<link href="{{ URL::asset('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
-<style>
-	.no-data {
-		text-align: center;
-	}
-	.deleteBtn {
-		border-radius: 20px;
-	}
-	.fa-trash {
-		font-size: 14px !important;
-	}
-	#deleteForm {
-		display: none;
-	}
-	#loadingBtn, #loadingBtn1 {
-		display: none;
-	}
-	#randForm {
-		display: none;
-	}
-</style>
 @endsection
+
 @section('page-header')
 <!-- Page Header -->
 <div class="page-header">
@@ -37,8 +16,8 @@
 </div>
 <!-- End Page Header -->
 @endsection
-@section('content')
 
+@section('content')
 <div class="container mb-5" style="max-width: 1000px; margin: 0 auto;">
 	<div class="row">
 		<div class="col-lg-6">
@@ -115,12 +94,20 @@
 	</div>
 </div>
 <!-- End Small Help Modal -->
-</div>
-</div>
-<!-- End Main Content-->
 @endsection
 
-
 @section('js')
+<script>
+	$(document).ready(function(){
+		$("#addProxyBtn").click(function(){
+			const name = $("#proxyName").val()
+			if (name) {
+				$(this).hide()
+				$("#loadingBtn").show()
+			}
+			$(".submitBtn").click()
+		})
+	})
+</script>
 @stack('proxies-table-scripts')
 @endsection
