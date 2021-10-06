@@ -73,16 +73,16 @@
 					<table class="table table-hover mg-b-0">
 						<thead>
 							<tr>
-								<th width="20%" class="text-center">City</th>
-								<th width="7%" class="text-center">Rotation</th>
-								<th width="7%" class="text-center">Change IP</th>
-								<th width="7%" class="text-center">Ip Auth</th>
-								<th width="25%" class="text-center">Host</th>
-								<th width="7%" class="text-center">Name</th>
-								<th width="10%" class="text-center">Password</th>
-								<th width="10%" class="text-center">Next Billing</th>
-								<th width="10%" class="text-center">Status</th>
-								<th width="7%" class="text-center"></th>
+								<th width="10%" class="text-center">City</th>
+								<th class="text-center">Rotation</th>
+								<th class="text-center">Change IP</th>
+								<th class="text-center">Ip Auth</th>
+								<th class="text-center">Host</th>
+								<th class="text-center">Name</th>
+								<th class="text-center">Password</th>
+								<th class="text-center">Next Billing</th>
+								<th class="text-center">Status</th>
+								<th class="text-center"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -133,17 +133,18 @@
 											</a>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											<div class="hostBtn1">http: 66.42.95.53:8080</div>
-											<div class="hostBtn1">socks5: 66.42.95.53:9090</div>
+											<div class="copyable" data-text="{{$p->server}}">http: {{$p->server}}</div>
+											<div class="copyable" data-text="{{$p->server}}">socks5: {{$p->server}}</div>
 											@if($p->fwdauthips)
 												<div class="hostBtn2">socks5: 66.42.95.53:10072</div>
 											@endif
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											{{$p->username}}.{{$p->groupname}}
+											<?php $usergroupname = $p->username . "." . $p->groupname; ?>
+											<div class="copyable" data-text="{{$usergroupname}}">{{$usergroupname}}</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
-											{{$p->pass}}
+											<div class="copyable" data-text="{{$p->pass}}">{{$p->pass}}</div>
 										</td>
 										<td class="text-center" style="vertical-align: middle">
 											{{$p->paidtill}}<br>
@@ -248,31 +249,7 @@
 	</div>
 </form> -->
 
-<!-- Modal effects -->
-<div class="modal" id="modaldemo9">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content modal-content-demo">
-			<div class="modal-body">
-				<br>
-				<form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm">
-					@csrf
-					<div class="form-group">
-						<input type="hidden" id="idForAuth" name="id">
-						<p class="mg-b-10">IPv4 whitelist</p>
-						<input type="text" class="form-control" name="ip" placeholder="IPv4" id="ipAuthInput">
-						<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresse</p>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button class="btn ripple btn-primary" type="button" id="ipAuthBtn">Save</button>
-				<button class="btn ripple btn-primary" style="display: none" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
-				<button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End Modal effects-->
+@include('shared.ipv4-modal')
 
 <!-- Modal effects -->
 <div class="modal" id="modaldemo8">
@@ -410,6 +387,11 @@
 			});
 		})
 
+		$(".copyable").click(function(){
+			const text = $(this).attr("data-text")
+			swal("Copied!", text + " has been copied to the clipboard!", "success");
+		})
+
 		$("#addProxyBtn").click(function(){
 			const name = $("#proxyName").val()
 			if (name) {
@@ -491,35 +473,7 @@
 			$("#idForAuth").val(id)
 			$("#ipAuthInput").val(ips)
 		})
-
-		function ValidateIPaddress(ipaddress) 
-		{
-			if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
-			{
-				return (true)
-			}
-			return (false)
-		}
-
-		$("#ipAuthBtn").click(function() {
-			const ip = $("#ipAuthInput").val()
-			if (!ip) {
-				toastr.error("Please input ip address", "Error")
-				return
-			} else {
-				const ips = ip.split(',')
-				for(let i in ips) {
-					const item = ips[i].trim()
-					if (!ValidateIPaddress(item)) {
-						toastr.error("Please input valid ip address", "Error")
-						return
-					}
-				}
-			}
-			$(this).hide()
-			$(this).next().show()
-			$("#ipAuthForm").submit()
-		})
 	}) 
 </script>
+@stack('ipv4-scripts')
 @endsection

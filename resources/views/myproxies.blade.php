@@ -90,14 +90,14 @@
 										</a>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										<div class="hostBtn">http: {{$p->server}}</div>
-										<div class="hostBtn">socks5: {{$p->server}}</div>
+										<div class="copyable" data-text="{{$p->server}}">http: {{$p->server}}</div>
+										<div class="copyable" data-text="{{$p->server}}">socks5: {{$p->server}}</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										{{$p->username}}
+										<div class="copyable" data-text="{{$p->username}}">{{$p->username}}</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
-										{{$p->pass}}
+										<div class="copyable" data-text="{{$p->pass}}">{{$p->pass}}</div>
 									</td>
 									<td class="text-center" style="vertical-align: middle">
 										{{$p->paidtill}}<br>
@@ -141,7 +141,7 @@
 				<div class="form-group">
 					<p class="mg-b-10">IPv4 whitelist</p>
 					<input type="text" class="form-control" name="example-text-input" placeholder="IPv4">
-					<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresse</p>
+					<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresses</p>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -222,8 +222,9 @@
 			window.location = "{{url('/buy')}}"
 		})
 
-		$(".hostBtn").click(function(){
-			swal("Success!", "Copied", "success");
+		$(".copyable").click(function(){
+			const text = $(this).attr("data-text")
+			swal("Copied!", text + " has been copied to the clipboard!", "success");
 		})
 
 		$(".payBtn").click(function(){

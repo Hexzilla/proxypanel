@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Port;
+use DateTime;
 
 class MyProxyController extends Controller
 {
     function show() {
         $user = Auth::user();
-        return view('location', compact('locations'));
+        $ports = Port::where('username', $user->name)->get();
+        $now = new DateTime();
+        $current = $now->format('Y-m-d H:i:s');
+        return view('myproxies', compact('ports', 'now', 'current'));
     }
 }

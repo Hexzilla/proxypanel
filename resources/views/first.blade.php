@@ -289,7 +289,7 @@
 						<input type="hidden" id="idForAuth" name="id">
 						<p class="mg-b-10">IPv4 whitelist</p>
 						<input type="text" class="form-control" name="ip" placeholder="IPv4" id="ipAuthInput">
-						<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresse</p>
+						<p class="text-muted card-sub-title">Enter comma seperated IPv4 addresses</p>
 					</div>
 				</form>
 			</div>
