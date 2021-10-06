@@ -1,0 +1,18 @@
+.no-data {
+    text-align: center;
+}
+.deleteBtn {
+    border-radius: 20px;
+}
+.fa-trash {
+    font-size: 14px !important;
+}
+#deleteForm {
+    display: none;
+}
+#loadingBtn, #loadingBtn1 {
+    display: none;
+}
+#randForm {
+    display: none;
+}
