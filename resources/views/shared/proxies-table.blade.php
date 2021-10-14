@@ -64,8 +64,10 @@
                             <td class="text-center" style="vertical-align: middle;">
                                 <input type="hidden" value="{{$p->fwdauthips}}">
                                 <input type="hidden" value="{{$p->id}}">
-                                <a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modaldemo9">
+                                <a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-ipv4">
                                     IPv4 List
+                                </a><a class="modal-effect btn btn-success btn-sm apiBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-api">
+                                    API
                                 </a>
                             </td>
                             <td class="text-center" style="vertical-align: middle">
@@ -181,8 +183,8 @@
         </div>
     </form> -->
 
-    <!-- Modal effects -->
-    <div class="modal" id="modaldemo9">
+    <!-- IPv4 Modal -->
+    <div class="modal" id="modal-ipv4">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-body">
@@ -205,7 +207,36 @@
             </div>
         </div>
     </div>
-    <!-- End Modal effects-->
+    <!-- End IPv4 Modal-->
+
+    <!-- API Modal -->
+    <div class="modal" id="modal-api">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-body">
+                    <br>
+                    <form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm">
+                        @csrf
+                        <input type="hidden" id="idForApi" name="id">
+                        <div class="form-group">
+                            <p class="mg-b-10">Name</p>
+                            <input type="text" class="form-control" name="proxy_name" id="proxy_name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <p class="mg-b-10">Group</p>
+                            <input type="text" class="form-control" name="proxy_group" id="proxy_group" placeholder="Group">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn ripple btn-primary" type="button" id="ipAuthBtn">Save</button>
+                    <button class="btn ripple btn-primary" style="display: none" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End API Modal-->
 
     <form method="post" action="{{route('deleteProxy')}}" id="deleteForm">
         @csrf
@@ -377,6 +408,10 @@
 			const ips = $(this).prev().prev().val()
 			$("#idForAuth").val(id)
 			$("#ipAuthInput").val(ips)
+		})
+
+		$(".apiBtn").click(function () {
+			
 		})
 
         function ValidateIPaddress(ipaddress) {
