@@ -192,13 +192,13 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-body">
                     <br>
-                    <form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm">
+                    <form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm" class="needs-validation was-validated">
                         @csrf
                         <div class="form-group">
                             <input type="hidden" id="idForAuth" name="id">
-                            <p class="mg-b-10">IPv4 whitelist</p>
-                            <input type="text" class="form-control" name="ip" placeholder="IPv4" id="ipAuthInput">
-                            <p class="text-muted card-sub-title">Enter comma seperated IPv4 addresses</p>
+                            <p class="mg-b-10 mb-1">IPv4 whitelist</p>
+                            <input type="text" class="form-control" name="ip" placeholder="IPv4" id="ipAuthInput" required="" minlength="7" maxlength="15" size="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+                            <p class="text-muted card-sub-title mt-1">Enter comma seperated IPv4 addresses</p>
                         </div>
                     </form>
                 </div>

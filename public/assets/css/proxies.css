@@ -4,6 +4,9 @@
 .deleteBtn {
     border-radius: 20px;
 }
+.payBtn {
+    border-radius: 20px;
+}
 .apiBtn {
     margin-left: 16px;
 }
