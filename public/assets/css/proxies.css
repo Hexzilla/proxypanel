@@ -22,8 +22,9 @@
 .hide {
     display: none;
 }
-.float-right {
-    float: right !important;
+.right-spinner {
+    position: absolute;
+    right: 20px;
 }
 .d-contests {
     display: contents;

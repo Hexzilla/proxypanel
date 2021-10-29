@@ -230,18 +230,14 @@
                     
                     <!--Change Proxy IP-->
                     <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
-                        <div class="wd-100p">
-                            <i class="fe fe-airplay"></i> Change Proxy IP
-                        </div>
-                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                        <i class="fe fe-airplay"></i> Change Proxy IP
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
                     
                     <!--Change Proxy Location-->
                     <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_location">
-                        <div class="wd-100p">
-                            <i class="fe fe-briefcase"></i>Change Proxy Location
-                        </div>
-                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                        <i class="fe fe-briefcase"></i>Change Proxy Location
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
                     <!-- <button class="btn ripple btn-secondary" data-toggle="dropdown">
                         Change Proxy Location <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>
@@ -255,18 +251,14 @@
                     
                     <!--Connect To A Random Location-->
                     <button class="btn ripple btn-secondary btn-with-icon btn-block mb-2 api-btn" data-api="random_location">
-                        <div class="wd-100p">
-                            <i class="fe fe-link"></i>Connect To A Random Location
-                        </div>
-                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                        <i class="fe fe-link"></i>Connect To A Random Location
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
 
                     <!--Update rotation of a proxy-->
                     <button class="btn ripple btn-info btn-with-icon btn-block mb-2 api-btn" data-api="rotation">
-                        <div class="wd-100p">
-                            <i class="fe fe-folder"></i>Update Proxy Rotation
-                        </div>
-                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                        <i class="fe fe-folder"></i>Update Proxy Rotation
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
                 </div>
             </div>
