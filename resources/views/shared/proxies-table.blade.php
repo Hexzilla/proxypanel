@@ -230,16 +230,16 @@
                     
                     <!--Change Proxy IP-->
                     <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
-                        <div class="d-contests wd-100p">
-                            <i class="fe fe-airplay"></i><p class="mt-1">Change Proxy IP</p>
+                        <div class="wd-100p">
+                            <i class="fe fe-airplay"></i> Change Proxy IP
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
                     
                     <!--Change Proxy Location-->
                     <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_location">
-                        <div class="d-contests wd-100p">
-                            <i class="fe fe-briefcase"></i><p class="mt-1">Change Proxy Location</p>
+                        <div class="wd-100p">
+                            <i class="fe fe-briefcase"></i>Change Proxy Location
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
@@ -255,16 +255,16 @@
                     
                     <!--Connect To A Random Location-->
                     <button class="btn ripple btn-secondary btn-with-icon btn-block mb-2 api-btn" data-api="random_location">
-                        <div class="d-contests wd-100p">
-                            <i class="fe fe-link"></i><p class="mt-1">Connect To A Random Location </p>
+                        <div class="wd-100p">
+                            <i class="fe fe-link"></i>Connect To A Random Location
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
 
                     <!--Update rotation of a proxy-->
                     <button class="btn ripple btn-info btn-with-icon btn-block mb-2 api-btn" data-api="rotation">
-                        <div class="d-contests wd-100p">
-                            <i class="fe fe-folder"></i><p class="mt-1">Update Proxy Rotation</p>
+                        <div class="wd-100p">
+                            <i class="fe fe-folder"></i>Update Proxy Rotation
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
