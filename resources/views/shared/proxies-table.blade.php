@@ -77,7 +77,7 @@
                                 <div class="copyable" data-text="{{$p->server}}">http: {{$p->server}}</div>
                                 <div class="copyable" data-text="{{$p->server}}">socks5: {{$p->server}}</div>
                                 @if($p->fwdauthips)
-                                    <div class="hostBtn2">socks5: 66.42.95.53:10072</div>
+                                    <div class="copyable">socks5: 66.42.95.53:10072</div>
                                 @endif
                             </td>
                             <td class="text-center" style="vertical-align: middle">
@@ -229,17 +229,17 @@
                     <h6 class="font-weight-bold"></h6>
                     
                     <!--Change Proxy IP-->
-                    <button id="change_proxy_ip" class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
-                        <div class="wd-100p">
-                            <i class="fe fe-airplay"></i>Change Proxy IP
+                    <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
+                        <div class="d-contests wd-100p">
+                            <i class="fe fe-airplay"></i><p class="mt-1">Change Proxy IP</p>
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
                     
                     <!--Change Proxy Location-->
                     <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_location">
-                        <div class="wd-100p">
-                            <i class="fe fe-briefcase"></i> Change Proxy Location 
+                        <div class="d-contests wd-100p">
+                            <i class="fe fe-briefcase"></i><p class="mt-1">Change Proxy Location</p>
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
@@ -255,42 +255,19 @@
                     
                     <!--Connect To A Random Location-->
                     <button class="btn ripple btn-secondary btn-with-icon btn-block mb-2 api-btn" data-api="random_location">
-                        <div class="wd-100p">
-                            <i class="fe fe-link"></i> Connect To A Random Location 
+                        <div class="d-contests wd-100p">
+                            <i class="fe fe-link"></i><p class="mt-1">Connect To A Random Location </p>
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
 
                     <!--Update rotation of a proxy-->
                     <button class="btn ripple btn-info btn-with-icon btn-block mb-2 api-btn" data-api="rotation">
-                        <div class="wd-100p">
-                            <i class="fe fe-folder"></i> Update Proxy Rotation
+                        <div class="d-contests wd-100p">
+                            <i class="fe fe-folder"></i><p class="mt-1">Update Proxy Rotation</p>
                         </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
                     </button>
-
-                    <!-- <label class="rdiobox">
-                        <input name="rdio_api" type="radio" value="change_ip" checked><span>Change Proxy IP</span>
-                    </label>
-                    <label class="rdiobox">
-                        <input name="rdio_api" type="radio" value="change_location"><span>Change Proxy Location</span>
-                    </label>
-                    <label class="rdiobox">
-                        <input name="rdio_api" type="radio" value="list_locations"><span>List available locations</span>
-                    </label>
-                    <label class="rdiobox">
-                        <input name="rdio_api" type="radio" value="random_location"><span>Connect to a random location</span>
-                    </label>
-                    <label class="rdiobox">
-                        <input name="rdio_api" type="radio" value="update_rotation"><span>Update rotation of a proxy</span>
-                    </label> -->
-                </div>
-                <div class="modal-footer">
-                    <!-- <button class="btn ripple btn-success" type="button" id="run_api_btn">Run</button>
-                    <button class="btn ripple btn-success" style="display: none" disabled type="button">
-                        <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Running...
-                    </button>
-                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button> -->
                 </div>
             </div>
         </div>
@@ -369,10 +346,6 @@
 			}
 		})
 
-		$(".hostBtn").click(function(){
-			swal("Success!", "Copied", "success");
-		})
-
 		$(".deleteBtn").click(function(){
 			const id = $(this).prev().val()
 
@@ -383,6 +356,7 @@
 				showCancelButton: true,
 				confirmButtonText: 'Yes, delete it!',
 				closeOnConfirm: false,
+                heightAuto: true,
 			},
 			function(){
 				$("#deleteId").val(id)
@@ -393,7 +367,12 @@
 
 		$(".copyable").click(function(){
 			const text = $(this).attr("data-text")
-			swal("Copied!", text + " has been copied to the clipboard!", "success");
+            swal({
+				title: "Copied!",
+				text: text + " has been copied to the clipboard!",
+				type: "success",
+                heightAuto: true
+			})
 		})
 
 		$(".changeIPBtn").click(function(){
@@ -542,46 +521,6 @@
                 }
 		    })
         })
-
-        /*$("#run_api_btn").click(function() {
-            const selected = $('input[name=rdio_api]:checked', '#rdios').val()            
-
-			const username = $("#api_username").val()
-			const nickname = $("#api_nickname").val()
-
-            let url = "";
-            if (selected == "change_ip") {
-                url = `https://proxypanel.io/proxy/change-ip/${username}/${nickname}/`;
-            } else if (selected == "change_location") {
-                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/LOCATION/`;
-            } else if (selected == "list_locations") {
-                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/`;
-            } else if (selected == "random_location") {
-                url = `https://proxypanel.io/proxy/list/locations`;
-            } else if (selected == "update_rotation") {
-                url = `https://proxypanel.io/proxy/rotation/${username}/${nickname}/ROTATION/`;
-            }
-            $(this).hide()
-            $(this).next().show()
-            const thiz = $(this);
-
-            $.ajax({
-                type: 'GET',
-                url: url,
-                success: function(result) {
-                    console.log("success", result)
-                    thiz.show()
-                    thiz.next().hide()
-                    toastr.success("Success", "Success")
-                },
-                error: function (textStatus, errorThrown) {
-                    console.log("error", textStatus)
-                    thiz.show()
-                    thiz.next().hide()
-                    toastr.error("API Fails", "Error")
-                }
-		    })
-        })*/
 	}) 
 </script>
 @endpush

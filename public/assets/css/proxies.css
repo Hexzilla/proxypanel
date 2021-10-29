@@ -25,3 +25,6 @@
 .float-right {
     float: right !important;
 }
+.d-contests {
+    display: contents;
+}
