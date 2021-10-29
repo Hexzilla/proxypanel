@@ -70,4 +70,34 @@ class ProxyController extends Controller
         }
         return $date->format('Y-m-d H:i:s');
     }
+
+    function changeProxyIP($username, $nickname) {
+        echo($username);
+        echo($nickname);
+        echo("changeProxyIP");
+    }
+
+    function changeProxyLocation($username, $nickname, $location) {
+        echo($username);
+        echo($nickname);
+        echo($location);
+        echo("changeProxyLocation");
+    }
+
+    function connectRandomLocation($username, $nickname) {
+        echo($username);
+        echo($nickname);
+        echo("connectRandomLocation");
+    }
+
+    function listLocations() {
+        echo("listLocations");
+    }
+
+    function updateProxyRotation($username, $nickname, $rotation) {
+        echo($username);
+        echo($nickname);
+        echo($rotation);
+        echo("updateProxyRotation");
+    }
 }

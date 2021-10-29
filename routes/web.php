@@ -24,19 +24,24 @@ Auth::routes(['verify' => false, 'reset' => true]);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', 'DashController@dashboard');
 
-    Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
-    Route::post('/deleteProxy', 'ProxyController@deleteProxy')->name('deleteProxy');
-
     Route::get('/myproxies', 'MyProxyController@show');
 
+    Route::post('/addProxy', 'ProxyController@addProxy')->name('addProxy');
+    Route::post('/deleteProxy', 'ProxyController@deleteProxy')->name('deleteProxy');
+    Route::get('/proxy/change-ip/{username}/{nickname}', 'ProxyController@changeProxyIP');
+    Route::get('/proxy/locations/{username}/{nickname}/{location}', 'ProxyController@changeProxyLocation');
+    Route::get('/proxy/locations/{username}/{nickname}', 'ProxyController@connectRandomLocation');
+    Route::get('/proxy/list/locations', 'ProxyController@listLocations');
+    Route::get('/proxy/rotation/{username}/{nickname}/{rotation}', 'ProxyController@updateProxyRotation');
+    
     Route::get('/location', 'LocationController@show');
     Route::get('/location_', 'LocationController@allLocation');
     Route::post('/refreshLocation', 'LocationController@refreshLocation')->name('refreshLocation');
     Route::post('/changeLocation', 'LocationController@changeLocation')->name('changeLocation');
     Route::post('/randomLocation', 'LocationController@randomLocation')->name('randomLocation');
 
-    Route::post('/changeIp', 'IpController@changeIp')->name('changeIp');
-    Route::post('/changeAuthIP', 'IpController@changeAuthIP')->name('changeAuthIP');
+    Route::post('/changeIp', 'IPController@changeIp')->name('changeIp');
+    Route::post('/changeAuthIP', 'IPController@changeAuthIP')->name('changeAuthIP');
 
     Route::get('/api', 'ApiController@show');
     Route::post('/changeApi', 'ApiController@change')->name('changeApi');

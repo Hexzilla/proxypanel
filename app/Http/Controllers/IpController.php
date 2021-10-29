@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Port;
 
-class IpController extends Controller
+class IPController extends Controller
 {
     function changeIp(Request $request) {
         // $res = Http::get('http://phones.proxypanel.io:1080/change?u='.$request->userInfo);

@@ -218,7 +218,7 @@
             <div class="modal-content modal-content-demo">
                 <input type="hidden" value="" name="payId" id="payId">
                 <div class="modal-header">
-                    <h6 class="modal-title">API</h6>
+                    <h6 class="modal-title">Select API</h6>
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -226,8 +226,50 @@
                 <div class="modal-body" id="rdios">
                     <input type="hidden" id="api_username" value="">
                     <input type="hidden" id="api_nickname" value="">
-                    <h6 class="font-weight-bold">Select API</h6>
-                    <label class="rdiobox">
+                    <h6 class="font-weight-bold"></h6>
+                    
+                    <!--Change Proxy IP-->
+                    <button id="change_proxy_ip" class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
+                        <div class="wd-100p">
+                            <i class="fe fe-airplay"></i>Change Proxy IP
+                        </div>
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                    </button>
+                    
+                    <!--Change Proxy Location-->
+                    <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_location">
+                        <div class="wd-100p">
+                            <i class="fe fe-briefcase"></i> Change Proxy Location 
+                        </div>
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                    </button>
+                    <!-- <button class="btn ripple btn-secondary" data-toggle="dropdown">
+                        Change Proxy Location <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="">Profile</a>
+                        <a class="dropdown-item" href="">Activity Logs</a>
+                        <a class="dropdown-item" href="">Account Settings</a>
+                        <a class="dropdown-item" href="">Logout</a>
+                    </div> -->
+                    
+                    <!--Connect To A Random Location-->
+                    <button class="btn ripple btn-secondary btn-with-icon btn-block mb-2 api-btn" data-api="random_location">
+                        <div class="wd-100p">
+                            <i class="fe fe-link"></i> Connect To A Random Location 
+                        </div>
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                    </button>
+
+                    <!--Update rotation of a proxy-->
+                    <button class="btn ripple btn-info btn-with-icon btn-block mb-2 api-btn" data-api="rotation">
+                        <div class="wd-100p">
+                            <i class="fe fe-folder"></i> Update Proxy Rotation
+                        </div>
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm float-right hide" role="status"></span>
+                    </button>
+
+                    <!-- <label class="rdiobox">
                         <input name="rdio_api" type="radio" value="change_ip" checked><span>Change Proxy IP</span>
                     </label>
                     <label class="rdiobox">
@@ -241,14 +283,14 @@
                     </label>
                     <label class="rdiobox">
                         <input name="rdio_api" type="radio" value="update_rotation"><span>Update rotation of a proxy</span>
-                    </label>
+                    </label> -->
                 </div>
                 <div class="modal-footer">
-                    <button class="btn ripple btn-success" type="button" id="run_api_btn">Run</button>
+                    <!-- <button class="btn ripple btn-success" type="button" id="run_api_btn">Run</button>
                     <button class="btn ripple btn-success" style="display: none" disabled type="button">
                         <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Running...
                     </button>
-                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button> -->
                 </div>
             </div>
         </div>
@@ -462,7 +504,46 @@
             $("#ipAuthForm").submit()
         })
 
-        $("#run_api_btn").click(function() {
+        $(".api-btn").click(function() {
+            const username = $("#api_username").val()
+			const nickname = $("#api_nickname").val()
+            
+            const selected = $(this).attr("data-api")
+            console.log(username, nickname, selected)
+            
+            let url = "";
+            if (selected == "change_ip") {
+                url = `https://proxypanel.io/proxy/change-ip/${username}/${nickname}/`;
+            } else if (selected == "change_location") {
+                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/LOCATION/`;
+            } else if (selected == "list_locations") {
+                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/`;
+            } else if (selected == "random_location") {
+                url = `https://proxypanel.io/proxy/list/locations`;
+            } else if (selected == "rotation") {
+                url = `https://proxypanel.io/proxy/rotation/${username}/${nickname}/ROTATION/`;
+            }
+
+            const spinner = $(this).find('span');
+            spinner.show()
+
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(result) {
+                    console.log("success", result)
+                    spinner.hide()
+                    toastr.success("Success", "Success")
+                },
+                error: function (textStatus, errorThrown) {
+                    console.log("error", textStatus)
+                    spinner.hide()
+                    toastr.error("API Error", "Error")
+                }
+		    })
+        })
+
+        /*$("#run_api_btn").click(function() {
             const selected = $('input[name=rdio_api]:checked', '#rdios').val()            
 
 			const username = $("#api_username").val()
@@ -500,7 +581,7 @@
                     toastr.error("API Fails", "Error")
                 }
 		    })
-        })
+        })*/
 	}) 
 </script>
 @endpush
