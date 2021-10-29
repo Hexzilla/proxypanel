@@ -55,7 +55,7 @@ class AuthController extends Controller
         } else {
             echo '0';
         }
-    }*/
+    }
 
     public function changePassword(Request $request) {
         $current = $request->current;
@@ -77,7 +77,7 @@ class AuthController extends Controller
         }
     }
 
-    /*public function logout(Request $request) {
+    public function logout(Request $request) {
         $request->session()->flush();
         return redirect('/');
     }

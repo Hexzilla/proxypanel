@@ -66,7 +66,10 @@
                                 <input type="hidden" value="{{$p->id}}">
                                 <a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-ipv4">
                                     IPv4 List
-                                </a><a class="modal-effect btn btn-success btn-sm apiBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-api">
+                                </a>
+                                <a class="modal-effect btn btn-success btn-sm apiBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-api">
+                                    <input type="hidden" value="{{$p->username}}">
+                                    <input type="hidden" value="{{$p->groupname}}">
                                     API
                                 </a>
                             </td>
@@ -213,24 +216,38 @@
     <div class="modal" id="modal-api">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
-                <div class="modal-body">
-                    <br>
-                    <form method="post" action="{{route('changeAuthIP')}}" id="ipAuthForm">
-                        @csrf
-                        <input type="hidden" id="idForApi" name="id">
-                        <div class="form-group">
-                            <p class="mg-b-10">Name</p>
-                            <input type="text" class="form-control" name="proxy_name" id="proxy_name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <p class="mg-b-10">Group</p>
-                            <input type="text" class="form-control" name="proxy_group" id="proxy_group" placeholder="Group">
-                        </div>
-                    </form>
+                <input type="hidden" value="" name="payId" id="payId">
+                <div class="modal-header">
+                    <h6 class="modal-title">API</h6>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="rdios">
+                    <input type="hidden" id="api_username" value="">
+                    <input type="hidden" id="api_nickname" value="">
+                    <h6 class="font-weight-bold">Select API</h6>
+                    <label class="rdiobox">
+                        <input name="rdio_api" type="radio" value="change_ip" checked><span>Change Proxy IP</span>
+                    </label>
+                    <label class="rdiobox">
+                        <input name="rdio_api" type="radio" value="change_location"><span>Change Proxy Location</span>
+                    </label>
+                    <label class="rdiobox">
+                        <input name="rdio_api" type="radio" value="list_locations"><span>List available locations</span>
+                    </label>
+                    <label class="rdiobox">
+                        <input name="rdio_api" type="radio" value="random_location"><span>Connect to a random location</span>
+                    </label>
+                    <label class="rdiobox">
+                        <input name="rdio_api" type="radio" value="update_rotation"><span>Update rotation of a proxy</span>
+                    </label>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn ripple btn-primary" type="button" id="ipAuthBtn">Save</button>
-                    <button class="btn ripple btn-primary" style="display: none" disabled type="button"><span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Saving...</button>
+                    <button class="btn ripple btn-success" type="button" id="run_api_btn">Run</button>
+                    <button class="btn ripple btn-success" style="display: none" disabled type="button">
+                        <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span> Running...
+                    </button>
                     <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
                 </div>
             </div>
@@ -411,7 +428,11 @@
 		})
 
 		$(".apiBtn").click(function () {
-			
+            const username = $(this).children().eq(0).val()
+            const nickname = $(this).children().eq(1).val()
+			$("#api_username").val(username)
+			$("#api_nickname").val(nickname)
+            console.log(username, nickname)
 		})
 
         function ValidateIPaddress(ipaddress) {
@@ -439,6 +460,46 @@
             $(this).hide()
             $(this).next().show()
             $("#ipAuthForm").submit()
+        })
+
+        $("#run_api_btn").click(function() {
+            const selected = $('input[name=rdio_api]:checked', '#rdios').val()            
+
+			const username = $("#api_username").val()
+			const nickname = $("#api_nickname").val()
+
+            let url = "";
+            if (selected == "change_ip") {
+                url = `https://proxypanel.io/proxy/change-ip/${username}/${nickname}/`;
+            } else if (selected == "change_location") {
+                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/LOCATION/`;
+            } else if (selected == "list_locations") {
+                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/`;
+            } else if (selected == "random_location") {
+                url = `https://proxypanel.io/proxy/list/locations`;
+            } else if (selected == "update_rotation") {
+                url = `https://proxypanel.io/proxy/rotation/${username}/${nickname}/ROTATION/`;
+            }
+            $(this).hide()
+            $(this).next().show()
+            const thiz = $(this);
+
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(result) {
+                    console.log("success", result)
+                    thiz.show()
+                    thiz.next().hide()
+                    toastr.success("Success", "Success")
+                },
+                error: function (textStatus, errorThrown) {
+                    console.log("error", textStatus)
+                    thiz.show()
+                    thiz.next().hide()
+                    toastr.error("API Fails", "Error")
+                }
+		    })
         })
 	}) 
 </script>
