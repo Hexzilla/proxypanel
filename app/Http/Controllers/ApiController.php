@@ -23,7 +23,7 @@ class ApiController extends Controller
         
         $user = Auth::user();
         $user->api_key = $newKey;
-        $user->save();
+        User::find($user->id)->update(['api_key'=> $newKey]);
 
         return redirect()->back();
     }

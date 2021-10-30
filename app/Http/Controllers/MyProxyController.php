@@ -15,6 +15,7 @@ class MyProxyController extends Controller
         $ports = Port::where('username', $user->name)->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
-        return view('myproxies', compact('ports', 'now', 'current'));
+        $apiKey = $user->api_key;
+        return view('myproxies', compact('ports', 'now', 'current', 'apiKey'));
     }
 }

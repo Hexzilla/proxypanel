@@ -67,7 +67,7 @@
                                 <a class="modal-effect btn btn-success btn-sm openIPAuthBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-ipv4">
                                     IPv4 List
                                 </a>
-                                <a class="modal-effect btn btn-success btn-sm apiBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-api">
+                                <a class="modal-effect btn btn-success btn-sm showApiPopupBtn" data-effect="effect-scale" data-toggle="modal" href="#modal-api">
                                     <input type="hidden" value="{{$p->username}}">
                                     <input type="hidden" value="{{$p->groupname}}">
                                     API
@@ -214,7 +214,7 @@
 
     <!-- API Modal -->
     <div class="modal" id="modal-api">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <input type="hidden" value="" name="payId" id="payId">
                 <div class="modal-header">
@@ -224,40 +224,42 @@
                     </button>
                 </div>
                 <div class="modal-body" id="rdios">
-                    <input type="hidden" id="api_username" value="">
-                    <input type="hidden" id="api_nickname" value="">
                     <h6 class="font-weight-bold"></h6>
+                    <input type="hidden" value="{{$apiKey}}" id="apiKey">
                     
                     <!--Change Proxy IP-->
-                    <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_ip">
-                        <i class="fe fe-airplay"></i> Change Proxy IP
+                    <button class="btn ripple btn-lite btn-with-icon btn-block mb-4 api-btn" data-api="change_proxy">
+                        <div class="text-left">
+                            <p class="h5 text-secondary mb-1">Change Proxy IP</p>
+				            <p class="word-break-all" id="change_proxy">https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/</p>
+                        </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
                     
                     <!--Change Proxy Location-->
-                    <button class="btn ripple btn-success btn-with-icon btn-block mb-2 api-btn" data-api="change_location">
-                        <i class="fe fe-briefcase"></i>Change Proxy Location
+                    <button class="btn ripple btn-lite btn-with-icon btn-block mb-4 api-btn" data-api="change_location">
+                        <div class="text-left">
+                            <p class="h5 text-secondary mb-1">Change Proxy Location</p>
+				            <p class="word-break-all" id="change_location">https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/</p>
+                        </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
-                    <!-- <button class="btn ripple btn-secondary" data-toggle="dropdown">
-                        Change Proxy Location <i class="icon ion-ios-arrow-down tx-11 mg-l-3"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="">Profile</a>
-                        <a class="dropdown-item" href="">Activity Logs</a>
-                        <a class="dropdown-item" href="">Account Settings</a>
-                        <a class="dropdown-item" href="">Logout</a>
-                    </div> -->
                     
                     <!--Connect To A Random Location-->
-                    <button class="btn ripple btn-secondary btn-with-icon btn-block mb-2 api-btn" data-api="random_location">
-                        <i class="fe fe-link"></i>Connect To A Random Location
+                    <button class="btn ripple btn-lite btn-with-icon btn-block mb-4 api-btn" data-api="random_location">
+                        <div class="text-left">
+                            <p class="h5 text-secondary mb-1">Connect To A Random Location</p>
+				            <p class="word-break-all" id="random_location">https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/</p>
+                        </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
 
                     <!--Update rotation of a proxy-->
-                    <button class="btn ripple btn-info btn-with-icon btn-block mb-2 api-btn" data-api="rotation">
-                        <i class="fe fe-folder"></i>Update Proxy Rotation
+                    <button class="btn ripple btn-lite btn-with-icon btn-block mb-4 api-btn" data-api="rotation">
+                        <div class="text-left">
+                            <p class="h5 text-secondary mb-1">Update Proxy Rotation</p>
+				            <p class="word-break-all" id="rotation" >https://proxypanel.io/proxy/change-ip/USERNAME/NICKNAME/</p>
+                        </div>
                         <span aria-hidden="true" class="spinner-border spinner-border-sm right-spinner hide" role="status"></span>
                     </button>
                 </div>
@@ -440,12 +442,14 @@
 			$("#ipAuthInput").val(ips)
 		})
 
-		$(".apiBtn").click(function () {
+		$(".showApiPopupBtn").click(function () {
             const username = $(this).children().eq(0).val()
             const nickname = $(this).children().eq(1).val()
-			$("#api_username").val(username)
-			$("#api_nickname").val(nickname)
-            console.log(username, nickname)
+            const apiKey = $("#apiKey").val();
+            $("#change_proxy").html(`https://proxypanel.io/proxy/change-ip/${username}/${nickname}/${apiKey}`)
+            $("#change_location").html(`https://proxypanel.io/proxy/locations/${username}/${nickname}/hermosa_beach/${apiKey}`)
+            $("#random_location").html(`https://proxypanel.io/proxy/locations/${username}/${nickname}/${apiKey}`)
+            $("#rotation").html(`https://proxypanel.io/proxy/rotation/${username}/${nickname}/12h/${apiKey}`)
 		})
 
         function ValidateIPaddress(ipaddress) {
@@ -476,24 +480,8 @@
         })
 
         $(".api-btn").click(function() {
-            const username = $("#api_username").val()
-			const nickname = $("#api_nickname").val()
-            
-            const selected = $(this).attr("data-api")
-            console.log(username, nickname, selected)
-            
-            let url = "";
-            if (selected == "change_ip") {
-                url = `https://proxypanel.io/proxy/change-ip/${username}/${nickname}/`;
-            } else if (selected == "change_location") {
-                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/LOCATION/`;
-            } else if (selected == "list_locations") {
-                url = `https://proxypanel.io/proxy/locations/${username}/${nickname}/`;
-            } else if (selected == "random_location") {
-                url = `https://proxypanel.io/proxy/list/locations`;
-            } else if (selected == "rotation") {
-                url = `https://proxypanel.io/proxy/rotation/${username}/${nickname}/ROTATION/`;
-            }
+            const url = $(this).children().eq(0).children().eq(1).html()
+            console.log(url);
 
             const spinner = $(this).find('span');
             spinner.show()

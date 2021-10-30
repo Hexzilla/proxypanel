@@ -27,7 +27,8 @@ class DashController extends Controller
         $ports = Port::where('username', $user->name)->get();
         $now = new DateTime();
         $current = $now->format('Y-m-d H:i:s');
-        return view('dashboard', compact('ports', 'now', 'current'));
+        $apiKey = $user->api_key;
+        return view('dashboard', compact('ports', 'now', 'current', 'apiKey'));
     }
     
     function api()

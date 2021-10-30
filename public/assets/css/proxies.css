@@ -28,7 +28,16 @@
 .right-spinner {
     position: absolute;
     right: 20px;
+    top: 5px;
 }
 .d-contests {
     display: contents;
+}
+.api-btn {
+    display: flex;
+    justify-content: start;
+    height: 68px!important;
+}
+.word-break-all {
+    word-break: break-all;
 }
