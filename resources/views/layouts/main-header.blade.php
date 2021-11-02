@@ -78,6 +78,9 @@
 						<a class="dropdown-item border-top" href="{{url('/profile')}}">
 							<i class="fe fe-user"></i> My Profile
 						</a>
+						<a class="dropdown-item border-top" href="{{url('/invite')}}">
+							<i class="fe fe-heart"></i> Invite Friends
+						</a>
                         <a class="dropdown-item" href="{{route('logout')}}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fe fe-power"></i> Sign Out

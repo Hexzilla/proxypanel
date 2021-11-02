@@ -78,6 +78,14 @@
                         </div>	
                         <div class="row row-xs align-items-center mg-b-10">
                             <div class="col-md-4">
+                                <label class="mg-b-0">Referral link</label>
+                            </div>
+                            <div class="col-md-8 mg-t-5 mg-md-t-0">
+                                <input class="form-control" placeholder="" type="text" value="{{$userInfo->referral_link}}" id="referral_link" maxlength="50" readonly>
+                            </div>
+                        </div>	
+                        <div class="row row-xs align-items-center mg-b-10">
+                            <div class="col-md-4">
                                 <label class="mg-b-0">Skype</label>
                             </div>
                             <div class="col-md-8 mg-t-5 mg-md-t-0">

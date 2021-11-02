@@ -23,6 +23,9 @@
 							<a class="nav-link" href="{{ url('/' . $page='profile') }}"><i class="fa fa-user"></i><span class="sidemenu-label">Profile</span></a>
 						</li>
 						<li class="nav-item show">
+							<a class="nav-link" href="{{url('/' . $page='invite')}}"><i class="fa fa-heart"></i><span class="sidemenu-label">Invite Friends</span></a>
+						</li>
+						<li class="nav-item show">
 							<a class="nav-link" href="{{ url('/' . $page='api') }}"><i class="fa fa-code"></i><span class="sidemenu-label">API</span></a>
 						</li>
 					</ul>

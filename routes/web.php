@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/changeApi', 'ApiController@change')->name('changeApi');
 
     Route::get('/profile', 'ProfileController@show');
+    Route::get('/invite', 'InviteController@show');
     Route::post('/changeUser', 'ProfileController@changeUser')->name('changeUser');
     Route::post('/changePassword', 'Auth\ChangePasswordController@store')->name('changePassword');
     // Route::get('/{page}', 'AdminController@index');
