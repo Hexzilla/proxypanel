@@ -80,9 +80,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $referrer = null;
         $refname = session()->pull('referrer');
-        $refemail = Crypt::decryptString($refname);
-        $referrer = User::where('email', $refemail) -> first();
+        if ($refname) {
+            $refemail = Crypt::decryptString($refname);
+            $referrer = User::where('email', $refemail) -> first();
+        }
 
         return User::create([
             'name' => $data['name'],
